@@ -7,15 +7,15 @@ export default class Cart extends React.Component {
         super()
         this.state = {
             num: 0,
-            
+
             showItemQtyBar: false,
             isFavourite: false,
             items: [
-                { id: 1, name: 'Dahivada',price: 45, image: 'https://i.ndtvimg.com/i/2018-02/dahi-bhalla_650x400_61519796037.jpg',disc:'this is dahi wada' },
+                { id: 1, name: 'Dahivada', price: 45, image: 'https://i.ndtvimg.com/i/2018-02/dahi-bhalla_650x400_61519796037.jpg', disc: 'this is dahi wada' },
 
-                { id: 2, name: 'Sandwich',price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQi-pcmPUSXX_lShEsi4UB32Nu_gZhyZSuHKtRsX9tiHh1z4WtnQ&s',disc:'this is a sandwich' },
+                { id: 2, name: 'Sandwich', price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQi-pcmPUSXX_lShEsi4UB32Nu_gZhyZSuHKtRsX9tiHh1z4WtnQ&s', disc: 'this is a sandwich' },
 
-                { id: 3, name: 'Vada Pav',price: 40, image: 'https://c8.alamy.com/comp/P79NX5/vada-pav-from-maharashtra-india-P79NX5.jpg' ,disc:' Fast food dish native to the state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle.'},
+                { id: 3, name: 'Vada Pav', price: 40, image: 'https://c8.alamy.com/comp/P79NX5/vada-pav-from-maharashtra-india-P79NX5.jpg', disc: ' Fast food dish native to the state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle.' },
 
             ]
 
@@ -111,18 +111,22 @@ export default class Cart extends React.Component {
 
                                     {
                                         this.state.showItemQtyBar ?
-                                            <div>
-                                                <h1>Qty :</h1>
-                                                <h1>{this.state.num}</h1>
-                                                <button type="button" className="btn btn-outline-primary"
-                                                    onClick={this.incrementHandle}> + </button>
+                                            <div style={{ "display": "inline-block" }} >
+                                                <div>
+                                                    <h1>Qty :</h1>
+                                                    <h1>{this.state.num}</h1>
+                                                    <button type="button" className="btn btn-outline-primary"
+                                                        onClick={this.incrementHandle}> + </button>
 
-                                                <button type="button" className="btn btn-outline-primary"
-                                                    onClick={this.decrementHandle}>  - </button>
-                                                <button type="button" className="btn btn-outline-primary"
-                                                    onClick={this.resetHandle}> Reset </button>
-                                                <h1>Price :</h1>
-                                                <h1>{this.state.items.price * this.state.num}</h1>
+                                                    <button type="button" className="btn btn-outline-primary"
+                                                        onClick={this.decrementHandle}>  - </button>
+                                                    <button type="button" className="btn btn-outline-primary"
+                                                        onClick={this.resetHandle}> Reset </button>
+                                                </div>
+                                                <div>
+                                                    <h1>Price :</h1>
+                                                    <h1>{this.state.items.price * this.state.num}</h1>
+                                                </div>
 
                                             </div>
                                             :

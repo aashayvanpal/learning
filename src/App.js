@@ -15,8 +15,9 @@ function App() {
 
       <h1>Aaswad Caterers</h1>
       <BrowserRouter>
-        <Link to='/' >Home</Link>
-        <Link to='/Menu' >Menu</Link>
+        <Link to='/' >Home</Link>&nbsp;
+        <Link to='/Menu' >Menu</Link>&nbsp;
+        <Link to='/Cart' >My Cart</Link>
         <div>
           <Route exact path="/" >
 
@@ -24,7 +25,7 @@ function App() {
 
           </Route>
           <Route path="/Menu" >
-            <h1>Menu :</h1>
+            <h1>Menu Items :</h1>
             <ItemList />
           </Route>
 
