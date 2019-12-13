@@ -8,8 +8,6 @@ export default class ItemList extends Component {
             <div>
 
                 <Cart />
-                <Cart />
-                <Cart />
             </div>
         );
     }
