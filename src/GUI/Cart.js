@@ -94,18 +94,18 @@ export default class Cart extends React.Component {
                 {
                     this.state.items.map((item) => {
                         return (
-                            <div className="card" style={{ "display": "inline-block", "backgroundColor": "#c3b091 ", "width": "500px", "borderWidth": "5px", "margin": "20px" }}>
+                            <div key={item.id} className="card" style={{ "display": "inline-block", "backgroundColor": "#c3b091 ", "width": "500px", "borderWidth": "5px", "margin": "20px" }}>
 
                                 <div key={item.id} className='card body'  >
-                                    <img src={item.image} alt="render image here" width="450px" height="300px" />
+                                    <img src={item.image} alt="" width="450px" height="300px" />
 
 
                                     <h1>{item.name}</h1>
                                     <h4>{item.disc}</h4>
                                     <button type="button" className="btn btn-outline-primary"
-                                        onClick={this.CartHandle}> Add To Cart </button>
+                                        onClick={this.CartHandle}> Add </button>
                                     <button type="button" className="btn btn-outline-primary"
-                                        onClick={this.CartRemoveHandle}> Remove From Cart </button>
+                                        onClick={this.CartRemoveHandle}> Remove </button>
                                     <button type="button" className="btn btn-outline-primary"
                                         onClick={this.favouriteHandle}> Favoirate </button>
 
@@ -113,7 +113,7 @@ export default class Cart extends React.Component {
                                         this.state.showItemQtyBar ?
                                             <div style={{ "display": "inline-block" }} >
                                                 <div>
-                                                    <h1>Qty :</h1>
+                                                    <h1>Quantity :</h1>
                                                     <h1>{this.state.num}</h1>
                                                     <button type="button" className="btn btn-outline-primary"
                                                         onClick={this.incrementHandle}> + </button>
