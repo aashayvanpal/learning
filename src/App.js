@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import ItemList from './GUI/ItemList';
-import DisplayList from './GUI/DisplayList';
+// import DisplayList from './GUI/DisplayList';
 import AddItems from './GUI/AddItems';
 
 // var mongoose = require('mongoose')
