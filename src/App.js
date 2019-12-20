@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import ItemList from './GUI/ItemList';
+import DisplayList from './GUI/DisplayList';
+import AddItems from './GUI/AddItems';
 
 // var mongoose = require('mongoose')
 
@@ -29,7 +31,8 @@ function App() {
         <Link to='/' >Home</Link>&nbsp;
         <Link to='/Menu' >Menu</Link>&nbsp;
         <Link to='/Cart' >My Cart</Link>&nbsp;
-        <Link to='/users/add' >Add users</Link>
+        <Link to='/users/add' >Add users</Link>&nbsp;
+        <Link to='/items/add' >Add Items</Link>
         <div>
           <Route exact path="/" >
 
@@ -43,6 +46,11 @@ function App() {
 
           <Route path="/users/add" >
             <h1>Add users :</h1>
+          </Route>
+        
+          <Route path="/items/add" >
+            <h1>Add Items :</h1>
+            <AddItems  />
           </Route>
         </div>
       </BrowserRouter>
