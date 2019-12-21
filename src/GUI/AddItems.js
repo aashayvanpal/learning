@@ -54,7 +54,7 @@ export default class AddItems extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{"background-color":"orange"}}>
                 <form onSubmit={this.addClick}>
                     <input type="text" name="item" onChange={this.handleChange} />&nbsp;&nbsp;
                     <input type="submit" value="Add" />

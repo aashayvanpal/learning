@@ -5,7 +5,7 @@ import Menu from '../GUI/Menu.js'
 export default class ItemList extends Component {
     render() {
         return (
-            <div>
+            <div style={{"background-color":"yellow"}}>
 
                 <Menu />
             </div>

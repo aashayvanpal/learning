@@ -65,7 +65,7 @@ export default class AddUsers extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{"background-color":"blue"}}>
                 <h1>Add Customers Component</h1>
                 <form onSubmit={this.addClick}>
                     <label>Name
