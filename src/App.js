@@ -1,3 +1,5 @@
+// Add exact path for adddetails
+
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
@@ -5,6 +7,7 @@ import ItemList from './GUI/ItemList';
 import AddUsers from './GUI/AddUsers.js';
 import Calender from './GUI/Calender.js';
 import AddItems from './GUI/AddItems';
+import ItemDetailsForm from './GUI/ItemDetailsForm.js';
 
 function App() {
   return (
@@ -20,10 +23,11 @@ function App() {
       <BrowserRouter>
         <Link to='/' >Home</Link>&nbsp;
         <Link to='/Menu' >Menu</Link>&nbsp;
-        <Link to='/Cart' >My Cart </Link> 
+        <Link to='/Cart' >My Cart </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <Link to='/users/add' >Add users</Link>&nbsp;
         <Link to='/items/add' >Add Items</Link>&nbsp;
         <Link to='/Calender' >Calender</Link>&nbsp;
+        <Link to='/previousorders' >Previous Orders</Link>&nbsp;
         <div>
           <Route exact path="/" >
           <h1>Home :</h1>
@@ -60,6 +64,13 @@ function App() {
             <h1>Calender : </h1>
             {/* <Calender  /> */}
 
+          </Route>
+          <Route path="/previousorders" >
+            <h1>Listing previous orders :</h1>
+          </Route>
+          <Route path="/items/add/adddetails" >
+            <h1>Listing Details :</h1>
+            <ItemDetailsForm />
           </Route>
         </div>
       </BrowserRouter>

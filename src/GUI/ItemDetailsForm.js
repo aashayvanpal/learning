@@ -1,4 +1,4 @@
-// Render transport and vendor components
+//Render the form correctly!
 
 import React, { Component } from 'react'
 import DisplayUsers from './DisplayUsers.js'
@@ -65,9 +65,9 @@ export default class AddUsers extends Component {
     render() {
         return (
             <div>
-                <h1>Add Customers Component</h1>
+                <h1>Add Details Form :</h1>
                 <form onSubmit={this.addClick}>
-                    <label>Name
+                    <label>khh
                         <input type="text" name="name" onChange={this.handleChange} />&nbsp;&nbsp;
                     </label>
 
@@ -83,42 +83,6 @@ export default class AddUsers extends Component {
 
                 </form> &nbsp;
                 <DisplayUsers users={this.state.users} delete={this.delete} />
-
-                <h1>Add Transport Component</h1>
-                <form onSubmit={this.addClick}>
-                    <label>Name
-                        <input type="text" name="name" onChange={this.handleChange} />&nbsp;&nbsp;
-                    </label>
-
-                    <label>Phone Number
-                        <input type="text" name="phoneno" onChange={this.handleChange} />&nbsp;&nbsp;
-                    </label>
-
-                    <input type="submit" value="Add Transport" />
-
-                </form> &nbsp;
-                {/* <DisplayTransport users={this.state.users} delete={this.delete} /> */}
-
-
-
-                <h1>Add Vendors Component</h1>
-                <form onSubmit={this.addClick}>
-                    <label>Name
-                        <input type="text" name="name" onChange={this.handleChange} />&nbsp;&nbsp;
-                    </label>
-
-                    <label>Type
-                        <input type="text" name="type" onChange={this.handleChange} />&nbsp;&nbsp;
-                    </label>
-
-                    <label>Phone Number
-                        <input type="text" name="phoneno" onChange={this.handleChange} />&nbsp;&nbsp;
-                    </label>
-
-                    <input type="submit" value="Add Vendor" />
-
-                </form> &nbsp;
-                {/* <DisplayTransport users={this.state.users} delete={this.delete} /> */}
             </div>
         )
     }

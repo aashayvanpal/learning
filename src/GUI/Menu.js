@@ -12,11 +12,11 @@ export default class Menu extends React.Component {
             showItemQtyBar: false,
             isFavourite: false,
             items: [
-                { id: 1, name: 'Dahivada', Quantity: 0, price: 45, image: 'https://i.ndtvimg.com/i/2018-02/dahi-bhalla_650x400_61519796037.jpg', disc: 'this is dahi wada' },
+                { id: 1, name: 'Dahivada',category:"dessert" ,quantity: 0, price: 45, image: 'https://i.ndtvimg.com/i/2018-02/dahi-bhalla_650x400_61519796037.jpg', smalldisc: 'this is dahi wada',largedisc:"" },
 
-                { id: 2, name: 'Sandwich', Quantity: 0, price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQi-pcmPUSXX_lShEsi4UB32Nu_gZhyZSuHKtRsX9tiHh1z4WtnQ&s', disc: 'this is a sandwich' },
+                { id: 2, name: 'Sandwich',category:"snacks" ,quantity: 0, price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQi-pcmPUSXX_lShEsi4UB32Nu_gZhyZSuHKtRsX9tiHh1z4WtnQ&s', smalldisc: 'this is a sandwich',largedisc:"" },
 
-                { id: 3, name: 'Vada Pav', Quantity: 0, price: 40, image: 'https://c8.alamy.com/comp/P79NX5/vada-pav-from-maharashtra-india-P79NX5.jpg', disc: ' Fast food dish native to the state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle.' },
+                { id: 3, name: 'Vada Pav',category:"snacks", quantity: 0, price: 40, image: 'https://c8.alamy.com/comp/P79NX5/vada-pav-from-maharashtra-india-P79NX5.jpg', smalldisc: ' Fast food dish native to the state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle.',largedisc:"" },
 
             ]
 
@@ -99,7 +99,7 @@ export default class Menu extends React.Component {
 
 
                                     <h1>{item.name}</h1>
-                                    <h4>{item.disc}</h4>
+                                    <h4>{item.smalldisc}</h4>
                                     <button type="button" className="btn btn-outline-primary"
                                         onClick={this.CartHandle}> Add </button>
                                     <button type="button" className="btn btn-outline-primary"

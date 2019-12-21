@@ -1,3 +1,5 @@
+// Routing url inside a function
+
 import React from 'react'
 
 export default class DisplayList extends React.Component {
@@ -15,6 +17,12 @@ export default class DisplayList extends React.Component {
         console.log("items after []:", NewItems)
         console.log("item deleted :", this.props.items.splice(this.props.items.indexOf(id), 1))
     }
+
+    itemForm(){
+        console.log('Add details clicked and item form must render')
+        // props.history.push("/adddetails");
+
+    }
     render() {
         return (
             <table style={{"border":"2px solid black"}}>
@@ -23,6 +31,7 @@ export default class DisplayList extends React.Component {
                         <td style={{"border":"2px solid black"}}>Name</td>
                         <td style={{"border":"2px solid black"}}> Delete Item</td>
                         <td style={{"border":"2px solid black"}}> Add Recipie</td>
+                        <td style={{"border":"2px solid black"}}> Add Details</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +45,9 @@ export default class DisplayList extends React.Component {
                                     </td>
                                     <td style={{"border":"2px solid black"}}>
                                         < button onClick={this._handleDelete.bind(this, item)} > Add</button>
+                                    </td>
+                                    <td style={{"border":"2px solid black"}}>
+                                        < button onClick={this.itemForm} > Add Details</button>
                                     </td>
                                 </tr>
                         )
