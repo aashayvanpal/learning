@@ -32,9 +32,9 @@ export default class DisplayUsers extends React.Component {
                         this.props.users.map((user, i) => {
                             return (
                                 <tr key={i}>
-                                    <td style={{ "border": "2px solid black" }}>{user}</td>
-                                    <td style={{ "border": "2px solid black" }}>{}</td>
-                                    <td style={{ "border": "2px solid black" }}>{}</td>
+                                    <td style={{ "border": "2px solid black" }}>{user.name}</td>
+                                    <td style={{ "border": "2px solid black" }}>{user.email}</td>
+                                    <td style={{ "border": "2px solid black" }}>{user.phoneno}</td>
                                     <td style={{ "border": "2px solid black" }}>
                                         < button onClick={this._handleDelete.bind(this, user)} > Remove</button>
                                     </td>

@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
-import DisplayItems from './DisplayItems.js'
 import DisplayUsers from './DisplayUsers.js'
 
 
 export default class AddUsers extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             users: [
 
             ],
-            name: "",
-            email: "",
-            phoneno: ""
-
-
         }
 
         this.addClick = this.addClick.bind(this)
@@ -23,23 +17,30 @@ export default class AddUsers extends Component {
 
 
 
-
-
     addClick = e => {
+        e.preventDefault()
         console.log("Add button clicked!")
         console.log("Name test :", this.state.name)
         console.log("Email test :", this.state.email)
+        console.log("PhonoNumber test :", this.state.phoneno)
+        console.log("Users array before:", this.state.users)
 
-        this.setState((prevState) => ({ users: [this.state.name, ...prevState.users], }))
-        console.log("Users array :", this.state.users)
+        let user = {
+            name: this.state.name,
+            email: this.state.email,
+            phoneno: this.state.phoneno
+        }
 
-        e.preventDefault()
+        console.log("User Object :", user)
+
+        this.setState((prevState) => ({ users:[user,...prevState.users] }))
+
+        console.log("Users array after:", this.state.users)
     }
 
     handleChange = e => {
         this.setState({
-            name: e.target.value,
-            email:e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -68,7 +69,7 @@ export default class AddUsers extends Component {
                     </label>
 
                     <label>Email
-                        <input type="text" name="Email" onChange={this.handleChange} />&nbsp;&nbsp;
+                        <input type="text" name="email" onChange={this.handleChange} />&nbsp;&nbsp;
                     </label>
 
                     <label>Phone Number
@@ -79,8 +80,6 @@ export default class AddUsers extends Component {
 
                 </form> &nbsp;
                 <DisplayUsers users={this.state.users} delete={this.delete} />
-
-
             </div>
         )
     }

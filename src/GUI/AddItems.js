@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import DisplayUsers from '../GUI/DisplayUsers.js'
 import DisplayItems from './DisplayItems.js'
 
 export default class AddItems extends Component {

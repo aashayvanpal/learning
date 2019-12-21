@@ -3,20 +3,8 @@ import './App.css';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import ItemList from './GUI/ItemList';
 import AddUsers from './GUI/AddUsers.js';
-import AddOrders from './GUI/AddOrders.js';
-// import DisplayList from './GUI/DisplayList';
+import Calender from './GUI/Calender.js';
 import AddItems from './GUI/AddItems';
-
-// var mongoose = require('mongoose')
-
-// mongoose.connect('http://localhost:3000/test')
-
-// var Schema = mongoose.Schema
-
-// var UserSchema = new Schema({
-//   name :String
-
-// })
 
 function App() {
   return (
@@ -66,11 +54,11 @@ function App() {
 
           <Route path="/orders/add" >
             <h1>Add Orders :</h1>
-            {/* <AddOrders  /> */}
           </Route>
 
           <Route path="/Calender" >
             <h1>Calender : </h1>
+            {/* <Calender  /> */}
 
           </Route>
         </div>
