@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Cart from '../GUI/Cart.js'
+import Menu from '../GUI/Menu.js'
 
 
 export default class ItemList extends Component {
@@ -7,7 +7,7 @@ export default class ItemList extends Component {
         return (
             <div>
 
-                <Cart />
+                <Menu />
             </div>
         );
     }

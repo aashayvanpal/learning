@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import DisplayList from '../GUI/DisplayList.js'
-
+import DisplayUsers from '../GUI/DisplayUsers.js'
+import DisplayItems from './DisplayItems.js'
 
 export default class AddItems extends Component {
     constructor(props) {
@@ -61,7 +61,7 @@ export default class AddItems extends Component {
                     <input type="submit" value="Add" />
 
                 </form> &nbsp;
-                <DisplayList items={this.state.items} delete={this.delete.bind(this)} />
+                <DisplayItems items={this.state.items} delete={this.delete.bind(this)} />
 
 
             </div>

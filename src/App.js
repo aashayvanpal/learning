@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import ItemList from './GUI/ItemList';
+import AddUsers from './GUI/AddUsers.js';
+import AddOrders from './GUI/AddOrders.js';
 // import DisplayList from './GUI/DisplayList';
 import AddItems from './GUI/AddItems';
 
@@ -30,27 +32,46 @@ function App() {
       <BrowserRouter>
         <Link to='/' >Home</Link>&nbsp;
         <Link to='/Menu' >Menu</Link>&nbsp;
-        <Link to='/Cart' >My Cart</Link>&nbsp;
+        <Link to='/Cart' >My Cart </Link> 
         <Link to='/users/add' >Add users</Link>&nbsp;
-        <Link to='/items/add' >Add Items</Link>
+        <Link to='/items/add' >Add Items</Link>&nbsp;
+        <Link to='/Calender' >Calender</Link>&nbsp;
         <div>
           <Route exact path="/" >
+          <h1>Home :</h1>
 
 
 
           </Route>
+
           <Route path="/Menu" >
             <h1>Menu Items :</h1>
             <ItemList />
           </Route>
 
+          <Route path="/Cart" >
+            <h1>Cart:</h1>
+
+          </Route>
+
           <Route path="/users/add" >
             <h1>Add users :</h1>
+            <AddUsers />
           </Route>
         
           <Route path="/items/add" >
             <h1>Add Items :</h1>
             <AddItems  />
+          </Route>
+
+          <Route path="/orders/add" >
+            <h1>Add Orders :</h1>
+            {/* <AddOrders  /> */}
+          </Route>
+
+          <Route path="/Calender" >
+            <h1>Calender : </h1>
+
           </Route>
         </div>
       </BrowserRouter>
