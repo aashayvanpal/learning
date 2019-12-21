@@ -6,11 +6,11 @@ import DisplayTransport from './DisplayTransport.js'
 import DisplayVendors from './DisplayVendors.js'
 
 
-export default class AddUsers extends Component {
+export default class AddVenders extends Component {
     constructor() {
         super()
         this.state = {
-            users: [
+            vendors: [
 
             ],
         }
@@ -25,7 +25,7 @@ export default class AddUsers extends Component {
         e.preventDefault()
         console.log("Add button clicked!")
         console.log("Name test :", this.state.name)
-        console.log("Email test :", this.state.email)
+        console.log("Type test :", this.state.email)
         console.log("PhonoNumber test :", this.state.phoneno)
         console.log("Users array before:", this.state.users)
 
@@ -119,7 +119,7 @@ export default class AddUsers extends Component {
                     <input type="submit" value="Add Vendor" />
 
                 </form> &nbsp;
-                <DisplayVendors vendors={this.state.users} delete={this.delete} />
+                <DisplayVendors vendors={this.state.vendors} delete={this.delete} />
             </div>
         )
     }
