@@ -11,7 +11,7 @@ import ItemDetailsForm from './GUI/ItemDetailsForm.js';
 
 function App() {
   return (
-    <div  style= {{ "background-color":"grey",'height': '100vh'}}>
+    <div  style= {{ "backgroundColor":"grey",'height': '100vh'}}>
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossOrigin="anonymous"></link>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossOrigin="anonymous"></script>
@@ -20,14 +20,14 @@ function App() {
 
 
       <h1 >Aaswad Caterers</h1>
-      <BrowserRouter>
-        <Link to='/' >Home</Link>&nbsp;
-        <Link to='/Menu' >Menu</Link>&nbsp;
-        <Link to='/Cart' >My Cart </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <Link to='/users/add' >Add users</Link>&nbsp;
-        <Link to='/items/add' >Add Items</Link>&nbsp;
-        <Link to='/Calender' >Calender</Link>&nbsp;
-        <Link to='/previousorders' >Previous Orders</Link>&nbsp;
+      <BrowserRouter >
+        <Link to='/'  style= {{ "color":"white"}}>Home</Link>&nbsp;
+        <Link to='/Menu' style= {{ "color":"white"}}>Menu</Link>&nbsp;
+        <Link to='/Cart' style= {{ "color":"white"}} >My Cart </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Link to='/users/add'style= {{ "color":"white"}} >Add users</Link>&nbsp;
+        <Link to='/items/add' style= {{ "color":"white"}} >Add Items</Link>&nbsp;
+        <Link to='/Calender' style= {{ "color":"white"}} >Calender</Link>&nbsp;
+        <Link to='/previousorders' style= {{ "color":"white"}} >Previous Orders</Link>&nbsp;
         <div>
           <Route exact path="/" >
           <h1 >Home :</h1>

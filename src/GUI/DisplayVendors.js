@@ -31,7 +31,7 @@ export default class DisplayVendors extends React.Component {
                             return (
                                 <tr key={i}>
                                     <td style={{ "border": "2px solid black" }}>{vendor.name}</td>
-                                    <td style={{ "border": "2px solid black" }}>{vendor.email}</td>
+                                    <td style={{ "border": "2px solid black" }}>{vendor.type}</td>
                                     <td style={{ "border": "2px solid black" }}>{vendor.phoneno}</td>
                                     <td style={{ "border": "2px solid black" }}>
                                         < button onClick={this._handleDelete.bind(this, vendor)} > Remove</button>
