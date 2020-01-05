@@ -1,18 +1,20 @@
-// Render transport and vendor components
+// Conditional render for type of user
+
 
 import React, { Component } from 'react'
-import DisplayUsers from './DisplayUsers.js'
+import DisplayCustomers from './DisplayCustomers.js'
 import DisplayTransport from './DisplayTransport.js'
 import DisplayVendors from './DisplayVendors.js'
 
-//user is customer (change later)
-export default class AddUsers extends Component {
+export default class AddUserData extends Component {
     constructor() {
         super()
         this.state = {
-            users: [
+            customers: [
 
             ],
+
+
             vendors:[
 
             ],
@@ -35,19 +37,19 @@ export default class AddUsers extends Component {
         console.log("Name test :", this.state.name)
         console.log("Email test :", this.state.email)
         console.log("PhonoNumber test :", this.state.phoneno)
-        console.log("Users array before:", this.state.users)
+        console.log("customers array before:", this.state.customers)
 
-        let user = {
+        let customer = {
             name: this.state.name,
             email: this.state.email,
             phoneno: this.state.phoneno
         }
 
-        console.log("User Object :", user)
+        console.log("customer Object :", customer)
 
-        this.setState((prevState) => ({ users:[user,...prevState.users] }))
+        this.setState((prevState) => ({ customers:[customer,...prevState.customers] }))
 
-        console.log("Users array after:", this.state.users)
+        console.log("customers array after:", this.state.customers)
     }
 
 
@@ -136,7 +138,7 @@ export default class AddUsers extends Component {
                     <input type="submit" value="Add Customer" />
 
                 </form> &nbsp;
-                <DisplayUsers users={this.state.users} delete={this.delete} />
+                <DisplayCustomers customers={this.state.customers} delete={this.delete} />
 
                 <h1>Add Transport Component</h1>
                 <form onSubmit={this.addClickTransport}>

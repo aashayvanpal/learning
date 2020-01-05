@@ -1,11 +1,11 @@
 //Render the form correctly!
 
 import React, { Component } from 'react'
-import DisplayUsers from './DisplayUsers.js'
+import DisplayCustomers from './DisplayCustomers.js'
 // import DisplayTransport from './DisplayTransport.js'
 
 
-export default class AddUsers extends Component {
+export default class AddCustomers extends Component {
     constructor() {
         super()
         this.state = {
@@ -82,7 +82,7 @@ export default class AddUsers extends Component {
                     <input type="submit" value="Add Customer" />
 
                 </form> &nbsp;
-                <DisplayUsers users={this.state.users} delete={this.delete} />
+                <DisplayCustomers users={this.state.users} delete={this.delete} />
             </div>
         )
     }

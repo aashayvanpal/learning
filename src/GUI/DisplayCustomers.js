@@ -1,19 +1,19 @@
 import React from 'react'
 
-export default class DisplayUsers extends React.Component {
+export default class DisplayCustomers extends React.Component {
     _handleDelete(id) {
         console.log("id :", id)
-        console.log("Users BEFORE []:", this.props.users)
+        console.log("Customers BEFORE []:", this.props.customers)
 
-        var NewUser = this.props.users.filter(user => {
-            return user !== id
+        var NewCustomer = this.props.customers.filter(customer => {
+            return customer !== id
         })
 
         this.setState({
-            users: NewUser
+            customers: NewCustomer
         })
-        console.log("users after []:", NewUser)
-        console.log("user deleted :", this.props.users.splice(this.props.users.indexOf(id), 1))
+        console.log("customers after []:", NewCustomer)
+        console.log("customer deleted :", this.props.customers.splice(this.props.customers.indexOf(id), 1))
     }
     render() {
         return (
@@ -29,17 +29,17 @@ export default class DisplayUsers extends React.Component {
                 </thead>
                 <tbody>
                     {
-                        this.props.users.map((user, i) => {
+                        this.props.customers.map((customer, i) => {
                             return (
                                 <tr key={i}>
-                                    <td style={{ "border": "2px solid black" }}>{user.name}</td>
-                                    <td style={{ "border": "2px solid black" }}>{user.email}</td>
-                                    <td style={{ "border": "2px solid black" }}>{user.phoneno}</td>
+                                    <td style={{ "border": "2px solid black" }}>{customer.name}</td>
+                                    <td style={{ "border": "2px solid black" }}>{customer.email}</td>
+                                    <td style={{ "border": "2px solid black" }}>{customer.phoneno}</td>
                                     <td style={{ "border": "2px solid black" }}>
-                                        < button onClick={this._handleDelete.bind(this, user)} > Remove</button>
+                                        < button onClick={this._handleDelete.bind(this, customer)} > Remove</button>
                                     </td>
                                     <td style={{ "border": "2px solid black" }}>
-                                        < button onClick={this._handleDelete.bind(this, user)} > Update</button>
+                                        < button onClick={this._handleDelete.bind(this, customer)} > Update</button>
                                     </td>
                                 </tr>
                             )
