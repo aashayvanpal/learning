@@ -5,7 +5,7 @@ import './App.css';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import ItemList from './GUI/ItemList';
 import AddUserData from './GUI/AddUserData.js';
-import Calender from './GUI/Calender.js';
+// import Calender from './GUI/Calender.js';
 import AddItems from './GUI/AddItems';
 import ItemDetailsForm from './GUI/ItemDetailsForm.js';
 
@@ -80,7 +80,7 @@ function App() {
 
 
 
-          <Route path="/items/add" >
+          <Route path="/add/items" >
             <h1>Add Items :</h1>
             <AddItems />
           </Route>

@@ -60,6 +60,7 @@ export default class AddItems extends Component {
                     <input type="submit" value="Add" />
 
                 </form> &nbsp;
+                <h1>HERE CHECK HERE!!!!!!!!</h1>
                 <DisplayItems items={this.state.items} delete={this.delete.bind(this)} />
 
 
