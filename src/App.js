@@ -25,7 +25,7 @@ function App() {
         <Link to='/Menu' style={{ "color": "white" }}>Menu</Link>&nbsp;
         <Link to='/Cart' style={{ "color": "white" }} >My Cart </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <Link to='/users/add' style={{ "color": "white" }} >Add users</Link>&nbsp;
-
+       
 
         {/* <Link to='/users/add/customer'style= {{ "color":"white"}} >Add Customer</Link>&nbsp;
         <Link to='/users/add/transport'style= {{ "color":"white"}} >Add Transport</Link>&nbsp;
@@ -57,10 +57,14 @@ function App() {
 
           <Route path="/users/add" >
             <h1>Add User :</h1>
+
           </Route>
 
 
-          <Route exact path="/users/add" render={ ()=> <AddUserData />} />
+          <Route exact path="/users/add" render={ ()=>
+         
+            <AddUserData />} />
+            
 
 
           {/* <Route exact path="/Transport/add" >

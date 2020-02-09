@@ -1,5 +1,5 @@
 // Conditional render for type of user
-
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 import React, { Component } from 'react'
 import DisplayCustomers from './DisplayCustomers.js'
@@ -15,12 +15,16 @@ export default class AddUserData extends Component {
             ],
 
 
-            vendors:[
+            vendors: [
 
             ],
-            transports:[
+            transports: [
 
-            ]
+            ],
+
+            showCustomerComponent: false,
+            showVendorComponent: false,
+            showTransportComponent: false,
 
         }
 
@@ -47,7 +51,7 @@ export default class AddUserData extends Component {
 
         console.log("customer Object :", customer)
 
-        this.setState((prevState) => ({ customers:[customer,...prevState.customers] }))
+        this.setState((prevState) => ({ customers: [customer, ...prevState.customers] }))
 
         console.log("customers array after:", this.state.customers)
     }
@@ -69,7 +73,7 @@ export default class AddUserData extends Component {
 
         console.log("Transport Object :", transport)
 
-        this.setState((prevState) => ({ transports:[transport,...prevState.transports] }))
+        this.setState((prevState) => ({ transports: [transport, ...prevState.transports] }))
 
         console.log("Transport array after:", this.state.transports)
     }
@@ -90,7 +94,7 @@ export default class AddUserData extends Component {
 
         console.log("Vendor Object :", vendor)
 
-        this.setState((prevState) => ({ vendors:[vendor,...prevState.vendors] }))
+        this.setState((prevState) => ({ vendors: [vendor, ...prevState.vendors] }))
 
         console.log("Vendor array after:", this.state.vendors)
     }
@@ -120,61 +124,82 @@ export default class AddUserData extends Component {
 
     render() {
         return (
-            <div style={{"backgroundColor":"white"}}>
-                <h1>Add Customers Component</h1>
-                <form onSubmit={this.addClickCustomer}>
-                    <label>Name
+            <div style={{ "backgroundColor": "white" }}>
+                <BrowserRouter>
+                    <Link to='/users/add/customers' style={{ "color": "green" }} >Add Customers</Link>&nbsp;
+                    <Link to='/users/add/vendors' style={{ "color": "green" }} >Add Vendros</Link>&nbsp;
+                    <Link to='/users/add/transports' style={{ "color": "green" }} >Add Transport</Link>&nbsp;
+
+
+                    <Route path="/users/add/customers">
+                        <h1>Add Customers Component</h1>
+                        <form onSubmit={this.addClickCustomer}>
+                            <label>Name
                         <input type="text" name="name" onChange={this.handleChange} />&nbsp;&nbsp;
                     </label>
 
-                    <label>Email
+                            <label>Email
                         <input type="text" name="email" onChange={this.handleChange} />&nbsp;&nbsp;
                     </label>
 
-                    <label>Phone Number
+                            <label>Phone Number
                         <input type="text" name="phoneno" onChange={this.handleChange} />&nbsp;&nbsp;
                     </label>
 
-                    <input type="submit" value="Add Customer" />
+                            <input type="submit" value="Add Customer" />
 
-                </form> &nbsp;
-                <DisplayCustomers customers={this.state.customers} delete={this.delete} />
+                        </form>
+                        <h1>Listing Customers - {this.state.customers.length}</h1>
 
-                <h1>Add Transport Component</h1>
-                <form onSubmit={this.addClickTransport}>
-                    <label>Name
+                        <DisplayCustomers customers={this.state.customers} delete={this.delete} />
+                    </Route>
+
+
+
+                    <Route path="/users/add/transports">
+
+                        <h1>Add Transport Component</h1>
+                        <form onSubmit={this.addClickTransport}>
+                            <label>Name
                         <input type="text" name="name" onChange={this.handleChange} />&nbsp;&nbsp;
                     </label>
 
-                    <label>Phone Number
+                            <label>Phone Number
                         <input type="text" name="phoneno" onChange={this.handleChange} />&nbsp;&nbsp;
                     </label>
 
-                    <input type="submit" value="Add Transport" />
+                            <input type="submit" value="Add Transport" />
 
-                </form> &nbsp;
+                        </form> &nbsp;
+                        <h1>Listing Transports - {this.state.transports.length}</h1>
+
                 <DisplayTransport transports={this.state.transports} delete={this.delete} />
+                    </Route>
 
+                    <Route path="/users/add/vendors">
 
+                        <h1>Add Vendors Component</h1>
+                        <form onSubmit={this.addClickVendor}>
+                            <label>Name
+                                <input type="text" name="name" onChange={this.handleChange} />&nbsp;&nbsp;
+                            </label>
 
-                <h1>Add Vendors Component</h1>
-                <form onSubmit={this.addClickVendor}>
-                    <label>Name
-                        <input type="text" name="name" onChange={this.handleChange} />&nbsp;&nbsp;
-                    </label>
+                            <label>Type
+                                <input type="text" name="type" onChange={this.handleChange} />&nbsp;&nbsp;
+                            </label>
 
-                    <label>Type
-                        <input type="text" name="type" onChange={this.handleChange} />&nbsp;&nbsp;
-                    </label>
+                            <label>Phone Number
+                                <input type="text" name="phoneno" onChange={this.handleChange} />&nbsp;&nbsp;
+                            </label>
 
-                    <label>Phone Number
-                        <input type="text" name="phoneno" onChange={this.handleChange} />&nbsp;&nbsp;
-                    </label>
+                            <input type="submit" value="Add Vendor" />
 
-                    <input type="submit" value="Add Vendor" />
+                        </form> &nbsp;
+                        <h1>Listing Vendors - {this.state.vendors.length}</h1>
+                        <DisplayVendors vendors={this.state.vendors} delete={this.delete} />
+                    </Route >
 
-                </form> &nbsp;
-                <DisplayVendors vendors={this.state.vendors} delete={this.delete} />
+                </BrowserRouter>
             </div>
         )
     }
