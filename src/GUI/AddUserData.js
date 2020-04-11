@@ -22,10 +22,6 @@ export default class AddUserData extends Component {
 
             ],
 
-            showCustomerComponent: false,
-            showVendorComponent: false,
-            showTransportComponent: false,
-
         }
 
         this.addClickCustomer = this.addClickCustomer.bind(this)
@@ -120,6 +116,8 @@ export default class AddUserData extends Component {
                 vendors: prevState.vendors.filter(vendor => vendor !== vendorToDelete)
             })
         )
+        
+        
     }
 
     render() {
