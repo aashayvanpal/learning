@@ -1,0 +1,160 @@
+// fix url config (store in folder)
+import React, { Component } from 'react'
+import DisplayItems from './Item.js'
+import axios from '../../config/axios.js'
+
+export default class AddItems extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            items: [
+
+            ],
+            item: ""
+
+        }
+
+        this.addClick = this.addClick.bind(this)
+        this.deleteItem= this.deleteItem.bind(this)
+    }
+
+
+    componentDidMount() {
+        axios.get('/add/items', {
+            headers: {
+                'x-auth': localStorage.getItem('token')
+            }
+        })
+            .then(response => {
+                console.log('Data : ', response.data)
+                const items = response.data
+                console.log('items after request :', items)
+                this.setState({ items })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+
+    addClick = e => {
+        console.log("Add button clicked!")
+        console.log("item test :", this.state.item)
+        const item = { "name": this.state.item }
+
+        axios.post('/add/items', item, {
+            headers: {
+                "x-auth": localStorage.getItem('token')
+            }
+        })
+            .then(response => {
+                if (response.data.errors) {
+                    console.log('Validation Error : ', response.data.errors)
+                    window.alert(response.data.message)
+                }
+                else {
+                    console.log('success', response.data)
+                    // this.props.history.push('/Customers')
+                }
+            })
+
+
+        this.setState((prevState) => ({ items: [item, ...prevState.items], }))
+        console.log("items array :", this.state.items)
+
+        e.preventDefault()
+    }
+
+    handleChange = e => {
+        this.setState({
+            item: e.target.value
+        })
+    }
+
+
+
+    deleteItem = (itemToDelete) => {
+        console.log('called parent component delete id', itemToDelete)
+        // console.log("remove button clicked!")
+        // console.log("value of this ", this)
+        // console.log("value of this.items ", this.state.items)
+        // console.log("value of itemToDelete ", itemToDelete)
+
+        axios.delete(`/item/${itemToDelete}`, {
+            headers: {
+                'x-auth': localStorage.getItem('token')
+            }
+        })
+            .then((response) => {
+                console.log('response data', response.data)
+                this.setState((prevState) => ({
+                    items: prevState.items.filter(item => item._id !== response.data._id)
+                }))
+
+                // var NewItems = this.props.items.filter(item => {
+                //     return item !== itemToDelete
+                // })
+
+                // this.setState({
+                //     items: NewItems
+                // })
+                // console.log("items after []:", NewItems)
+                // console.log("item deleted :", this.props.items.splice(this.props.items.indexOf(itemToDelete), 1))
+
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+        // this.setState(
+        //     prevState => ({
+        //         items: prevState.items.filter(item => item !== itemToDelete)
+        //     })
+        // )
+    }
+
+    render() {
+        return (
+            <div style={{ "backgroundColor": "orange" }}>
+                <form onSubmit={this.addClick}>
+                    <input type="text" name="item" onChange={this.handleChange} />&nbsp;&nbsp;
+                    <input type="submit" value="Add" />
+
+                </form> &nbsp;
+                <h2>Listing items - {this.state.items.length}</h2>
+
+                <table style={{ "border": "2px solid black" }}>
+                    <thead style={{ "border": "2px solid black" }}>
+                        <tr>
+                            <td style={{ "border": "2px solid black" }}>Name</td>
+                            <td style={{ "border": "2px solid black" }}> Delete Item</td>
+                            <td style={{ "border": "2px solid black" }}> Add Recipie</td>
+                            <td style={{ "border": "2px solid black" }}> Add Details</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {
+                            this.state.items.map((item, i) => {
+                                return (
+                                    <DisplayItems 
+                                                  key={i}
+                                                  name={item.name}
+                                                  deleteItem={this.deleteItem}
+                                                  id={item._id}
+                                                  i={i}
+                                    />
+                                )
+                            })
+                        }
+                    </tbody>
+
+                </table >
+
+            </div>
+        )
+    }
+
+
+}
