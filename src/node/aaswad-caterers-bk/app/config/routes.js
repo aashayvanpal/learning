@@ -13,8 +13,8 @@ const itemController = require('../controllers/itemController.js')
 // router.delete('/customers/:id', customerController.destroy)
 
 // for Items
-router.post('/add/items', itemController.create)
-router.get('/add/items', itemController.list)
+router.post('/items/add', itemController.create)
+router.get('/items', itemController.list)
 router.delete('/item/:id', itemController.destroy)
 
 

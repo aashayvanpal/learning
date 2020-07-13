@@ -1,5 +1,6 @@
 // fix url config (store in folder)
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import DisplayItems from './Item.js'
 import AddItemForm from './Form.js'
 import axios from '../../config/axios.js'
@@ -9,7 +10,7 @@ export default class AddItems extends Component {
         super(props)
         this.state = {
             items: [
-                
+
             ],
 
         }
@@ -19,7 +20,7 @@ export default class AddItems extends Component {
 
 
     componentDidMount() {
-        axios.get('/add/items', {
+        axios.get('/items', {
             headers: {
                 'x-auth': localStorage.getItem('token')
             }
@@ -87,17 +88,18 @@ export default class AddItems extends Component {
 
     render() {
         return (
-            <div style={{ "backgroundColor": "orange" }}>
+            <div className="content-primary">
                 <h2>Listing items - {this.state.items.length}</h2>
-                <AddItemForm handleItemSubmit={this.handleFormSubmit}/>
+                <AddItemForm handleItemSubmit={this.handleFormSubmit} />
 
                 <table style={{ "border": "2px solid black" }}>
                     <thead style={{ "border": "2px solid black" }}>
                         <tr>
+                            <td style={{ "border": "2px solid black" }}>Sl No</td>
                             <td style={{ "border": "2px solid black" }}>Name</td>
-                            <td style={{ "border": "2px solid black" }}> Delete Item</td>
-                            <td style={{ "border": "2px solid black" }}> Add Recipie</td>
-                            <td style={{ "border": "2px solid black" }}> Add Details</td>
+                            <td style={{ "border": "2px solid black" }}> Update</td>
+                            <td style={{ "border": "2px solid black" }}> Display on Menu</td>
+                            <td style={{ "border": "2px solid black" }}> Remove</td>
                         </tr>
                     </thead>
 
@@ -117,6 +119,8 @@ export default class AddItems extends Component {
                         }
                     </tbody>
                 </table>
+                <Link to='/items/add'> Add new items</Link>
+
             </div>
         )
     }

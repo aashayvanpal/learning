@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+
+
 export default class ItemForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            item: props.item?props.item.name:""
+            item: props.item ? props.item.name : ""
         }
     }
 
@@ -16,8 +18,8 @@ export default class ItemForm extends Component {
     }
 
     handleSubmit = e => {
-        console.log("Add button clicked!")
-        console.log("item test :", this.state.item)
+        console.log("Search button clicked!")
+        console.log("item test search :", this.state.item)
         const item = { "name": this.state.item }
 
         // axios.post('/add/items', item, {
@@ -45,10 +47,13 @@ export default class ItemForm extends Component {
 
     render() {
         return (
+
             <form onSubmit={this.handleSubmit}>
                 <input type="text" name="item" onChange={this.handleChange} />&nbsp;&nbsp;
-                <input type="submit" value="Add" />
+                <input type="submit" value="Search" />
+
             </form>
+
         )
     }
 }

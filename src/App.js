@@ -7,6 +7,7 @@ import OrderList from './components/OrderList';
 import AddUserData from './components/AddUserData.js';
 // import Calender from './GUI/Calender.js';
 import ItemList from './components/item/List.js';
+import ItemForm from './components/item/Form2.js';
 import ItemDetailsForm from './components/ItemDetailsForm.js';
 import './css/app-css.css'
 
@@ -29,7 +30,7 @@ function App() {
               <Link to='/orders' style={{ "color": "white" }} >Orders</Link>&nbsp;
           </li>
             <li>
-              <Link to='/add/items' style={{ "color": "white" }} >Items</Link>&nbsp;
+              <Link to='/items' style={{ "color": "white" }} >Items</Link>&nbsp;
           </li>
             <li>
               <Link to='/users/add' style={{ "color": "white" }} >Vendors</Link>&nbsp;
@@ -92,12 +93,16 @@ function App() {
 
 
 
+          <Route exact path="/items/add" >
+            <ItemForm />
+          </Route>
 
 
-
-          <Route path="/add/items" >
+          <Route exact path="/items" >
             <ItemList />
           </Route>
+
+
 
           {/* <Route path="/orders/add" >
             <h1>Add Orders :</h1>
