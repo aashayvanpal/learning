@@ -1,10 +1,11 @@
-
 .app {
-    background-color: grey;
-
+  background-color: grey;
 }
 
-.content-primary{
-    background-color: #BBE1FA;
+.content-primary {
+  background-color: #bbe1fa;
+}
 
+.listing-table {
+  border: 2px solid black;
 }

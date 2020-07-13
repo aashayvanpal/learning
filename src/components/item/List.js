@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import DisplayItems from './Item.js'
-import AddItemForm from './Form.js'
+import SearchItem from './Search.js'
 import axios from '../../config/axios.js'
 
 export default class AddItems extends Component {
@@ -52,7 +52,7 @@ export default class AddItems extends Component {
         // console.log("value of this.items ", this.state.items)
         // console.log("value of itemToDelete ", itemToDelete)
 
-        axios.delete(`/item/${itemToDelete}`, {
+        axios.delete(`/items/${itemToDelete}`, {
             headers: {
                 'x-auth': localStorage.getItem('token')
             }
@@ -86,20 +86,25 @@ export default class AddItems extends Component {
         // )
     }
 
+
+    updateItem = (itemtoUpdate)=>{
+        console.log("inside update item")
+    }
+
     render() {
         return (
             <div className="content-primary">
                 <h2>Listing items - {this.state.items.length}</h2>
-                <AddItemForm handleItemSubmit={this.handleFormSubmit} />
+                <SearchItem handleItemSubmit={this.handleFormSubmit} />
 
-                <table style={{ "border": "2px solid black" }}>
+                <table className="listing-table" >
                     <thead style={{ "border": "2px solid black" }}>
                         <tr>
-                            <td style={{ "border": "2px solid black" }}>Sl No</td>
-                            <td style={{ "border": "2px solid black" }}>Name</td>
-                            <td style={{ "border": "2px solid black" }}> Update</td>
-                            <td style={{ "border": "2px solid black" }}> Display on Menu</td>
-                            <td style={{ "border": "2px solid black" }}> Remove</td>
+                            <td className="listing-table">Sl No</td>
+                            <td className="listing-table">Name</td>
+                            <td className="listing-table"> Update</td>
+                            <td className="listing-table"> Display on Menu</td>
+                            <td className="listing-table"> Remove</td>
                         </tr>
                     </thead>
 
@@ -111,6 +116,8 @@ export default class AddItems extends Component {
                                         key={i}
                                         name={item.name}
                                         deleteItem={this.deleteItem}
+                                        updateItem={this.updateItem}
+
                                         id={item._id}
                                         i={i}
                                     />

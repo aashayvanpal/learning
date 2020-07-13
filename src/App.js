@@ -7,7 +7,7 @@ import OrderList from './components/OrderList';
 import AddUserData from './components/AddUserData.js';
 // import Calender from './GUI/Calender.js';
 import ItemList from './components/item/List.js';
-import ItemForm from './components/item/Form2.js';
+import ItemForm from './components/item/Form.js';
 import ItemDetailsForm from './components/ItemDetailsForm.js';
 import './css/app-css.css'
 
@@ -63,7 +63,7 @@ function App() {
           </Route>
 
           <Route path="/Cart" >
-            <h1 style={{ "background-color": "green" }}>Cart:</h1>
+            <h1 style={{ "backgroundColor": "green" }}>Cart:</h1>
 
           </Route>
 
@@ -91,16 +91,22 @@ function App() {
 
           {/* </Route>  */}
 
-
-
-          <Route exact path="/items/add" >
-            <ItemForm />
-          </Route>
-
-
           <Route exact path="/items" >
             <ItemList />
           </Route>
+
+
+          <Route  path="/items/add" component={ItemForm}  />
+
+          <Route path={`/items/edit/:id`} >
+            form where the data is filled
+            <ItemForm />
+
+          </Route>
+
+
+
+
 
 
 
