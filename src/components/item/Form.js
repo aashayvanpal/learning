@@ -12,7 +12,11 @@ export default class ItemForm extends Component {
             price: props.item ? props.item.price : "",
             category: props.item ? props.item.category : "",
             imgUrl: props.item ? props.item.imgUrl : "",
+            display:props.item ? props.item.display : ""
         }
+
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
 
@@ -30,33 +34,39 @@ export default class ItemForm extends Component {
             name: this.state.name,
             price: this.state.price,
             category: this.state.category,
-            imgUrl: this.state.imgUrl
+            imgUrl: this.state.imgUrl,
+            display:false
         }
         this.props.item && (item.id = this.props.item._id)
 
-
+        console.log('props :', this.props)
+        
+        
         console.log("item Data: ", item)
+        this.props.handleItemSubmit(item)
 
-        axios.post('http://localhost:3001/items/add', item, {
-            headers: {
-                "x-auth": localStorage.getItem('token')
-            }
-        })
-            .then(response => {
-                if (response.data.errors) {
-                    console.log('Validation Error : ', response.data.errors)
-                    window.alert(response.data.message)
-                }
-                else {
-                    console.log('success', response.data)
-                    // this.props.history.push('/items')
-                }
-            })
+        // axios.post('http://localhost:3001/items/add', item, {
+        //     headers: {
+        //         "x-auth": localStorage.getItem('token')
+        //     }
+        // })
+        //     .then(response => {
+        //         if (response.data.errors) {
+        //             console.log('Validation Error : ', response.data.errors)
+        //             window.alert(response.data.message)
+        //         }
+        //         else {
+        //             console.log('success', response.data)
+        //             // this.props.history.push('/items')
+        //             window.alert('Added successfully')
+        //             window.location.href = '/items'
+
+        //         }
+        //     })
 
 
-        this.setState((prevState) => ({ items: [item, ...prevState.items], }))
-        console.log("items array :", this.state.items)
-        console.log("this.props.match.params.id :", this.props.match.params.id)
+        // this.setState((prevState) => ({ items: [item, ...prevState.items], }))
+        // console.log("items array :", this.state.items)
 
         // window.location.href = '/items'
 

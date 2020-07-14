@@ -10,6 +10,7 @@ import ItemList from './components/item/List.js';
 import ItemEdit from './components/item/Edit.js';
 import ItemShow from './components/item/Show.js';
 import ItemForm from './components/item/Form.js';
+import ItemNew from './components/item/New.js';
 import ItemDetailsForm from './components/ItemDetailsForm.js';
 import './css/app-css.css'
 
@@ -99,15 +100,13 @@ function App() {
             <ItemList />
           </Route>
 
-          <Route path="/items/add" component={ItemForm} exact={true} />
+          <Route path="/items/add" component={ItemNew} exact={true} />
 
           <Route path={"/items/edit/:id"} >
-            Edit Item
-            <ItemForm />
             <ItemEdit />
           </Route>
 
-          <Route path="/items/:id" component={ItemShow} />
+          <Route path="/items/show/:id" component={ItemShow} />
 
 
 
