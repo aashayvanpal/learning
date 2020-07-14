@@ -127,7 +127,6 @@ export default class AddItems extends Component {
                         }
                     </tbody>
                 </table>
-
             </div>
         )
     }
