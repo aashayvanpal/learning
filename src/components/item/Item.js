@@ -9,7 +9,7 @@ export default function DisplayList(props) {
     return (
         <tr className="listing-table" key={i}>
             <td className="listing-table">{i + 1}</td>
-            <td className="listing-table">{name}</td>
+            <td className="listing-table"><Link to={`/items/${id}`}>{name}</Link></td>
             <td className="listing-table">
                 <button onClick={() => {
                     props.updateItem(id)

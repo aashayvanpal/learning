@@ -28,12 +28,12 @@ module.exports.create = (req, res) => {
 // show
 module.exports.show = (req, res) => {
     id = req.params.id
-    Customer.findById(id)
-        .then(customer => {
-            if (customer) {
+    Item.findById(id)
+        .then(item => {
+            if (item) {
                 // note will be either object or null value 
                 // checks to see if the note is present in the db
-                res.json(customer) //sends the note 
+                res.json(item) //sends the note 
 
             } else { //send an empty object 
                 res.json({})
@@ -65,10 +65,10 @@ module.exports.destroy = (req, res) => {
 module.exports.update = (req, res) => {
     const id = req.params.id
     const body = req.body
-    Customer.findByIdAndUpdate(id, body, { new: true,runValidators:true })
-        .then( customer =>{
-            if (customer){
-                res.json(customer)
+    Item.findByIdAndUpdate(id, body, { new: true,runValidators:true })
+        .then( item =>{
+            if (item){
+                res.json(item)
             }else{
                 res.json({})
             }

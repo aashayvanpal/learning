@@ -87,7 +87,7 @@ export default class AddItems extends Component {
     }
 
 
-    updateItem = (itemtoUpdate)=>{
+    updateItem = (itemtoUpdate) => {
         console.log("inside update item")
     }
 
@@ -98,7 +98,7 @@ export default class AddItems extends Component {
                 <SearchItem handleItemSubmit={this.handleFormSubmit} />
 
                 <table className="listing-table" >
-                    <thead style={{ "border": "2px solid black" }}>
+                    <thead className="listing-table">
                         <tr>
                             <td className="listing-table">Sl No</td>
                             <td className="listing-table">Name</td>

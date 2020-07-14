@@ -15,7 +15,8 @@ const itemController = require('../controllers/itemController.js')
 // for Items
 router.post('/items/add', itemController.create)
 router.get('/items', itemController.list)
-router.put('/items/:id', itemController.update)
+router.get('/items/:id', itemController.show)
+router.put('/items/edit/:id', itemController.update)
 
 router.delete('/items/:id', itemController.destroy)
 

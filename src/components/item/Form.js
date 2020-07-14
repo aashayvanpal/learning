@@ -49,13 +49,14 @@ export default class ItemForm extends Component {
                 }
                 else {
                     console.log('success', response.data)
-                    this.props.history.push('/items')
+                    // this.props.history.push('/items')
                 }
             })
 
 
         this.setState((prevState) => ({ items: [item, ...prevState.items], }))
         console.log("items array :", this.state.items)
+        console.log("this.props.match.params.id :", this.props.match.params.id)
 
         // window.location.href = '/items'
 
