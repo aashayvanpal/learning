@@ -1,24 +1,27 @@
 //Bug at this.state.isFavouriate
 //How to render single component price value ,Quantity
 
+// items: [
+//     { id: 1, name: 'Dahivada', category: "dessert", price: 45, image: 'https://i.ndtvimg.com/i/2018-02/dahi-bhalla_650x400_61519796037.jpg',quantity: 0, smalldisc: 'this is dahi wada', largedisc: "", showItemQtyBar: false },
+
+//     { id: 2, name: 'Sandwich',quantity: 0, category: "snacks", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQi-pcmPUSXX_lShEsi4UB32Nu_gZhyZSuHKtRsX9tiHh1z4WtnQ&s', smalldisc: 'this is a sandwich', largedisc: "", showItemQtyBar: false },
+
+//     { id: 3, name: 'Vada Pav',quantity: 0, category: "snacks", price: 40, image: 'https://c8.alamy.com/comp/P79NX5/vada-pav-from-maharashtra-india-P79NX5.jpg', smalldisc: ' Fast food dish native to the state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle.', largedisc: "", showItemQtyBar: false },
+
+// ]
+
 import React from 'react'
+import axios from 'axios'
 
 export default class Menu extends React.Component {
     constructor() {
         super()
         this.state = {
-            
+
 
 
             isFavourite: false,
-            items: [
-                { id: 1, name: 'Dahivada', category: "dessert", price: 45, image: 'https://i.ndtvimg.com/i/2018-02/dahi-bhalla_650x400_61519796037.jpg',quantity: 0, smalldisc: 'this is dahi wada', largedisc: "", showItemQtyBar: false },
-
-                { id: 2, name: 'Sandwich',quantity: 0, category: "snacks", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQi-pcmPUSXX_lShEsi4UB32Nu_gZhyZSuHKtRsX9tiHh1z4WtnQ&s', smalldisc: 'this is a sandwich', largedisc: "", showItemQtyBar: false },
-
-                { id: 3, name: 'Vada Pav',quantity: 0, category: "snacks", price: 40, image: 'https://c8.alamy.com/comp/P79NX5/vada-pav-from-maharashtra-india-P79NX5.jpg', smalldisc: ' Fast food dish native to the state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle.', largedisc: "", showItemQtyBar: false },
-
-            ]
+            items: []
 
 
 
@@ -44,8 +47,8 @@ export default class Menu extends React.Component {
         console.log('state.items[0] now :', this.state.items[0])
         console.log('state.items[0].showItemQtyBar now :', this.state.items[0].showItemQtyBar)
 
-        this.setState((prevState)=>{
-            console.log('prevState items[0]',prevState.items[0].showItemQtyBar = true)
+        this.setState((prevState) => {
+            console.log('prevState items[0]', prevState.items[0].showItemQtyBar = true)
             // prevState.showItemQtyBar=true
 
             // return {
@@ -90,7 +93,22 @@ export default class Menu extends React.Component {
     }
 
 
-
+    componentDidMount() {
+        axios.get('http://localhost:3001/Menu', {
+            headers: {
+                'x-auth': localStorage.getItem('token')
+            }
+        })
+            .then(response => {
+                console.log('Data : ', response.data)
+                const items = response.data
+                console.log('items after request :', items)
+                this.setState({ items })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
 
 
@@ -105,8 +123,8 @@ export default class Menu extends React.Component {
         //     }
         // }
         // )
-        console.log('clicked item is :',this.state.items[i])
-        console.log('items :',this.state.items)
+        console.log('clicked item is :', this.state.items[i])
+        console.log('items :', this.state.items)
 
     }
 
@@ -124,7 +142,7 @@ export default class Menu extends React.Component {
                             <div key={item.id} className="card" style={{ "display": "inline-block", "backgroundColor": "#c3b091 ", "width": "500px", "borderWidth": "5px", "margin": "20px" }}>
 
                                 <div key={item.id} className='card body'  >
-                                    <img src={item.image} alt="" width="450px" height="300px" />
+                                    <img src={item.imgUrl} alt="" width="450px" height="300px" />
 
 
                                     <h1>{item.name}</h1>

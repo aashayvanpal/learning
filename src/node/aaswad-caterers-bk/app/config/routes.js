@@ -22,6 +22,10 @@ router.get('/items/edit/:id', itemController.show)
 router.delete('/items/:id', itemController.destroy)
 
 
+router.get('/Menu', itemController.list)
+
+
+
 
 
 

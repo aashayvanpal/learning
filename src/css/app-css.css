@@ -14,6 +14,7 @@
   padding: 10px;
   width: 950px;
   margin: 10px;
+  font-size: 22px;
 }
 
 .Nav-bar {
@@ -29,4 +30,45 @@
 
 .content-showcase {
   margin: 10px;
+}
+
+.button-color3 {
+  background-color: #ee7b11;
+  border: 1px solid black;
+  color: white;
+  padding: 15px;
+  font-size: 25px;
+}
+
+.button-color3:hover {
+  background-color: #eeb66c;
+  color: black;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 61px;
+  height: 30px;
+}
+
+.button-color4 {
+  background-color: #8087c1;
+  color: white;
+}
+
+.button-color4:hover {
+  background-color: thistle;
+  color: black;
+  cursor: pointer;
+}
+
+.button-color5 {
+  background-color: red;
+  color: white;
+}
+
+.button-color5:hover {
+  background-color: rgb(255, 169, 10);
+  color: black;
+  cursor: pointer;
 }
