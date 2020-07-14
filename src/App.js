@@ -62,7 +62,7 @@ function App() {
             </Route>
 
             <Route path="/Menu" >
-              <h1>Menu Items :</h1>
+              <h1 style={{ "backgroundColor": "#F5EDC0","border":"2px solid black","text-align":"center" }}>Choose Your Menu</h1>
               <Menu />
             </Route>
 

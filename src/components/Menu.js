@@ -145,8 +145,8 @@ export default class Menu extends React.Component {
                                     <img src={item.imgUrl} alt="" width="450px" height="300px" />
 
 
-                                    <h1>{item.name}</h1>
-                                    <h4>{item.smalldisc}</h4>
+                                    <h1 style={{"text-align":"center"}}>{item.name}</h1>
+                                    <input type="checkbox" />
                                     <button type="button" className="btn btn-outline-primary"
                                         onClick={this.CartHandle}> Add </button>
                                     <button type="button" className="btn btn-outline-primary"

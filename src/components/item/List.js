@@ -100,7 +100,7 @@ export default class AddItems extends Component {
 
 
                 <table className="listing-table" >
-                    <thead className="listing-table">
+                    <thead className="listing-table" style={{"font-weight":"bold"}}>
                         <tr>
                             <td className="listing-table">Sl No</td>
                             <td className="listing-table">Name</td>
