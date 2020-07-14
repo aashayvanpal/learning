@@ -37,7 +37,7 @@ export default class ItemForm extends Component {
 
         console.log("item Data: ", item)
 
-        axios.post('/items/add', item, {
+        axios.post('http://localhost:3001/items/add', item, {
             headers: {
                 "x-auth": localStorage.getItem('token')
             }
@@ -49,7 +49,7 @@ export default class ItemForm extends Component {
                 }
                 else {
                     console.log('success', response.data)
-                    // this.props.history.push('/Customers')
+                    this.props.history.push('/items')
                 }
             })
 
