@@ -96,6 +96,8 @@ export default class AddItems extends Component {
             <div className="content-primary">
                 <h2>Listing items - {this.state.items.length}</h2>
                 <SearchItem handleItemSubmit={this.handleFormSubmit} />
+                <Link to='/items/add'> <button>Add new items</button></Link>
+
 
                 <table className="listing-table" >
                     <thead className="listing-table">
@@ -126,7 +128,6 @@ export default class AddItems extends Component {
                         }
                     </tbody>
                 </table>
-                <Link to='/items/add'> Add new items</Link>
 
             </div>
         )

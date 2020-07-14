@@ -27,106 +27,108 @@ function App() {
         <Link to='/' style={{ "color": "black" }}>Home</Link>&nbsp;
         <Link to='/Menu' style={{ "color": "black" }}>Menu</Link>&nbsp;
         <Link to='/Cart' style={{ "color": "black" }} >My Cart </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div style={{ "backgroundColor": "blue" }}>
-          <ul>
-            <li>
-              <Link to='/orders' style={{ "color": "white" }} >Orders</Link>&nbsp;
+        <div className="align" >
+          <div className="Nav-bar">
+            <ul>
+              <li>
+                <Link to='/orders' style={{ "color": "white" }} >Orders</Link>&nbsp;
           </li>
-            <li>
-              <Link to='/items' style={{ "color": "white" }} >Items</Link>&nbsp;
+              <li>
+                <Link to='/items' style={{ "color": "white" }} >Items</Link>&nbsp;
           </li>
-            <li>
-              <Link to='/users/add' style={{ "color": "white" }} >Vendors</Link>&nbsp;
+              <li>
+                <Link to='/users/add' style={{ "color": "white" }} >Vendors</Link>&nbsp;
           </li>
-            <li>
-              <Link to='/users/add' style={{ "color": "white" }} >Labourers</Link>&nbsp;
+              <li>
+                <Link to='/users/add' style={{ "color": "white" }} >Labourers</Link>&nbsp;
           </li>
-            <li>
-              <Link to='/users/add' style={{ "color": "white" }} >Customers</Link>&nbsp;
+              <li>
+                <Link to='/users/add' style={{ "color": "white" }} >Customers</Link>&nbsp;
           </li>
-            <li>
-              <Link to='/users/add' style={{ "color": "white" }} >Recipies</Link>&nbsp;
+              <li>
+                <Link to='/users/add' style={{ "color": "white" }} >Recipies</Link>&nbsp;
           </li>
-            <li>
-              <Link to='/Calender' style={{ "color": "white" }} >Calender</Link>&nbsp;
+              <li>
+                <Link to='/Calender' style={{ "color": "white" }} >Calender</Link>&nbsp;
           </li>
-          </ul>
-        </div>
-        <div>
-          <Route exact path="/" >
-            <h1 >Home component</h1>
+            </ul>
+          </div>
+          <div className="content-showcase">
+            <Route exact path="/" >
+              <h1 >Home component</h1>
 
 
 
-          </Route>
+            </Route>
 
-          <Route path="/Menu" >
-            <h1>Menu Items :</h1>
-            <Menu />
-          </Route>
+            <Route path="/Menu" >
+              <h1>Menu Items :</h1>
+              <Menu />
+            </Route>
 
-          <Route path="/Cart" >
-            <h1 style={{ "backgroundColor": "green" }}>Cart:</h1>
+            <Route path="/Cart" >
+              <h1 style={{ "backgroundColor": "green" }}>Cart:</h1>
 
-          </Route>
+            </Route>
 
-          <Route path="/users/add" >
-            <h1>Add User :</h1>
+            <Route path="/users/add" >
+              <h1>Add User :</h1>
 
-          </Route>
-
-
-          <Route exact path="/users/add" render={() =>
-
-            <AddUserData />} />
+            </Route>
 
 
+            <Route exact path="/users/add" render={() =>
 
-          {/* <Route exact path="/Transport/add" >
+              <AddUserData />} />
+
+
+
+            {/* <Route exact path="/Transport/add" >
             <h1>Add Transport</h1>
             {/* <AddTransport /> */}
 
-          {/* </Route> */}
-          {/*           
+            {/* </Route> */}
+            {/*           
           <Route exact path="/vendor/add" >
             <h1>Add Vendor</h1>
             <AddVendor /> */}
 
-          {/* </Route>  */}
+            {/* </Route>  */}
 
 
 
-          <Route exact={true} path="/items" >
-            <ItemList />
-          </Route>
+            <Route exact={true} path="/items" >
+              <ItemList />
+            </Route>
 
-          <Route path="/items/add" component={ItemNew} exact={true} />
+            <Route path="/items/add" component={ItemNew} exact={true} />
 
-          <Route path={"/items/edit/:id"} >
-            <ItemEdit />
-          </Route>
+            <Route path={"/items/edit/:id"} >
+              <ItemEdit />
+            </Route>
 
-          <Route path="/items/show/:id" component={ItemShow} />
-
-
+            <Route path="/items/show/:id" component={ItemShow} />
 
 
-          {/* <Route path="/orders/add" >
+
+
+            {/* <Route path="/orders/add" >
             <h1>Add Orders :</h1>
           </Route> */}
 
-          <Route path="/Calender" >
-            <h1>Calender : </h1>
-            {/* <Calender  /> */}
+            <Route path="/Calender" >
+              <h1>Calender : </h1>
+              {/* <Calender  /> */}
 
-          </Route>
-          <Route path="/orders" >
-            <OrderList />
-          </Route>
-          <Route path="/items/add/adddetails" >
-            <h1>Listing Details :</h1>
-            <ItemDetailsForm />
-          </Route>
+            </Route>
+            <Route path="/orders" >
+              <OrderList />
+            </Route>
+            <Route path="/items/add/adddetails" >
+              <h1>Listing Details :</h1>
+              <ItemDetailsForm />
+            </Route>
+          </div>
         </div>
       </BrowserRouter>
 
