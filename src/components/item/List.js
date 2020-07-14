@@ -119,7 +119,6 @@ export default class AddItems extends Component {
                                         name={item.name}
                                         deleteItem={this.deleteItem}
                                         updateItem={this.updateItem}
-
                                         id={item._id}
                                         i={i}
                                     />
