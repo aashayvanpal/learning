@@ -57,8 +57,7 @@ export default class EditItem extends React.Component {
     render() {
         return (
             <div>
-                <h1>Edit Item</h1>
-                <h1>{this.state.item.name} same screen</h1>
+                <h1>Edit Item - {this.state.item.name}</h1>
                 {this.state.item.name && <ItemForm item={this.state.item} handleItemSubmit={this.handleItemSubmit} />}
 
 

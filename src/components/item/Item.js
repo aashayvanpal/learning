@@ -22,7 +22,17 @@ export default function DisplayList(props) {
             </td>
             <td className="listing-table">
 
-                <input className="checkbox" type="checkbox" checked={display} />
+
+                <input className="checkbox" type="checkbox" checked={display} onChange={() => {
+                    console.log('checkbox toggle for menu card clicked!')
+                    console.log('name', name)
+                    console.log('checkbox value before:', display)
+                    console.log('props:', props)
+                    props.updateCheckbox(id)
+
+                }} />
+
+
             </td>
             <td className="listing-table">
                 <button className="button-color5" onClick={() => {

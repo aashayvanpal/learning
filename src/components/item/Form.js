@@ -11,7 +11,7 @@ export default class ItemForm extends Component {
             price: props.item ? props.item.price : "",
             category: props.item ? props.item.category : "",
             imgUrl: props.item ? props.item.imgUrl : "",
-            display:props.item ? props.item.display : ""
+            display: props.item ? props.item.display : ""
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -34,13 +34,13 @@ export default class ItemForm extends Component {
             price: this.state.price,
             category: this.state.category,
             imgUrl: this.state.imgUrl,
-            display:false
+            display: false
         }
         this.props.item && (item.id = this.props.item._id)
 
         console.log('props :', this.props)
-        
-        
+
+
         console.log("item Data: ", item)
         this.props.handleItemSubmit(item)
 
@@ -76,22 +76,22 @@ export default class ItemForm extends Component {
             <div className="content-primary">
                 <h2>Add Item details</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Name
+                    <label className="labels">Name
                         <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />&nbsp;&nbsp;
                     </label><br />
-                    <label>Price
+                    <label className="labels">Price
                         <input type="text" name="price" value={this.state.price} onChange={this.handleChange} />&nbsp;&nbsp;
                     </label><br />
-                    <label>Category
+                    <label className="labels">Category
                         <input type="text" name="category" value={this.state.category} onChange={this.handleChange} />&nbsp;&nbsp;
                     </label><br />
-                    <label>Image-URL
+                    <label className="labels">Image-URL
                         <input type="text" name="imgUrl" value={this.state.imgUrl} onChange={this.handleChange} />&nbsp;&nbsp;
                     </label><br />
 
-                    <Link to='/items'><button>Back</button></Link>
+                    <Link to='/items'><button className="button-color3">Back</button></Link>
 
-                    <input type="submit" value="Add Item" />
+                    <input className="button-color3" type="submit" value="Add Item" style={{ "margin-left": "250px" }} />
 
                 </form>
 

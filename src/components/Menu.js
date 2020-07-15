@@ -94,6 +94,11 @@ export default class Menu extends React.Component {
 
 
     componentDidMount() {
+
+        function itemsFilter(items) {
+            return (items.filter(item => item.display == true))
+        }
+
         axios.get('http://localhost:3001/Menu', {
             headers: {
                 'x-auth': localStorage.getItem('token')
@@ -103,7 +108,11 @@ export default class Menu extends React.Component {
                 console.log('Data : ', response.data)
                 const items = response.data
                 console.log('items after request :', items)
-                this.setState({ items })
+                console.log('items after filtering :')
+                const filteredItems = itemsFilter(items)
+
+
+                this.setState({ items: filteredItems })
             })
             .catch(err => {
                 console.log(err)
@@ -145,8 +154,12 @@ export default class Menu extends React.Component {
                                     <img src={item.imgUrl} alt="" width="450px" height="300px" />
 
 
-                                    <h1 style={{"text-align":"center"}}>{item.name}</h1>
-                                    <input type="checkbox" />
+                                    <h1 style={{ "text-align": "center" }}>{item.name}</h1>
+                                    <input type="checkbox" style={{
+                                        "margin-left": "46%",
+                                        "width": "40px",
+                                        "height": "40px"
+                                    }} />
                                     <button type="button" className="btn btn-outline-primary"
                                         onClick={this.CartHandle}> Add </button>
                                     <button type="button" className="btn btn-outline-primary"

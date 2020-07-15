@@ -15,7 +15,10 @@ const itemController = require('../controllers/itemController.js')
 // for Items
 router.post('/items/add', itemController.create)
 router.get('/items', itemController.list)
+router.put('/items', itemController.update)
+
 router.get('/items/show/:id', itemController.show)
+
 router.put('/items/edit/:id', itemController.update)
 router.get('/items/edit/:id', itemController.show)
 

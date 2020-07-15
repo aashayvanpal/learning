@@ -29,28 +29,16 @@ function App() {
         <Link to='/Cart' style={{ "color": "black" }} >My Cart </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div className="align" >
           <div className="Nav-bar">
-            <ul>
-              <li>
-                <Link to='/orders' style={{ "color": "white" }} >Orders</Link>&nbsp;
-          </li>
-              <li>
-                <Link to='/items' style={{ "color": "white" }} >Items</Link>&nbsp;
-          </li>
-              <li>
-                <Link to='/users/add' style={{ "color": "white" }} >Vendors</Link>&nbsp;
-          </li>
-              <li>
-                <Link to='/users/add' style={{ "color": "white" }} >Labourers</Link>&nbsp;
-          </li>
-              <li>
-                <Link to='/users/add' style={{ "color": "white" }} >Customers</Link>&nbsp;
-          </li>
-              <li>
-                <Link to='/users/add' style={{ "color": "white" }} >Recipies</Link>&nbsp;
-          </li>
-              <li>
-                <Link to='/Calender' style={{ "color": "white" }} >Calender</Link>&nbsp;
-          </li>
+            <ul style={{ "list-style-type": "none" }}>
+
+              <Link to='/orders' className="Nav-barLink" style={{ "text-decoration": "none" }}><li>Orders</li></Link>
+
+              <Link to='/items' className="Nav-barLink" style={{ "text-decoration": "none" }}><li>Items</li></Link>
+              <Link to='/users/add' className="Nav-barLink"><li>Vendors</li></Link>
+              <Link to='/users/add' className="Nav-barLink"><li>Labourers</li></Link>
+              <Link to='/users/add' className="Nav-barLink"><li>Customers</li></Link>
+              <Link to='/users/add' className="Nav-barLink"><li>Recipies</li></Link>
+              <Link to='/Calender' className="Nav-barLink"><li>Calender</li></Link>
             </ul>
           </div>
           <div className="content-showcase">
@@ -62,7 +50,7 @@ function App() {
             </Route>
 
             <Route path="/Menu" >
-              <h1 style={{ "backgroundColor": "#F5EDC0","border":"2px solid black","text-align":"center" }}>Choose Your Menu</h1>
+              <h1 style={{ "backgroundColor": "#F5EDC0", "border": "2px solid black", "text-align": "center" }}>Choose Your Menu</h1>
               <Menu />
             </Route>
 
