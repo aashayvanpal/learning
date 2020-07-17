@@ -91,7 +91,7 @@ export default class ItemForm extends Component {
 
                     <Link to='/items'><button className="button-color3">Back</button></Link>
 
-                    <input className="button-color3" type="submit" value="Add Item" style={{ "margin-left": "250px" }} />
+                    <input className="button-color3" type="submit" value="Add Item" style={{ "marginLeft": "250px" }} />
 
                 </form>
 

@@ -12,6 +12,7 @@
 
 import React from 'react'
 import axios from 'axios'
+import Cart from './Cart.js'
 
 export default class Menu extends React.Component {
     constructor() {
@@ -21,7 +22,8 @@ export default class Menu extends React.Component {
 
 
             isFavourite: false,
-            items: []
+            items: [],
+            cartItems: []
 
 
 
@@ -34,6 +36,11 @@ export default class Menu extends React.Component {
         this.CartHandle = this.CartHandle.bind(this)
         this.CartRemoveHandle = this.CartRemoveHandle.bind(this)
         this.favouriteHandle = this.favouriteHandle.bind(this)
+        this.checkboxChange = this.checkboxChange.bind(this)
+        // this.removeItemFromCart = this.removeItemFromCart.bind(this)
+        this.isCheckedValue = this.isCheckedValue.bind(this)
+        this.resetIsSelected = this.resetIsSelected.bind(this)
+        this.toggleIsSelected = this.toggleIsSelected.bind(this)
     }
 
     incrementHandle() {
@@ -96,7 +103,7 @@ export default class Menu extends React.Component {
     componentDidMount() {
 
         function itemsFilter(items) {
-            return (items.filter(item => item.display == true))
+            return (items.filter(item => item.display === true))
         }
 
         axios.get('http://localhost:3001/Menu', {
@@ -109,10 +116,14 @@ export default class Menu extends React.Component {
                 const items = response.data
                 console.log('items after request :', items)
                 console.log('items after filtering :')
-                const filteredItems = itemsFilter(items)
+                var filteredItems = itemsFilter(items)
+                filteredItems.forEach(item => { item.isSelected = false })
 
+                // filteredItems.forEach(item => { item.inCart = false })
 
                 this.setState({ items: filteredItems })
+                console.log(this.state.items)
+
             })
             .catch(err => {
                 console.log(err)
@@ -142,60 +153,261 @@ export default class Menu extends React.Component {
         this.setState({ num: 0 })
     }
 
+    checkboxChange(id, name, inCart) {
+        this.toggleIsSelected(id)
+        console.log('Checkbox clicked ! add/remove this id to the cart render', id, name)
+        // add to cart array , if already present remove from the cart array
+        // -------------------------
+
+        // console.log('Checkbox clicked ! add/remove this id to the cart render', id, name)
+
+        this.state.cartItems.push({
+            "id": id,
+            "name": name,
+            inCart: !inCart,
+        })
+        console.log("change the state here only :", this.state)
+        // Making unique array 
+        var newCartItems = this.state.cartItems
+        // var distinctCartItems = [...new Set(newCartItems.map(item => (item.id && item.name)))]
+
+        // var newCartItems = [{ id: 555, name: "Vada" }, { id: 555, name: "Vada" }, { id: 777, name: "soda" }]
+        var distinctItemsArray = [];
+        newCartItems.filter(function (item) {
+            var i = distinctItemsArray.findIndex(x => x.name === item.name);
+            if (i <= -1) {
+                distinctItemsArray.push({ id: item.id, name: item.name, inCart: true });
+            }
+            return null;
+        });
+
+        // setState to render the unique array
+        // Add inCart = false property
+
+        this.setState(prevState => ({
+            cartItems: [...prevState.cartItems, { "id": id, "name": name }]
+        }))
+
+        this.setState({ cartItems: distinctItemsArray })
+
+        console.log('cartItems array state:', this.state.cartItems)
+        console.log('newCartItems array variable:', newCartItems)
+        console.log('distinctCartItems array variable:', distinctItemsArray)
+
+        // Delete Item from cartItems
+        // if Item is already in cartItems remove item 
+        // else Add item to the cartItems
+
+
+
+
+
+
+
+
+
+    }
+
+    toggleIsSelected = (id) => {
+        // Delete item from the cartItems do setState of cartItems
+        console.log('inside the toggleIsSelected function')
+        console.log('toggle this id from the items :', id)
+        // this.removeItemFromCart(id)
+        // console.log('Id removed from the cart check...')
+
+        // Reset the items.isSelected to false
+        // find the item in items[] then change isSelected to false
+        console.log('items state:', this.state.items)
+        const foundItem = this.state.items.find(item => item._id === id)
+
+
+        console.log('Item found :', foundItem)
+        console.log('Item found\'s  items.isSelected before:', foundItem.isSelected)
+
+        console.log('Edit item.isSelected to false : ', foundItem)
+
+
+        const index = this.state.items.findIndex(item => item._id === id)
+        console.log('the index is :', index)
+
+        console.log('state of items :', this.state.items)
+        console.log('spread :', ...this.state.items)
+        console.log('spread index :', this.state.items[index])
+        console.log('spread index.isSelected before:', this.state.items[index].isSelected)
+        // console.log('spread index.isSelected after:', !this.state.items[index].isSelected)
+
+        var changedItems = this.state.items
+        changedItems[index].isSelected = !changedItems[index].isSelected
+
+        this.setState({ items: changedItems })
+
+
+
+        console.log('Items found\'s isSelected after:', this.state.items)
+        // // console.log('Item found\'s display after:', foundItem.display)
+
+        console.log('end of toggleIsSelected Function')
+
+
+        return null
+    }
+
+    // removeItemFromCart(itemToToggle) {
+    //     console.log('make this id false', itemToToggle)
+
+    //     console.log('inside removeItemFromCart')
+    //     console.log("itemToToggle id:", itemToToggle)
+    //     // you have found the id, you have to get the whole item 
+    //     const foundItem = this.state.cartItems.find(item => item.id === itemToToggle)
+    //     console.log('Item found :', foundItem)
+    //     console.log('Item found\'s cart items display before:', foundItem.inCart)
+
+    //     // this.setState(prevState => ({
+    //     //     display: !prevState.display
+    //     //   }));
+
+    //     // console.log('current state id',this.state.items.id[itemToToggle])
+    //     console.log('Edit item inCart to false : ', foundItem)
+
+
+    //     const index = this.state.cartItems.findIndex(item => item.id === itemToToggle)
+    //     console.log('the index is :', index)
+
+    //     console.log('state of Cart items :', this.state.cartItems)
+    //     console.log('spread :', ...this.state.cartItems)
+    //     console.log('spread index :', this.state.items[index])
+    //     console.log('spread index  inCart before:', this.state.items[index].inCart)
+    //     console.log('spread index  inCart after:', !this.state.items[index].inCart)
+
+    //     var changedItems = this.state.cartItems
+    //     changedItems[index].inCart = false
+
+    //     this.setState({ cartItems: changedItems })
+
+
+
+    //     console.log('Cart Item found\'s inCart after:', this.state.cartItems)
+    //     // // console.log('Item found\'s display after:', foundItem.display)
+
+
+
+
+
+
+    // }
+
+    resetIsSelected = (id) => {
+        // Delete item from the cartItems do setState of cartItems
+        console.log('inside the removeAndReset function')
+        console.log('delete this id from the cartItems :', id)
+        // this.removeItemFromCart(id)
+        // console.log('Id removed from the cart check...')
+
+        // Reset the items.isSelected to false
+        // find the item in items[] then change isSelected to false
+        console.log('items state:', this.state.items)
+        const foundItem = this.state.items.find(item => item._id === id)
+
+
+        console.log('Item found :', foundItem)
+        console.log('Item found\'s  items.isSelected before:', foundItem.isSelected)
+
+        console.log('Edit item.isSelected to false : ', foundItem)
+
+
+        const index = this.state.items.findIndex(item => item._id === id)
+        console.log('the index is :', index)
+
+        console.log('state of items :', this.state.items)
+        console.log('spread :', ...this.state.items)
+        console.log('spread index :', this.state.items[index])
+        console.log('spread index.isSelected before:', this.state.items[index].isSelected)
+        // console.log('spread index.isSelected after:', !this.state.items[index].isSelected)
+
+        var changedItems = this.state.items
+        changedItems[index].isSelected = false
+
+        this.setState({ items: changedItems })
+
+
+
+        console.log('Items found\'s isSelected after:', this.state.items)
+        // // console.log('Item found\'s display after:', foundItem.display)
+
+        console.log('end of resetIsSelected Function')
+
+
+        return null
+    }
+
+    isCheckedValue(id) {
+        console.log('check for this id ', id)
+        return true
+    }
+
     render() {
         return (
             <div>
-                {
-                    this.state.items.map((item, i) => {
-                        return (
-                            <div key={item.id} className="card" style={{ "display": "inline-block", "backgroundColor": "#c3b091 ", "width": "500px", "borderWidth": "5px", "margin": "20px" }}>
+                <div>
+                    Breakfast
+                <input></input><button>Search</button>
+                </div>
+                <div>
+                    {
+                        this.state.items.map((item, i) => {
+                            return (
+                                <div key={item._id} className="card" style={{ "display": "inline-block", "backgroundColor": "#c3b091 ", "width": "200px", "borderWidth": "5px", "margin": "20px" }}>
 
-                                <div key={item.id} className='card body'  >
-                                    <img src={item.imgUrl} alt="" width="450px" height="300px" />
+                                    <div key={item.id} className='card body'  >
+                                        <img src={item.imgUrl} alt="" width="152px" height="103px" />
 
 
-                                    <h1 style={{ "text-align": "center" }}>{item.name}</h1>
-                                    <input type="checkbox" style={{
-                                        "margin-left": "46%",
-                                        "width": "40px",
-                                        "height": "40px"
-                                    }} />
-                                    <button type="button" className="btn btn-outline-primary"
-                                        onClick={this.CartHandle}> Add </button>
-                                    <button type="button" className="btn btn-outline-primary"
-                                        onClick={this.CartRemoveHandle}> Remove </button>
-                                    <button type="button" className="btn btn-outline-primary"
-                                        onClick={this.favouriteHandle}> Favoirate </button>
+                                        <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
+                                        <input type="checkbox" style={{
+                                            "marginLeft": "40%",
+                                            "width": "40px",
+                                            "height": "40px"
+                                        }} onChange={() => { this.checkboxChange(item._id, item.name, item.inCart) }} checked={item.isSelected} />
+                                        <button type="button" className="btn btn-outline-primary"
+                                            onClick={this.CartHandle}> Add </button>
+                                        <button type="button" className="btn btn-outline-primary"
+                                            onClick={this.CartRemoveHandle}> Remove </button>
+                                        <button type="button" className="btn btn-outline-primary"
+                                            onClick={this.favouriteHandle}> Favoirate </button>
 
-                                    {
-                                        this.state.items[i].showItemQtyBar ?
-                                            <div style={{ "display": "inline-block" }} >
-                                                <div>
-                                                    <h1>Quantity :</h1>
-                                                    <h1>{this.state.items[i].quantity}</h1>
-                                                    <button type="button" className="btn btn-outline-primary"
-                                                        onClick={this.incrementHandle}> + </button>
+                                        {
+                                            this.state.items[i].showItemQtyBar ?
+                                                <div style={{ "display": "inline-block" }} >
+                                                    <div>
+                                                        <h1>Quantity :</h1>
+                                                        <h1>{this.state.items[i].quantity}</h1>
+                                                        <button type="button" className="btn btn-outline-primary"
+                                                            onClick={this.incrementHandle}> + </button>
 
-                                                    <button type="button" className="btn btn-outline-primary"
-                                                        onClick={this.decrementHandle}>  - </button>
-                                                    <button type="button" className="btn btn-outline-primary"
-                                                        onClick={this.resetHandle}> Reset </button>
+                                                        <button type="button" className="btn btn-outline-primary"
+                                                            onClick={this.decrementHandle}>  - </button>
+                                                        <button type="button" className="btn btn-outline-primary"
+                                                            onClick={this.resetHandle}> Reset </button>
+                                                    </div>
+                                                    <div>
+                                                        <h1>Price :</h1>
+                                                        <h1>{this.state.items[i].price * this.state.items[i].quantity}</h1>
+                                                        {/* how to get id which is clicked? */}
+                                                    </div>
+
                                                 </div>
-                                                <div>
-                                                    <h1>Price :</h1>
-                                                    <h1>{this.state.items[i].price * this.state.items[i].quantity}</h1>
-                                                    {/* how to get id which is clicked? */}
-                                                </div>
-
-                                            </div>
-                                            :
-                                            null
-                                    }
+                                                :
+                                                null
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </div>
+                <Cart cartItems={this.state.cartItems} items={this.state.items}
+                    removeItemFromCart={this.removeItemFromCart}
+                    resetIsSelected={this.resetIsSelected} />
             </div>
         );
     }

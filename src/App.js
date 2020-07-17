@@ -9,7 +9,7 @@ import AddUserData from './components/AddUserData.js';
 import ItemList from './components/item/List.js';
 import ItemEdit from './components/item/Edit.js';
 import ItemShow from './components/item/Show.js';
-import ItemForm from './components/item/Form.js';
+// import ItemForm from './components/item/Form.js';
 import ItemNew from './components/item/New.js';
 import ItemDetailsForm from './components/ItemDetailsForm.js';
 import './css/app-css.css'
@@ -29,11 +29,11 @@ function App() {
         <Link to='/Cart' style={{ "color": "black" }} >My Cart </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div className="align" >
           <div className="Nav-bar">
-            <ul style={{ "list-style-type": "none" }}>
+            <ul style={{ "listStyleType": "none" }}>
 
-              <Link to='/orders' className="Nav-barLink" style={{ "text-decoration": "none" }}><li>Orders</li></Link>
+              <Link to='/orders' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Orders</li></Link>
 
-              <Link to='/items' className="Nav-barLink" style={{ "text-decoration": "none" }}><li>Items</li></Link>
+              <Link to='/items' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Items</li></Link>
               <Link to='/users/add' className="Nav-barLink"><li>Vendors</li></Link>
               <Link to='/users/add' className="Nav-barLink"><li>Labourers</li></Link>
               <Link to='/users/add' className="Nav-barLink"><li>Customers</li></Link>
@@ -50,7 +50,13 @@ function App() {
             </Route>
 
             <Route path="/Menu" >
-              <h1 style={{ "backgroundColor": "#F5EDC0", "border": "2px solid black", "text-align": "center" }}>Choose Your Menu</h1>
+              <h1 class="Link-Navigations">
+                <span id="Link">Breakfast</span>
+                <span id="Link">Lunch</span>
+                <span id="Link">Dinner</span>
+                <span id="Link">Snack</span>
+              </h1>
+              <h1 style={{ "backgroundColor": "#F5EDC0", "border": "2px solid black", "textAlign": "center" }}>Choose Your Menu</h1>
               <Menu />
             </Route>
 

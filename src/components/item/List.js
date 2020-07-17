@@ -96,7 +96,7 @@ export default class AddItems extends Component {
         console.log('inside the toggle checkbox')
         console.log("itemToToggle id:", itemToToggle)
         // you have found the id, you have to get the whole item 
-        const foundItem = this.state.items.find(item => item._id == itemToToggle)
+        const foundItem = this.state.items.find(item => item._id === itemToToggle)
         console.log('Item found :', foundItem)
         console.log('Item found\'s display before:', foundItem.display)
 
@@ -108,14 +108,14 @@ export default class AddItems extends Component {
         console.log('Edit item : ', foundItem)
 
 
-        const index = this.state.items.findIndex(item => item._id == itemToToggle)
+        const index = this.state.items.findIndex(item => item._id === itemToToggle)
         console.log('the index is :', index)
 
         console.log('state of items :', this.state.items)
         console.log('spread :', ...this.state.items)
-        console.log('spread index 2:', this.state.items[2])
-        console.log('spread index 2 display before:', this.state.items[2].display)
-        console.log('spread index 2 display after:', !this.state.items[2].display)
+        // console.log('spread index 2:', this.state.items[2])
+        // console.log('spread index 2 display before:', this.state.items[2].display)
+        // console.log('spread index 2 display after:', !this.state.items[2].display)
 
         var changedItems = this.state.items
         changedItems[index].display = !changedItems[index].display
@@ -169,7 +169,7 @@ export default class AddItems extends Component {
                             <td className="listing-table">Sl No</td>
                             <td className="listing-table">Name</td>
                             <td className="listing-table"> Update</td>
-                            <td className="listing-table"> Display on Menu</td>
+                            <td className="listing-table"> Active/Inactive</td>
                             <td className="listing-table"> Remove</td>
                         </tr>
                     </thead>

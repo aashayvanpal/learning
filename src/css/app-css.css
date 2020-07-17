@@ -93,3 +93,30 @@
   display: inline-block;
   margin: 20px 65px 16px;
 }
+
+#Link {
+  color: #000000;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  padding: 5px;
+  margin-left: 20px;
+  /* background-color: #f5d76c; */
+}
+
+#Link:hover {
+  background-color: #b5915a;
+  color: white;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 10px;
+  transition: 1s;
+}
+
+.Link-Navigations {
+  /* background-color: #dbb539; */
+  background-color: #f5d76c;
+  padding: 20px;
+  text-align: center;
+  border-radius: 2px solid;
+}
