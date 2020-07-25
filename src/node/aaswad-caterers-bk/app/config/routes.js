@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const itemController = require('../controllers/itemController.js')
+const approveController = require('../controllers/approveController.js')
 
 
 // const customerController = require('../app/controllers/customerController.js')
@@ -26,6 +27,17 @@ router.delete('/items/:id', itemController.destroy)
 
 
 router.get('/Menu', itemController.list)
+// router.post('/Menu', approveController.createApprove)
+
+router.post('/request', approveController.createApprove)
+
+
+
+router.get('/orders', approveController.list)
+router.delete('/orders/:id', approveController.destroy)
+router.get('/orders/:id', approveController.show)
+
+
 
 
 

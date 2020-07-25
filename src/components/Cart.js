@@ -1,37 +1,55 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 export default class Cart extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            cartItems: []
         }
     }
 
     // componentDidMount() {
     //     console.log('inside componentdidmount')
-    //     this.setState({ cartItems: this.props.cartItems })
+    //     var filteredItems = this.props.items.filter(item => item.isSelected === true)
+    //     this.setState({ cartItems: filteredItems })
     // }
 
 
     render() {
-        console.log("check props for cart items to show :", this.props.cartItems)
+        // console.log("check props for cart items to show :", this.props.items.length)
+        console.log("check props for cart items to show :", this.props.items)
         return (
             <div>
-                Cart Component :
+                <h1 style={{ "backgroundColor": "rgb(245, 237, 192)", "border": "2px solid black", "textAlign": "center", "width": "260px" }}> Cart :</h1>
                 {
-                    this.props.items.filter(item => item.isSelected === true).map((item, i) => {
-                        return (
-                            <div key={item._id} style={{ "display": "flex" }}>
-                                <h2>{i + 1}.{item.name}</h2>
-                                <button onClick={() => {
-                                    this.props.resetIsSelected(item._id)
-                                    // this.props.removeItemFromCart(item.id)
-                                }}>X</button>
+                    this.props.items.length === 0 ? (<h1>no items in cart</h1>)
+                        :
+                        (
+                            <div>{
+                                this.props.items.filter(item => item.isSelected === true).map((item, i) => {
+                                    return (
+                                        <div key={item._id} style={{ "display": "flex" }}>
+                                            <h2>{i + 1}.{item.name}</h2>
+                                            <button onClick={() => {
+                                                this.props.resetIsSelected(item._id)
+                                                // this.props.removeItemFromCart(item.id)
+                                            }}>X</button>
+                                        </div>
+                                    )
+                                })
+                            }
+                                <Link to='/request'><button onClick={() => {
+                                    // console.log('request button clicked!')
+                                    // window.alert('request button clicked')
+                                    this.props.requestOrder()
+                                }}>Review Selections</button></Link>
                             </div>
                         )
-                    })
                 }
+
+
             </div >
         );
     }

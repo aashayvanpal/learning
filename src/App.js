@@ -4,6 +4,8 @@ import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import Menu from './components/ItemList';
 import OrderList from './components/OrderList';
+import OrderShow from './components/order/Show.js';
+
 import AddUserData from './components/AddUserData.js';
 // import Calender from './GUI/Calender.js';
 import ItemList from './components/item/List.js';
@@ -12,6 +14,8 @@ import ItemShow from './components/item/Show.js';
 // import ItemForm from './components/item/Form.js';
 import ItemNew from './components/item/New.js';
 import ItemDetailsForm from './components/ItemDetailsForm.js';
+import CustomerRequest from './components/CustomerRequest.js'
+
 import './css/app-css.css'
 
 function App() {
@@ -50,7 +54,7 @@ function App() {
             </Route>
 
             <Route path="/Menu" >
-              <h1 class="Link-Navigations">
+              <h1 className="Link-Navigations">
                 <span id="Link">Breakfast</span>
                 <span id="Link">Lunch</span>
                 <span id="Link">Dinner</span>
@@ -89,6 +93,8 @@ function App() {
 
             {/* </Route>  */}
 
+            <Route path="/request" component={CustomerRequest} />
+
 
 
             <Route exact={true} path="/items" >
@@ -115,9 +121,11 @@ function App() {
               {/* <Calender  /> */}
 
             </Route>
-            <Route path="/orders" >
+            <Route exact path="/orders" >
               <OrderList />
             </Route>
+            <Route exact path="/orders/:id" component={OrderShow} />
+
             <Route path="/items/add/adddetails" >
               <h1>Listing Details :</h1>
               <ItemDetailsForm />

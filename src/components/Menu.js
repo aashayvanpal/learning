@@ -11,7 +11,7 @@
 // ]
 
 import React from 'react'
-import axios from 'axios'
+import axios from '../config/axios'
 import Cart from './Cart.js'
 
 export default class Menu extends React.Component {
@@ -41,6 +41,7 @@ export default class Menu extends React.Component {
         this.isCheckedValue = this.isCheckedValue.bind(this)
         this.resetIsSelected = this.resetIsSelected.bind(this)
         this.toggleIsSelected = this.toggleIsSelected.bind(this)
+        this.requestOrder = this.requestOrder.bind(this)
     }
 
     incrementHandle() {
@@ -106,7 +107,7 @@ export default class Menu extends React.Component {
             return (items.filter(item => item.display === true))
         }
 
-        axios.get('http://localhost:3001/Menu', {
+        axios.get('/Menu', {
             headers: {
                 'x-auth': localStorage.getItem('token')
             }
@@ -345,6 +346,76 @@ export default class Menu extends React.Component {
         return true
     }
 
+    requestOrder() {
+        console.log('inside request order function')
+        var cartItems = this.state.items.filter(item => item.isSelected === true)
+        console.log('Approve these items :', cartItems)
+        console.log('post request axios ')
+        // console.log('Approve these items[0].name :', approveOrder[0].name)
+
+        // var objNames = approveOrder.forEach(item => console.log(item.name))
+        // console.log(approveOrder.map(item => { item.name, item.price }))
+
+        const approveOrder = cartItems.map(item => (
+            {
+                id: item._id,
+                name: item.name,
+                price: item.price,
+                quantity: 1,
+            }
+        ));
+
+        console.log(approveOrder)
+        console.log(Array.isArray(approveOrder))
+        // console.log('stringify:', JSON.stringify(approveOrder))
+        localStorage.setItem('orderItems', JSON.stringify(approveOrder))
+
+        console.log(localStorage.getItem('orderItems'))
+        console.log(Array.isArray(JSON.parse(localStorage.getItem('orderItems'))))
+
+
+
+        // const items = {
+        //     items: approveOrder
+        // }
+        // console.log('const items:', items)
+        // localStorage.setItem('orderItems', JSON.stringify(items))
+        // // localStorage.setItem('orderItems', JSON.stringify(items))
+        // console.log('local storage orderItems set successful')
+        // console.log('items from localstorage orderItems :')
+        // console.log(localStorage.getItem('orderItems'))
+
+
+        // post request for requestOrder 
+        // axios.post('/Menu', items, {
+        //     headers: {
+        //         "x-auth": localStorage.getItem('token')
+        //     }
+        // })
+        //     .then(response => {
+        //         if (response.data.errors) {
+        //             console.log('Validation Error : ', response.data.errors)
+        //             window.alert(response.data.message)
+        //         }
+        //         else {
+        //             console.log('success', response.data)
+        //             console.log('success id:', response.data._id)
+        //             // this.props.history.push('/items')
+        //             window.alert('post request for approve orders...')
+        //             // window.location.href = '/items'
+
+        //         }
+        //     })
+
+
+        // this.setState((prevState) => ({ items: [item, ...prevState.items], }))
+        // console.log("items array :", this.state.items)
+
+        // window.location.href = '/items'
+
+
+    }
+
     render() {
         return (
             <div>
@@ -359,7 +430,7 @@ export default class Menu extends React.Component {
                                 <div key={item._id} className="card" style={{ "display": "inline-block", "backgroundColor": "#c3b091 ", "width": "200px", "borderWidth": "5px", "margin": "20px" }}>
 
                                     <div key={item.id} className='card body'  >
-                                        <img src={item.imgUrl} alt="" width="152px" height="103px" />
+                                        <img src={item.imgUrl} alt="" width="185px" height="103px" />
 
 
                                         <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
@@ -407,7 +478,8 @@ export default class Menu extends React.Component {
                 </div>
                 <Cart cartItems={this.state.cartItems} items={this.state.items}
                     removeItemFromCart={this.removeItemFromCart}
-                    resetIsSelected={this.resetIsSelected} />
+                    resetIsSelected={this.resetIsSelected}
+                    requestOrder={this.requestOrder} />
             </div>
         );
     }

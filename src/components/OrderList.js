@@ -1,40 +1,215 @@
 import React, { Component } from 'react';
+import axios from '../config/axios'
+import { Link } from 'react-router-dom'
 
 
 export default class ItemList extends Component {
+    constructor() {
+        super()
+        this.state = {
+            approves: [],
+            confirms: [],
+            completed: []
+        }
+        this.handleRemoveOrder = this.handleRemoveOrder.bind(this)
+        this.handleApproveOrder = this.handleApproveOrder.bind(this)
+    }
+
+    componentDidMount() {
+        // get request for all items , filter approves,confirmed and completed
+        axios.get('/orders', {
+            headers: {
+                'x-auth': localStorage.getItem('token')
+            }
+        })
+            .then(response => {
+                console.log('Data : ', response.data)
+                const items = response.data
+                console.log('items after request :', items)
+                // filter for approve 
+                const approves = items.filter(item => item.status === 'approve')
+                console.log('approves filtered:', approves)
+                this.setState({ approves })
+
+                // filter for confirmed 
+                const confirms = items.filter(item => item.status === 'confirmed')
+                console.log('confirms filtered:', confirms)
+                this.setState({ confirms })
+
+                // filter for completed 
+                const completed = items.filter(item => item.status === 'completed')
+                console.log('completed filtered:', completed)
+                this.setState({ completed })
+
+                console.log('approves state:', this.state.approves)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    handleRemoveOrder(id) {
+        console.log('remove this id:', id)
+        // const change = this.state.approves.filter(item => item._id !== id)
+
+        // DELETE Request
+        axios.delete(`/orders/${id}`, {
+            headers: {
+                'x-auth': localStorage.getItem('token')
+            }
+        })
+            .then((response) => {
+                console.log('response data', response.data)
+                this.setState((prevState) => ({
+                    approves: prevState.approves.filter(item => item._id !== response.data._id)
+                }))
+
+                // var NewItems = this.props.items.filter(item => {
+                //     return item !== itemToDelete
+                // })
+
+                // this.setState({
+                //     items: NewItems
+                // })
+                // console.log("items after []:", NewItems)
+                // console.log("item deleted :", this.props.items.splice(this.props.items.indexOf(itemToDelete), 1))
+
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+        // this.setState(
+        //     prevState => ({
+        //         items: prevState.items.filter(item => item !== itemToDelete)
+        //     })
+        // )
+
+        // this.setState({ approves: change })
+    }
+
+    handleApproveOrder(id) {
+        console.log('clicked on Approve Button ')
+        console.log('Approve this order id: ', id)
+        // change status from approve to confirmed
+        // you have found the id, you have to get the whole item 
+        const foundItem = this.state.approves.find(item => item._id === id)
+        console.log('Item found :', foundItem)
+        console.log('Item found\'s status before:', foundItem.status)
+
+        // this.setState(prevState => ({
+        //     display: !prevState.display
+        //   }));
+
+        // console.log('current state id',this.state.items.id[itemToToggle])
+        console.log('Edit item : ', foundItem)
+
+
+        const index = this.state.approves.findIndex(item => item._id === id)
+        console.log('the index is :', index)
+
+        console.log('state of approves :', this.state.approves)
+        console.log('spread :', ...this.state.approves)
+        // console.log('spread index 2:', this.state.items[2])
+        // console.log('spread index 2 display before:', this.state.items[2].display)
+        // console.log('spread index 2 display after:', !this.state.items[2].display)
+
+        var changedItems = this.state.approves
+        changedItems[index].status = 'confirmed'
+
+        this.setState((prevState) => ({
+            confirms: [changedItems[index], ...prevState.confirms]
+        }))
+
+        this.setState({
+            approves: changedItems.filter(item => item.status === 'approve')
+        })
+
+        // this.setState(prevState => ({
+        //     confirms: [
+        //         prevState.confirms[index].status = !prevState.confirms[index].status,
+        //         ...prevState.confirms
+        //     ]
+        // }))
+        // put request
+    }
+
     render() {
         return (
             <div>
                 <div style={{ "backgroundColor": "red" }}>
-                    <h1>Approve orders :</h1>
+                    <h1>Approve orders - {this.state.approves.length}</h1>
 
-                    <table>
-                        <th>
-                            <td>Sl no</td>
-                            <td>Name</td>
-                            <td>Update</td>
-                            <td>Date</td>
-                            <td>Remove</td>
-                            <td>Approve</td>
-                        </th>
+                    <table className="listing-table" style={{ "fontWeight": "bold" }}>
+                        <thead className="listing-table" >
+                            <tr>
+                                <td className="listing-table" >Sl no</td>
+                                <td className="listing-table" >Name</td>
+                                <td className="listing-table" >Update</td>
+                                <td className="listing-table" >Date</td>
+                                <td className="listing-table" >Remove</td>
+                                <td className="listing-table" >Approve </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.approves.map((item, i) => {
+                                    return (
+                                        <tr key={item._id}>
+                                            <td className="listing-table" >{i + 1}</td>
+                                            <td className="listing-table" style={{ "color": "white" }} ><Link to={`/orders/${item._id}`}>{item.customer.fullName}</Link></td>
+                                            <td className="listing-table" ><button>Update</button></td>
+                                            <td className="listing-table" >{item.customer.eventDate}</td>
+                                            <td className="listing-table" ><button onClick={() => {
+                                                this.handleRemoveOrder(item._id)
+                                            }}>Remove</button></td>
+                                            <td className="listing-table" ><button onClick={() => {
+                                                this.handleApproveOrder(item._id)
+                                            }}>Approve</button></td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
                     </table>
                 </div>
 
-                <div style={{ "backgroundColor": "green" }}>
-                    <h1>Listing  orders :</h1>
+                <div style={{ "backgroundColor": "#2eec4e" }}>
+                    <h1>Listing confirmed orders - {this.state.confirms.length}</h1>
                     <input placeholder="Search Order" />
                     <button>Search</button>
 
                     <button>Add new Order</button>
-                    <table>
-                        <th>
-                            <td>Sl no</td>
-                            <td>Name</td>
-                            <td>Update</td>
-                            <td>Date</td>
-                            <td>Remove</td>
-                            <td>Completed</td>
-                        </th>
+                    <table className="listing-table" >
+                        <thead className="listing-table" >
+                            <tr>
+                                <td className="listing-table" >Sl no</td>
+                                <td className="listing-table" >Name</td>
+                                <td className="listing-table" >Update</td>
+                                <td className="listing-table" >Date</td>
+                                <td className="listing-table" >Remove</td>
+                                <td className="listing-table" >Completed</td>
+                            </tr>
+                        </thead>
+                        <tbody className="listing-table" >
+                            {
+                                this.state.confirms.map((item, i) => {
+                                    return (
+                                        <tr key={item._id}>
+                                            <td className="listing-table" >{i + 1}</td>
+                                            <td className="listing-table" ><Link to={`/orders/${item._id}`}>{item.customer.fullName}</Link></td>
+                                            <td className="listing-table" ><button>update</button></td>
+                                            <td className="listing-table" >{item.customer.eventDate}</td>
+                                            <td className="listing-table" ><button onClick={() => {
+                                                this.handleRemoveOrder(item._id)
+                                            }}>Remove</button></td>
+                                            <td className="listing-table" ><button>Completed</button></td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
                     </table>
                 </div>
 
@@ -43,12 +218,14 @@ export default class ItemList extends Component {
                     <input placeholder="Search Order" />
                     <button>Search</button>
                     <table>
-                        <th>
-                            <td>Sl no</td>
-                            <td>Name</td>
-                            <td>Date</td>
-                            <td>Remove</td>
-                        </th>
+                        <thead>
+                            <tr>
+                                <td>Sl no</td>
+                                <td>Name</td>
+                                <td>Date</td>
+                                <td>Remove</td>
+                            </tr>
+                        </thead>
                     </table>
                 </div>
             </div>

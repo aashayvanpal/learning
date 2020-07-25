@@ -65,11 +65,11 @@ module.exports.destroy = (req, res) => {
 module.exports.update = (req, res) => {
     const id = req.params.id
     const body = req.body
-    Item.findByIdAndUpdate(id, body, { new: true,runValidators:true })
-        .then( item =>{
-            if (item){
+    Item.findByIdAndUpdate(id, body, { new: true, runValidators: true })
+        .then(item => {
+            if (item) {
                 res.json(item)
-            }else{
+            } else {
                 res.json({})
             }
         })
