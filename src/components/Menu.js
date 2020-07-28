@@ -10,6 +10,39 @@
 
 // ]
 
+// Card Body with the buttons
+// <button type="button" className="btn btn-outline-primary"
+//                                             onClick={this.CartHandle}> Add </button>
+//                                         <button type="button" className="btn btn-outline-primary"
+//                                             onClick={this.CartRemoveHandle}> Remove </button>
+//                                         <button type="button" className="btn btn-outline-primary"
+//                                             onClick={this.favouriteHandle}> Favoirate </button>
+
+//                                         {
+//                                             this.state.items[i].showItemQtyBar ?
+//                                                 <div style={{ "display": "inline-block" }} >
+//                                                     <div>
+//                                                         <h1>Quantity :</h1>
+//                                                         <h1>{this.state.items[i].quantity}</h1>
+//                                                         <button type="button" className="btn btn-outline-primary"
+//                                                             onClick={this.incrementHandle}> + </button>
+
+//                                                         <button type="button" className="btn btn-outline-primary"
+//                                                             onClick={this.decrementHandle}>  - </button>
+//                                                         <button type="button" className="btn btn-outline-primary"
+//                                                             onClick={this.resetHandle}> Reset </button>
+//                                                     </div>
+//                                                     <div>
+//                                                         <h1>Price :</h1>
+//                                                         <h1>{this.state.items[i].price * this.state.items[i].quantity}</h1>
+//                                                         {/* how to get id which is clicked? */}
+//                                                     </div>
+
+//                                                 </div>
+//                                                 :
+//                                                 null
+//                                         }
+
 import React from 'react'
 import axios from '../config/axios'
 import Cart from './Cart.js'
@@ -18,16 +51,10 @@ export default class Menu extends React.Component {
     constructor() {
         super()
         this.state = {
-
-
-
             isFavourite: false,
             items: [],
-            cartItems: []
-
-
-
-
+            cartItems: [],
+            inputSearch: ''
         }
 
         this.incrementHandle = this.incrementHandle.bind(this)
@@ -42,6 +69,8 @@ export default class Menu extends React.Component {
         this.resetIsSelected = this.resetIsSelected.bind(this)
         this.toggleIsSelected = this.toggleIsSelected.bind(this)
         this.requestOrder = this.requestOrder.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+
     }
 
     incrementHandle() {
@@ -416,12 +445,33 @@ export default class Menu extends React.Component {
 
     }
 
+    handleChange = (e) => {
+        console.log('Inside handleChange')
+        console.log('e.target.value:', e.target.value)
+        // this.setState({
+        //     inputSearch: e.target.value
+        // })
+        // // console.log('this.state.inputSearch:', this.state.inputSearch)
+
+
+
+        // this.setState({
+        //     items: searchFilter
+        // })
+        console.log('this.state.items:', this.state.items[0].name)
+        console.log('this.state.items includes?:', this.state.items[0].name.includes(e.target.value))
+        let searchFilter = this.state.items.filter(item => {
+            item.name.includes(String(e.target.value))
+        })
+        console.log('Search Filter:', searchFilter)
+
+    }
     render() {
         return (
-            <div>
+            <div className="menu">
                 <div>
                     Breakfast
-                <input></input><button>Search</button>
+                <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" /><button>Search</button>
                 </div>
                 <div>
                     {
@@ -439,37 +489,7 @@ export default class Menu extends React.Component {
                                             "width": "40px",
                                             "height": "40px"
                                         }} onChange={() => { this.checkboxChange(item._id, item.name, item.inCart) }} checked={item.isSelected} />
-                                        <button type="button" className="btn btn-outline-primary"
-                                            onClick={this.CartHandle}> Add </button>
-                                        <button type="button" className="btn btn-outline-primary"
-                                            onClick={this.CartRemoveHandle}> Remove </button>
-                                        <button type="button" className="btn btn-outline-primary"
-                                            onClick={this.favouriteHandle}> Favoirate </button>
 
-                                        {
-                                            this.state.items[i].showItemQtyBar ?
-                                                <div style={{ "display": "inline-block" }} >
-                                                    <div>
-                                                        <h1>Quantity :</h1>
-                                                        <h1>{this.state.items[i].quantity}</h1>
-                                                        <button type="button" className="btn btn-outline-primary"
-                                                            onClick={this.incrementHandle}> + </button>
-
-                                                        <button type="button" className="btn btn-outline-primary"
-                                                            onClick={this.decrementHandle}>  - </button>
-                                                        <button type="button" className="btn btn-outline-primary"
-                                                            onClick={this.resetHandle}> Reset </button>
-                                                    </div>
-                                                    <div>
-                                                        <h1>Price :</h1>
-                                                        <h1>{this.state.items[i].price * this.state.items[i].quantity}</h1>
-                                                        {/* how to get id which is clicked? */}
-                                                    </div>
-
-                                                </div>
-                                                :
-                                                null
-                                        }
                                     </div>
                                 </div>
                             )

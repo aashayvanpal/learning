@@ -21,7 +21,7 @@
 .Nav-bar {
   background-color: #04045f;
   width: 15%;
-  height: 500px;
+
   font-size: 30px;
 }
 
@@ -94,6 +94,27 @@
   margin: 20px 65px 16px;
 }
 
+#burger {
+  cursor: pointer;
+  display: none;
+  float: right;
+}
+
+#bar {
+  height: 5px;
+  background-color: white;
+  width: 40px;
+
+  margin-top: 8px;
+}
+
+/* Media qurry */
+@media screen and (max-width: 900px) {
+  #burger {
+    display: inline-block;
+  }
+}
+
 #Link {
   color: #000000;
   cursor: pointer;
@@ -119,4 +140,13 @@
   padding: 20px;
   text-align: center;
   border-radius: 2px solid;
+}
+
+@media screen and (max-width: 900px) {
+  .menu {
+    background-color: tomato;
+  }
+  .Nav-bar {
+    display: none;
+  }
 }

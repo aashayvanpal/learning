@@ -12,6 +12,7 @@ export default class ItemShow extends React.Component {
             email: '',
             eventDate: '',
             eventName: '',
+            numberOfPeople: '',
             eventTime: '',
             homeDelivery: false,
             phoneNumber: '',
@@ -42,6 +43,9 @@ export default class ItemShow extends React.Component {
                 let email = this.state.order.customer.email
                 let eventDate = this.state.order.customer.eventDate
                 let eventName = this.state.order.customer.eventName
+                let numberOfPeople = this.state.order.customer.numberOfPeople
+                console.log('numberOfPeople :', this.state.order.customer.numberOfPeople)
+
                 let eventTime = this.state.order.customer.eventTime
                 let homeDelivery = this.state.order.customer.homeDelivery
                 console.log('homeDelivery', homeDelivery)
@@ -56,6 +60,7 @@ export default class ItemShow extends React.Component {
                     email,
                     eventDate,
                     eventName,
+                    numberOfPeople,
                     eventTime,
                     homeDelivery,
                     phoneNumber,
@@ -99,6 +104,7 @@ export default class ItemShow extends React.Component {
                     <h1>Showing item details</h1>
                     <h1>Customer Name : {this.state.fullName}</h1>
                     <h1>Event Name : {this.state.eventName}</h1>
+                    <h1>Number of People : {this.state.numberOfPeople}</h1>
                     <h1>Event Time : {this.state.eventTime}</h1>
                     <h1>Phone Number : {this.state.phoneNumber}</h1>
                     <h1>Address : {this.state.address}</h1>

@@ -26,11 +26,18 @@ function App() {
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
 
 
-      <h1 >Aaswad Caterers</h1>
+      <h1 style={{ "textAlign": "center" }}>Aaswad Caterers</h1>
       <BrowserRouter >
-        <Link to='/' style={{ "color": "black" }}>Home</Link>&nbsp;
-        <Link to='/Menu' style={{ "color": "black" }}>Menu</Link>&nbsp;
-        <Link to='/Cart' style={{ "color": "black" }} >My Cart </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style={{ "height": "50px" }}>
+          <Link to='/' style={{ "color": "black" }}>Home</Link>&nbsp;
+          <Link to='/Menu' style={{ "color": "black" }}>Menu</Link>&nbsp;
+          <Link to='/Cart' style={{ "color": "black" }} >My Cart </Link>
+          <div id="burger" onclick="openNav()">
+            <div id="bar"></div>
+            <div id="bar"></div>
+            <div id="bar"></div>
+          </div>
+        </div>
         <div className="align" >
           <div className="Nav-bar">
             <ul style={{ "listStyleType": "none" }}>

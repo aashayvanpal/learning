@@ -10,7 +10,7 @@ export default class CustomerForm extends React.Component {
             address: '',
             queries: '',
             eventName: '',
-            noOfPeople: '',
+            numberOfPeople: '',
             eventDate: '',
             eventTime: '',
             homeDelivery: false,
@@ -58,7 +58,7 @@ export default class CustomerForm extends React.Component {
             address: this.state.address,
             queries: this.state.queries,
             eventName: this.state.eventName,
-            noOfPeople: this.state.noOfPeople,
+            numberOfPeople: this.state.numberOfPeople,
             eventDate: this.state.eventDate,
             eventTime: this.state.eventTime,
             homeDelivery: this.state.homeDelivery,
@@ -96,7 +96,7 @@ export default class CustomerForm extends React.Component {
                     <input name="eventName" value={this.state.eventName} onChange={this.handleChange} placeholder="Event Name" />
                 </label><br />
                 <label>
-                    <input name="noOfPeople" value={this.state.noOfPeople} onChange={this.handleChange} placeholder="Number of people" />
+                    <input name="numberOfPeople" value={this.state.numberOfPeople} onChange={this.handleChange} placeholder="Number of people" />
                 </label><br />
                 <label>
                     <input name="eventDate" value={this.state.eventDate} onChange={this.handleChange} placeholder="Event Date" />

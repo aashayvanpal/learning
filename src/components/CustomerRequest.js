@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from '../config/axios';
 import CustomerForm from './customer/Form.js'
-
+import { Table } from 'reactstrap';
+import { Link } from 'react-router-dom'
 
 export default class CustomerRequest extends React.Component {
     constructor() {
@@ -251,15 +252,15 @@ export default class CustomerRequest extends React.Component {
                 <h1>Listing selected items - {this.state.reqOrder.length}</h1>
                 <br />
                 <div style={{ "display": "flex" }}>
-                    <table style={{ "border": "2px solid black", "marginRight": "150px" }}>
-                        <thead style={{ "border": "2px solid black" }}>
-                            <tr style={{ "border": "2px solid black" }}>
-                                <td style={{ "border": "2px solid black" }}><h2>Sl No</h2></td>
+                    <Table hover style={{ "border": "2px solid black", "marginRight": "150px", "background": "darkkhaki" }}>
+                        <thead>
+                            <tr >
+                                <th scope="row"><h2>Sl No</h2></th>
 
-                                <td style={{ "border": "2px solid black" }}><h2>Item Name</h2></td>
-                                <td style={{ "border": "2px solid black" }}><h2>Price</h2></td>
-                                <td style={{ "border": "2px solid black" }}><h2>Quantity</h2></td>
-                                <td style={{ "border": "2px solid black" }}><h2>Remove</h2></td>
+                                <th scope="row" ><h2>Item Name</h2></th>
+                                <th scope="row" ><h2>Quantity</h2></th>
+                                <th scope="row" ><h2>Price</h2></th>
+                                <th scope="row" ><h2>Remove</h2></th>
                             </tr>
 
                         </thead>
@@ -268,17 +269,18 @@ export default class CustomerRequest extends React.Component {
                                 this.state.reqOrder.map((item, i) => {
                                     return (
                                         <tr key={item.name}>
-                                            <td style={{ "border": "2px solid black" }}><h2>{i + 1}</h2></td>
-                                            <td style={{ "border": "2px solid black" }}><h2>{item.name}</h2></td>
-                                            <td style={{ "border": "2px solid black" }}><h2>{item.price}</h2></td>
-                                            <td style={{ "border": "2px solid black" }}><button onClick={() => { this.minusHandle(item.id) }}>-</button><input name="quantity" onChange={(e) => { this.handleChange(e, item.quantity, item.id) }} value={item.quantity} style={{ "width": "50px", textAlign: "center" }} /><button onClick={(e) => { this.plusHandle(item.id, e) }}>+</button></td>
-                                            <td style={{ "border": "2px solid black" }}><button onClick={() => { this.handleRemove(item.id) }}>Remove</button></td>
+                                            <td><h2>{i + 1}</h2></td>
+                                            <td><h2>{item.name}</h2></td>
+                                            <td><button onClick={() => { this.minusHandle(item.id) }}>-</button><input name="quantity" onChange={(e) => { this.handleChange(e, item.quantity, item.id) }} value={item.quantity} style={{ "width": "50px", textAlign: "center" }} /><button onClick={(e) => { this.plusHandle(item.id, e) }}>+</button></td>
+                                            <td><h2>{item.price * item.quantity}</h2></td>
+                                            <td><button onClick={() => { this.handleRemove(item.id) }}>Remove</button></td>
                                         </tr>
                                     )
                                 })
                             }
                         </tbody>
-                    </table>
+                    </Table>
+                    <Link to="/Menu">Back</Link>
                     <CustomerForm handleCustomerSubmit={this.handleCustomerSubmit} />
                 </div>
                 {/* <button onClick={this.handleSubmit}>Submit Enquiry</button> */}

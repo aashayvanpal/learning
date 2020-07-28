@@ -13,6 +13,7 @@ export default class ItemList extends Component {
         }
         this.handleRemoveOrder = this.handleRemoveOrder.bind(this)
         this.handleApproveOrder = this.handleApproveOrder.bind(this)
+        this.handleCompleteOrder = this.handleCompleteOrder.bind(this)
     }
 
     componentDidMount() {
@@ -62,6 +63,14 @@ export default class ItemList extends Component {
                 console.log('response data', response.data)
                 this.setState((prevState) => ({
                     approves: prevState.approves.filter(item => item._id !== response.data._id)
+                }))
+                // remove if not required
+                this.setState((prevState) => ({
+                    confirms: prevState.confirms.filter(item => item._id !== response.data._id)
+                }))
+
+                this.setState((prevState) => ({
+                    completed: prevState.completed.filter(item => item._id !== response.data._id)
                 }))
 
                 // var NewItems = this.props.items.filter(item => {
@@ -132,7 +141,91 @@ export default class ItemList extends Component {
         //         ...prevState.confirms
         //     ]
         // }))
+        console.log('put request for /orders')
+        console.log('changedItems[index]:', changedItems[index])
         // put request
+        axios.put(`/orders/${changedItems[index]._id}`, changedItems[index], {
+            headers: {
+                "x-auth": localStorage.getItem('token')
+            }
+        })
+            .then(response => {
+                if (response.data.errors) {
+                    console.log('Validation Error : ', response.data.errors)
+                    window.alert(response.data.message)
+                }
+                else {
+                    console.log('success', response.data)
+                    // this.props.history.push(`/items/show/${response.data._id}`)
+                    // window.location.href = '/items'
+
+                }
+            })
+    }
+
+    handleCompleteOrder(id) {
+        console.log('clicked on Completed Button ')
+        console.log('Approve this order id: ', id)
+        // change status from approve to confirmed
+        // you have found the id, you have to get the whole item 
+        const foundItem = this.state.confirms.find(item => item._id === id)
+        console.log('Item found :', foundItem)
+        console.log('Item found\'s status before:', foundItem.status)
+
+        // this.setState(prevState => ({
+        //     display: !prevState.display
+        //   }));
+
+        // console.log('current state id',this.state.items.id[itemToToggle])
+        console.log('Edit item : ', foundItem)
+
+
+        const index = this.state.confirms.findIndex(item => item._id === id)
+        console.log('the index is :', index)
+
+        console.log('state of confirms :', this.state.confirms)
+        console.log('spread :', ...this.state.confirms)
+        // console.log('spread index 2:', this.state.items[2])
+        // console.log('spread index 2 display before:', this.state.items[2].display)
+        // console.log('spread index 2 display after:', !this.state.items[2].display)
+
+        var changedItems = this.state.confirms
+        changedItems[index].status = 'completed'
+
+        this.setState((prevState) => ({
+            completed: [changedItems[index], ...prevState.completed]
+        }))
+
+        this.setState({
+            confirms: changedItems.filter(item => item.status === 'confirmed')
+        })
+
+        // this.setState(prevState => ({
+        //     confirms: [
+        //         prevState.confirms[index].status = !prevState.confirms[index].status,
+        //         ...prevState.confirms
+        //     ]
+        // }))
+        console.log('put request for /orders')
+        console.log('changedItems[index]:', changedItems[index])
+        // put request
+        axios.put(`/orders/${changedItems[index]._id}`, changedItems[index], {
+            headers: {
+                "x-auth": localStorage.getItem('token')
+            }
+        })
+            .then(response => {
+                if (response.data.errors) {
+                    console.log('Validation Error : ', response.data.errors)
+                    window.alert(response.data.message)
+                }
+                else {
+                    console.log('success', response.data)
+                    // this.props.history.push(`/items/show/${response.data._id}`)
+                    // window.location.href = '/items'
+
+                }
+            })
     }
 
     render() {
@@ -146,10 +239,8 @@ export default class ItemList extends Component {
                             <tr>
                                 <td className="listing-table" >Sl no</td>
                                 <td className="listing-table" >Name</td>
-                                <td className="listing-table" >Update</td>
+                                <td className="listing-table" >Actions</td>
                                 <td className="listing-table" >Date</td>
-                                <td className="listing-table" >Remove</td>
-                                <td className="listing-table" >Approve </td>
                             </tr>
                         </thead>
                         <tbody>
@@ -159,14 +250,17 @@ export default class ItemList extends Component {
                                         <tr key={item._id}>
                                             <td className="listing-table" >{i + 1}</td>
                                             <td className="listing-table" style={{ "color": "white" }} ><Link to={`/orders/${item._id}`}>{item.customer.fullName}</Link></td>
-                                            <td className="listing-table" ><button>Update</button></td>
+                                            <td className="listing-table" >
+                                                <button>Update</button>
+
+                                                <button onClick={() => {
+                                                    this.handleRemoveOrder(item._id)
+                                                }}>Remove</button>
+                                                <button onClick={() => {
+                                                    this.handleApproveOrder(item._id)
+                                                }}>Approve</button>
+                                            </td>
                                             <td className="listing-table" >{item.customer.eventDate}</td>
-                                            <td className="listing-table" ><button onClick={() => {
-                                                this.handleRemoveOrder(item._id)
-                                            }}>Remove</button></td>
-                                            <td className="listing-table" ><button onClick={() => {
-                                                this.handleApproveOrder(item._id)
-                                            }}>Approve</button></td>
                                         </tr>
                                     )
                                 })
@@ -176,7 +270,7 @@ export default class ItemList extends Component {
                 </div>
 
                 <div style={{ "backgroundColor": "#2eec4e" }}>
-                    <h1>Listing confirmed orders - {this.state.confirms.length}</h1>
+                    <h1>Confirmed orders - {this.state.confirms.length}</h1>
                     <input placeholder="Search Order" />
                     <button>Search</button>
 
@@ -204,7 +298,9 @@ export default class ItemList extends Component {
                                             <td className="listing-table" ><button onClick={() => {
                                                 this.handleRemoveOrder(item._id)
                                             }}>Remove</button></td>
-                                            <td className="listing-table" ><button>Completed</button></td>
+                                            <td className="listing-table" ><button onClick={() => {
+                                                this.handleCompleteOrder(item._id)
+                                            }}>Completed</button></td>
                                         </tr>
                                     )
                                 })
@@ -214,18 +310,34 @@ export default class ItemList extends Component {
                 </div>
 
                 <div style={{ "backgroundColor": "yellow" }}>
-                    <h1>Listing completed orders :</h1>
+                    <h1>Completed orders -{this.state.completed.length}</h1>
                     <input placeholder="Search Order" />
                     <button>Search</button>
                     <table>
                         <thead>
                             <tr>
-                                <td>Sl no</td>
-                                <td>Name</td>
-                                <td>Date</td>
-                                <td>Remove</td>
+                                <td className="listing-table">Sl no</td>
+                                <td className="listing-table">Name</td>
+                                <td className="listing-table">Date</td>
+                                <td className="listing-table">Remove</td>
                             </tr>
                         </thead>
+                        <tbody>
+                            {
+                                this.state.completed.map((item, i) => {
+                                    return (
+                                        <tr key={item._id}>
+                                            <td className="listing-table" >{i + 1}</td>
+                                            <td className="listing-table" ><Link to={`/orders/${item._id}`}>{item.customer.fullName}</Link></td>
+                                            <td className="listing-table" >{item.customer.eventDate}</td>
+                                            <td className="listing-table" ><button onClick={() => {
+                                                this.handleRemoveOrder(item._id)
+                                            }}>Remove</button></td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
                     </table>
                 </div>
             </div>

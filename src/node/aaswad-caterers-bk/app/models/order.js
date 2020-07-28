@@ -43,6 +43,9 @@ const orderSchema = new Schema({
             type: Boolean,
             required: true
         },
+        numberOfPeople: {
+            type: Number
+        },
         service: {
             type: Boolean,
             required: true

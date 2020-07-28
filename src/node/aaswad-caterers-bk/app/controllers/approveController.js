@@ -67,3 +67,21 @@ module.exports.show = (req, res) => {
             res.json(err)
         })
 }
+
+
+// update 
+module.exports.update = (req, res) => {
+    const id = req.params.id
+    const body = req.body
+    Order.findByIdAndUpdate(id, body, { new: true, runValidators: true })
+        .then(order => {
+            if (order) {
+                res.json(order)
+            } else {
+                res.json({})
+            }
+        })
+        .catch(err => {
+            res.json(err)
+        })
+}
