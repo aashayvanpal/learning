@@ -1,5 +1,5 @@
 .app {
-  background-color: grey;
+  background-color: #f5edc0;
 }
 
 .content-primary {
@@ -33,9 +33,12 @@
 .Nav-barLink {
   color: white;
 }
+.Nav-barLink a {
+  text-decoration: none;
+}
 
 .align {
-  background-color: silver;
+  background-color: #f5edc0;
   display: flex;
 }
 
@@ -148,7 +151,7 @@
 
 #mySidenavMobile {
   display: none;
-  background-color:white;
+  background-color: white;
 }
 
 @media screen and (max-width: 900px) {
@@ -159,15 +162,49 @@
     display: none;
   }
 
-  .topNav span{
+  .topNav span {
     display: none;
   }
 
-  .Link-Navigations{
+  .Link-Navigations {
     display: none;
   }
 
   #mySidenavMobile {
     float: right;
   }
+}
+
+.linkEnquiry {
+  margin-top: 40px;
+}
+
+.header {
+  display: flex;
+  background-color: #dbc268;
+  margin-bottom: 13px;
+  box-shadow: 5px 10px 6px;
+}
+
+/* .card {
+  display: inline-block;
+  background-color: #c3b091;
+  width: 200px;
+  border-width: 5px;
+  margin: 20px;
+} */
+
+/* .card{
+  display: inline-block;
+  background-color: #f5d76c;
+  border-width: 5px;
+  margin: 20px;
+  width: 200px;
+  height:300px;
+} */
+.user {
+  background-image: url("../images/User.png");
+  height: 63px;
+  width: 49px;
+  margin-top: 15px;
 }

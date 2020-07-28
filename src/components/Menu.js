@@ -54,7 +54,10 @@ export default class Menu extends React.Component {
             isFavourite: false,
             items: [],
             cartItems: [],
-            inputSearch: ''
+            inputSearch: '',
+
+            searchFilter: [],
+
         }
 
         this.incrementHandle = this.incrementHandle.bind(this)
@@ -152,7 +155,8 @@ export default class Menu extends React.Component {
                 // filteredItems.forEach(item => { item.inCart = false })
 
                 this.setState({ items: filteredItems })
-                console.log(this.state.items)
+                this.setState({ searchFilter: this.state.items })
+                console.log("this.state.items:", this.state.items)
 
             })
             .catch(err => {
@@ -282,50 +286,6 @@ export default class Menu extends React.Component {
         return null
     }
 
-    // removeItemFromCart(itemToToggle) {
-    //     console.log('make this id false', itemToToggle)
-
-    //     console.log('inside removeItemFromCart')
-    //     console.log("itemToToggle id:", itemToToggle)
-    //     // you have found the id, you have to get the whole item 
-    //     const foundItem = this.state.cartItems.find(item => item.id === itemToToggle)
-    //     console.log('Item found :', foundItem)
-    //     console.log('Item found\'s cart items display before:', foundItem.inCart)
-
-    //     // this.setState(prevState => ({
-    //     //     display: !prevState.display
-    //     //   }));
-
-    //     // console.log('current state id',this.state.items.id[itemToToggle])
-    //     console.log('Edit item inCart to false : ', foundItem)
-
-
-    //     const index = this.state.cartItems.findIndex(item => item.id === itemToToggle)
-    //     console.log('the index is :', index)
-
-    //     console.log('state of Cart items :', this.state.cartItems)
-    //     console.log('spread :', ...this.state.cartItems)
-    //     console.log('spread index :', this.state.items[index])
-    //     console.log('spread index  inCart before:', this.state.items[index].inCart)
-    //     console.log('spread index  inCart after:', !this.state.items[index].inCart)
-
-    //     var changedItems = this.state.cartItems
-    //     changedItems[index].inCart = false
-
-    //     this.setState({ cartItems: changedItems })
-
-
-
-    //     console.log('Cart Item found\'s inCart after:', this.state.cartItems)
-    //     // // console.log('Item found\'s display after:', foundItem.display)
-
-
-
-
-
-
-    // }
-
     resetIsSelected = (id) => {
         // Delete item from the cartItems do setState of cartItems
         console.log('inside the removeAndReset function')
@@ -402,70 +362,16 @@ export default class Menu extends React.Component {
         console.log(localStorage.getItem('orderItems'))
         console.log(Array.isArray(JSON.parse(localStorage.getItem('orderItems'))))
 
-
-
-        // const items = {
-        //     items: approveOrder
-        // }
-        // console.log('const items:', items)
-        // localStorage.setItem('orderItems', JSON.stringify(items))
-        // // localStorage.setItem('orderItems', JSON.stringify(items))
-        // console.log('local storage orderItems set successful')
-        // console.log('items from localstorage orderItems :')
-        // console.log(localStorage.getItem('orderItems'))
-
-
-        // post request for requestOrder 
-        // axios.post('/Menu', items, {
-        //     headers: {
-        //         "x-auth": localStorage.getItem('token')
-        //     }
-        // })
-        //     .then(response => {
-        //         if (response.data.errors) {
-        //             console.log('Validation Error : ', response.data.errors)
-        //             window.alert(response.data.message)
-        //         }
-        //         else {
-        //             console.log('success', response.data)
-        //             console.log('success id:', response.data._id)
-        //             // this.props.history.push('/items')
-        //             window.alert('post request for approve orders...')
-        //             // window.location.href = '/items'
-
-        //         }
-        //     })
-
-
-        // this.setState((prevState) => ({ items: [item, ...prevState.items], }))
-        // console.log("items array :", this.state.items)
-
-        // window.location.href = '/items'
-
-
     }
 
     handleChange = (e) => {
         console.log('Inside handleChange')
         console.log('e.target.value:', e.target.value)
-        // this.setState({
-        //     inputSearch: e.target.value
-        // })
-        // // console.log('this.state.inputSearch:', this.state.inputSearch)
+        console.log('this.state.items:', this.state.items)
+        console.log('this.state.items filtered:', this.state.items.filter(item => item.name.includes(e.target.value)))
 
-
-
-        // this.setState({
-        //     items: searchFilter
-        // })
-
-        // Filtering change here
-        // console.log('this.state.items:', this.state.items[0].name)
-        // console.log('this.state.items includes?:', this.state.items[0].name.includes(e.target.value))
-        // let searchFilter = this.state.items.filter(item => {
-        //     item.name.includes(String(e.target.value))
-        // })
-        // console.log('Search Filter:', searchFilter)
+        let searchFilter = this.state.items.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        this.setState({ searchFilter })
 
     }
     render() {
@@ -473,16 +379,25 @@ export default class Menu extends React.Component {
             <div className="menu">
                 <div>
                     Breakfast
-                <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" /><button>Search</button>
+                <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" placeholder="Search your item" style={{ "padding": "5px", "font-size": "22px" }} /><button>Search</button>
                 </div>
                 <div>
                     {
-                        this.state.items.map((item, i) => {
+                        this.state.searchFilter.map((item, i) => {
                             return (
-                                <div key={item._id} className="card" style={{ "display": "inline-block", "backgroundColor": "#c3b091 ", "width": "200px", "borderWidth": "5px", "margin": "20px" }}>
+                                <div key={item._id} className="card"
+                                    style={{
+                                        "display": "inline-block",
+                                        "background-color": "#f5d76c",
+                                        "borderWidth": "5px",
+                                        "margin": "20px",
+                                        "width": "300px",
+                                        "height": "250px"
+                                    }}>
 
-                                    <div key={item.id} className='card body'  >
-                                        <img src={item.imgUrl} alt="" width="185px" height="103px" />
+
+                                    <div key={item.id} className='card-body'  >
+                                        <img src={item.imgUrl} alt="" width="150px" height="103px" />
 
 
                                         <h1 style={{ "textAlign": "center" }}>{item.name}</h1>

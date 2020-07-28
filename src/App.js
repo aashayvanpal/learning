@@ -25,71 +25,102 @@ function App() {
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossOrigin="anonymous"></link>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
 
-
-      <div>
-        <h1 style={{ "textAlign": "center", "color": "white" }}>Aaswad Caterers</h1>
-        <div id="burger" onClick={() => {
-          console.log('burger clicked!')
-          document.getElementById("mySidenavMobile").style.width = "180px";
-          document.getElementById("mySidenavMobile").style.display = "inline";
-        }}>
-          <div id="bar"></div>
-          <div id="bar"></div>
-          <div id="bar"></div>
-        </div>
-      </div>
-
       <BrowserRouter >
-        <div className="topNav">
-          <span><Link to='/' style={{ "color": "black" }}>Home</Link></span>&nbsp;
+
+        <div className="header">
+          <h1 style={{
+            "textAlign": "left",
+            "color": "black",
+            "fontSize": "64px",
+            "margin-right": "200px",
+            "margin-left": "20px"
+          }}>Aaswad Caterers</h1>
+          <h2 className="linkEnquiry">Contact Us</h2>
+          <h2 className="linkEnquiry">Submit Enquiry</h2>
+
+          <div className="user">
+
+            <img src="./images/User.png" alt="" />
+          </div>
+
+          <div id="burger" onClick={() => {
+            console.log('burger clicked!')
+            document.getElementById("mySidenavMobile").style.width = "180px";
+            document.getElementById("mySidenavMobile").style.display = "inline";
+          }}>
+            <div id="bar"></div>
+            <div id="bar"></div>
+            <div id="bar"></div>
+          </div>
+
+          <div className="topNav">
+            <span><Link to='/' style={{ "color": "black" }}>Home</Link></span>&nbsp;
           <span><Link to='/Menu' style={{ "color": "black" }}>Menu</Link></span>&nbsp;
           <span><Link to='/Cart' style={{ "color": "black" }} >My Cart </Link></span>
 
-          <div id="mySidenavMobile">
-            <button id="x-mark" class="closebtn" onClick={() => {
-              console.log('clicked on close button')
-              document.getElementById("mySidenavMobile").style.display = "none";
-              document.getElementById("mySidenavMobile").style.width = "0";
-            }}>&times;</button>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/Menu">Menu</a></li>
-              <li><a href="/cart">My Cart</a></li>
-            </ul>
+            <div id="mySidenavMobile">
+              <button id="x-mark" className="closebtn" onClick={() => {
+                console.log('clicked on close button')
+                document.getElementById("mySidenavMobile").style.display = "none";
+                document.getElementById("mySidenavMobile").style.width = "0";
+              }}>&times;</button>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Menu">Menu</a></li>
+                <li><a href="/cart">My Cart</a></li>
+              </ul>
+            </div>
+
+
           </div>
 
         </div>
+
+
+
         <div className="align" >
           <div className="Nav-bar">
             <ul style={{ "listStyleType": "none" }}>
 
+              <Link to='/' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Home</li></Link>
+              <Link to='/Menu' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Menu</li></Link>
+
               <Link to='/orders' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Orders</li></Link>
 
               <Link to='/items' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Items</li></Link>
-              <Link to='/users/add' className="Nav-barLink"><li>Vendors</li></Link>
-              <Link to='/users/add' className="Nav-barLink"><li>Labourers</li></Link>
-              <Link to='/users/add' className="Nav-barLink"><li>Customers</li></Link>
-              <Link to='/users/add' className="Nav-barLink"><li>Recipies</li></Link>
-              <Link to='/Calender' className="Nav-barLink"><li>Calender</li></Link>
+              <Link to='/users/add' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Vendors</li></Link>
+              <Link to='/users/add' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Labourers</li></Link>
+              <Link to='/users/add' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Customers</li></Link>
+              <Link to='/users/add' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Recipies</li></Link>
+              <Link to='/Calender' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Calender</li></Link>
             </ul>
           </div>
           <div className="content-showcase">
             <Route exact path="/" >
               <h1 >Home component</h1>
-
-
-
             </Route>
 
             <Route path="/Menu" >
               <h1 className="Link-Navigations">
-                <span id="Link">Breakfast</span>
-                <span id="Link">Lunch</span>
-                <span id="Link">Dinner</span>
-                <span id="Link">Snack</span>
+                <span id="Link">Home</span>
+                <span id="Link">Menu</span>
+                <span id="Link">Cart</span>
               </h1>
-              <h1 style={{ "backgroundColor": "#F5EDC0", "border": "2px solid black", "textAlign": "center" }}>Choose Your Menu</h1>
-              <Menu />
+              <div>
+                <h1 style={{
+                  "background-color": "rgb(245, 237, 192)",
+                  "border": " 2px solid black",
+                  "text-align": "center",
+                  "padding": "10px",
+                  "position": "relative",
+                  "z-index": "30",
+                  "width": "830px",
+                  "margin-left": "50px",
+
+
+                }}>Choose Your Menu</h1>
+                <Menu />
+              </div>
             </Route>
 
             <Route path="/Cart" >

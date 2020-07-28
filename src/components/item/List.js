@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import DisplayItems from './Item.js'
-import SearchItem from './Search.js'
+// import SearchItem from './Search.js'
 import axios from '../../config/axios.js'
 
 export default class AddItems extends Component {
@@ -12,6 +12,7 @@ export default class AddItems extends Component {
             items: [
 
             ],
+            searchFilter: []
 
         }
 
@@ -31,6 +32,7 @@ export default class AddItems extends Component {
                 const items = response.data
                 console.log('items after request :', items)
                 this.setState({ items })
+                this.setState({ searchFilter: this.state.items })
             })
             .catch(err => {
                 console.log(err)
@@ -39,9 +41,17 @@ export default class AddItems extends Component {
 
 
     handleChange = e => {
-        this.setState({
-            item: e.target.value
-        })
+        console.log('Inside handleChange')
+        console.log('e.target.value:', e.target.value)
+        console.log('this.state.items:', this.state.items)
+        console.log('this.state.items filtered:', this.state.items.filter(item => item.name.includes(e.target.value)))
+
+        let searchFilter = this.state.items.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        this.setState({ searchFilter })
+
+        // this.setState({
+        //     item: e.target.value
+        // })
     }
 
 
@@ -157,8 +167,12 @@ export default class AddItems extends Component {
         return (
             <div className="content-primary">
                 <div className="search-align">
-                    <h2>Listing items - {this.state.items.length}</h2>
-                    <SearchItem handleItemSubmit={this.handleFormSubmit} />
+                    <h2>Listing items - {this.state.searchFilter.length}</h2>
+
+                    <input type="text" name="item" onChange={this.handleChange} />&nbsp;&nbsp;
+                    <input type="submit" value="Search" />
+
+
                 </div>
                 <Link to='/items/add'> <button className="button-color3">Add new items</button></Link>
 
@@ -176,7 +190,7 @@ export default class AddItems extends Component {
 
                     <tbody>
                         {
-                            this.state.items.map((item, i) => {
+                            this.state.searchFilter.map((item, i) => {
                                 return (
                                     <DisplayItems
                                         key={i}
