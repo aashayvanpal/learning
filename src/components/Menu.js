@@ -458,12 +458,14 @@ export default class Menu extends React.Component {
         // this.setState({
         //     items: searchFilter
         // })
-        console.log('this.state.items:', this.state.items[0].name)
-        console.log('this.state.items includes?:', this.state.items[0].name.includes(e.target.value))
-        let searchFilter = this.state.items.filter(item => {
-            item.name.includes(String(e.target.value))
-        })
-        console.log('Search Filter:', searchFilter)
+
+        // Filtering change here
+        // console.log('this.state.items:', this.state.items[0].name)
+        // console.log('this.state.items includes?:', this.state.items[0].name.includes(e.target.value))
+        // let searchFilter = this.state.items.filter(item => {
+        //     item.name.includes(String(e.target.value))
+        // })
+        // console.log('Search Filter:', searchFilter)
 
     }
     render() {
