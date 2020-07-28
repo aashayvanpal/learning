@@ -26,17 +26,38 @@ function App() {
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
 
 
-      <h1 style={{ "textAlign": "center" }}>Aaswad Caterers</h1>
+      <div>
+        <h1 style={{ "textAlign": "center", "color": "white" }}>Aaswad Caterers</h1>
+        <div id="burger" onClick={() => {
+          console.log('burger clicked!')
+          document.getElementById("mySidenavMobile").style.width = "180px";
+          document.getElementById("mySidenavMobile").style.display = "inline";
+        }}>
+          <div id="bar"></div>
+          <div id="bar"></div>
+          <div id="bar"></div>
+        </div>
+      </div>
+
       <BrowserRouter >
-        <div style={{ "height": "50px" }}>
-          <Link to='/' style={{ "color": "black" }}>Home</Link>&nbsp;
-          <Link to='/Menu' style={{ "color": "black" }}>Menu</Link>&nbsp;
-          <Link to='/Cart' style={{ "color": "black" }} >My Cart </Link>
-          <div id="burger" onclick="openNav()">
-            <div id="bar"></div>
-            <div id="bar"></div>
-            <div id="bar"></div>
+        <div className="topNav">
+          <span><Link to='/' style={{ "color": "black" }}>Home</Link></span>&nbsp;
+          <span><Link to='/Menu' style={{ "color": "black" }}>Menu</Link></span>&nbsp;
+          <span><Link to='/Cart' style={{ "color": "black" }} >My Cart </Link></span>
+
+          <div id="mySidenavMobile">
+            <a id="x-mark" href="javascript:void(0)" class="closebtn" onClick={() => {
+              console.log('clicked on close button')
+              document.getElementById("mySidenavMobile").style.display = "none";
+              document.getElementById("mySidenavMobile").style.width = "0";
+            }}>&times;</a>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/Menu">Menu</a></li>
+              <li><a href="/cart">My Cart</a></li>
+            </ul>
           </div>
+
         </div>
         <div className="align" >
           <div className="Nav-bar">
@@ -145,5 +166,8 @@ function App() {
     </div>
   );
 }
+
+
+
 
 export default App;

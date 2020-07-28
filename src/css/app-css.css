@@ -142,11 +142,32 @@
   border-radius: 2px solid;
 }
 
+.topNav {
+  height: "50px";
+}
+
+#mySidenavMobile {
+  display: none;
+  background-color:white;
+}
+
 @media screen and (max-width: 900px) {
   .menu {
     background-color: tomato;
   }
   .Nav-bar {
     display: none;
+  }
+
+  .topNav span{
+    display: none;
+  }
+
+  .Link-Navigations{
+    display: none;
+  }
+
+  #mySidenavMobile {
+    float: right;
   }
 }
