@@ -46,11 +46,11 @@ function App() {
           <span><Link to='/Cart' style={{ "color": "black" }} >My Cart </Link></span>
 
           <div id="mySidenavMobile">
-            <a id="x-mark" href="javascript:void(0)" class="closebtn" onClick={() => {
+            <button id="x-mark" class="closebtn" onClick={() => {
               console.log('clicked on close button')
               document.getElementById("mySidenavMobile").style.display = "none";
               document.getElementById("mySidenavMobile").style.width = "0";
-            }}>&times;</a>
+            }}>&times;</button>
             <ul>
               <li><a href="/">Home</a></li>
               <li><a href="/Menu">Menu</a></li>
