@@ -70,9 +70,13 @@ export default class AddItems extends Component {
         })
             .then((response) => {
                 console.log('response data', response.data)
+                console.log('Inside the .then promise')
+
                 this.setState((prevState) => ({
                     items: prevState.items.filter(item => item._id !== response.data._id)
                 }))
+
+
 
                 // var NewItems = this.props.items.filter(item => {
                 //     return item !== itemToDelete
@@ -89,6 +93,7 @@ export default class AddItems extends Component {
             .catch((err) => {
                 console.log(err)
             })
+
 
         // this.setState(
         //     prevState => ({

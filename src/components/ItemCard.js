@@ -1,61 +1,15 @@
-//Bug at this.state.isFavouriate
-//How to render single component price value ,Quantity
-
-// items: [
-//     { id: 1, name: 'Dahivada', category: "dessert", price: 45, image: 'https://i.ndtvimg.com/i/2018-02/dahi-bhalla_650x400_61519796037.jpg',quantity: 0, smalldisc: 'this is dahi wada', largedisc: "", showItemQtyBar: false },
-
-//     { id: 2, name: 'Sandwich',quantity: 0, category: "snacks", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQi-pcmPUSXX_lShEsi4UB32Nu_gZhyZSuHKtRsX9tiHh1z4WtnQ&s', smalldisc: 'this is a sandwich', largedisc: "", showItemQtyBar: false },
-
-//     { id: 3, name: 'Vada Pav',quantity: 0, category: "snacks", price: 40, image: 'https://c8.alamy.com/comp/P79NX5/vada-pav-from-maharashtra-india-P79NX5.jpg', smalldisc: ' Fast food dish native to the state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle.', largedisc: "", showItemQtyBar: false },
-
-// ]
-
-// Card Body with the buttons
-// <button type="button" className="btn btn-outline-primary"
-//                                             onClick={this.CartHandle}> Add </button>
-//                                         <button type="button" className="btn btn-outline-primary"
-//                                             onClick={this.CartRemoveHandle}> Remove </button>
-//                                         <button type="button" className="btn btn-outline-primary"
-//                                             onClick={this.favouriteHandle}> Favoirate </button>
-
-//                                         {
-//                                             this.state.items[i].showItemQtyBar ?
-//                                                 <div style={{ "display": "inline-block" }} >
-//                                                     <div>
-//                                                         <h1>Quantity :</h1>
-//                                                         <h1>{this.state.items[i].quantity}</h1>
-//                                                         <button type="button" className="btn btn-outline-primary"
-//                                                             onClick={this.incrementHandle}> + </button>
-
-//                                                         <button type="button" className="btn btn-outline-primary"
-//                                                             onClick={this.decrementHandle}>  - </button>
-//                                                         <button type="button" className="btn btn-outline-primary"
-//                                                             onClick={this.resetHandle}> Reset </button>
-//                                                     </div>
-//                                                     <div>
-//                                                         <h1>Price :</h1>
-//                                                         <h1>{this.state.items[i].price * this.state.items[i].quantity}</h1>
-//                                                         {/* how to get id which is clicked? */}
-//                                                     </div>
-
-//                                                 </div>
-//                                                 :
-//                                                 null
-//                                         }
 
 import React from 'react'
 import axios from '../config/axios'
 import Cart from './Cart.js'
 
-export default class Menu extends React.Component {
+export default class ItemCard extends React.Component {
     constructor() {
         super()
         this.state = {
-            isFavourite: false,
             items: [],
-            cartItems: [],
             inputSearch: '',
-            displayType: '',
+
             searchFilter: [],
 
         }
@@ -73,8 +27,6 @@ export default class Menu extends React.Component {
         this.toggleIsSelected = this.toggleIsSelected.bind(this)
         this.requestOrder = this.requestOrder.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.handleSelect = this.handleSelect.bind(this)
-
 
     }
 
@@ -234,6 +186,14 @@ export default class Menu extends React.Component {
         // if Item is already in cartItems remove item 
         // else Add item to the cartItems
 
+
+
+
+
+
+
+
+
     }
 
     toggleIsSelected = (id) => {
@@ -269,10 +229,14 @@ export default class Menu extends React.Component {
 
         this.setState({ items: changedItems })
 
+
+
         console.log('Items found\'s isSelected after:', this.state.items)
         // // console.log('Item found\'s display after:', foundItem.display)
 
         console.log('end of toggleIsSelected Function')
+
+
         return null
     }
 
@@ -315,6 +279,8 @@ export default class Menu extends React.Component {
         // // console.log('Item found\'s display after:', foundItem.display)
 
         console.log('end of resetIsSelected Function')
+
+
         return null
     }
 
@@ -362,20 +328,6 @@ export default class Menu extends React.Component {
         this.setState({ searchFilter })
 
     }
-
-    handleSelect(e) {
-        console.log('You changed the select option')
-        console.log('Value is:', e.target.value)
-
-        this.setState({ displayType: e.target.value.toUpperCase() })
-        this.setState({
-            searchFilter:
-                this.state.items.filter(item => item.category.includes(e.target.value.toLowerCase()))
-        })
-
-
-
-    }
     render() {
         return (
             <div className="Menu-Cart" style={{
@@ -383,75 +335,31 @@ export default class Menu extends React.Component {
                 "marginTop": "-20px"
             }}>
                 <div className="inner-Menu" >
-                    <h1 id="Menu-style">Choose Your Menu</h1>
+                    <h1 id="Menu-style">Item Card</h1>
 
                     <div>
-                        <h1 style={{
-                            "display": "inline-block",
-                            "margin": "30px"
-                        }}>{this.state.displayType}</h1>
+
                         <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" placeholder="Search your item" style={{
                             "padding": "5px",
                             "fontSize": "22px",
                             "backgroundColor": "#f5edc0",
                             "margin": "10px"
-                        }} /><button style={{ "padding": "12px", "marginRight": "30px" }}>Search</button>
-                        <h2 style={{ "fontSize": "22px", "display": "inline-block" }}>Filter Items </h2>
-
-                        <select onChange={this.handleSelect}
-                            style={{
-                                "fontSize": "22px",
-                                "padding": "10px"
-                            }}
-                        >
-                            <option value="all">All</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch</option>
-                            <option value="dinner">Dinner</option>
-                            <option value="sweets">Sweets</option>
-                            <option value="snacks">Snacks</option>
-                        </select>
-                        <hr style={{"height":"10px"}}/>
+                        }} /><button style={{ "padding": "12px" }}>Search</button>
                     </div>
                     <div>
                         {
                             this.state.searchFilter.map((item, i) => {
                                 return (
-                                    <div key={item._id} className="card"
-                                        style={{
-                                            "display": "inline-block",
-                                            "backgroundColor": "#f5d76c",
-                                            "borderWidth": "5px",
-                                            "marginLeft": "10px",
-                                            "marginBottom": "10px",
-                                            "width": "300px",
-                                            "height": "300px"
-                                        }}>
-
-
-                                        <div key={item.id} className='card-body'  >
-                                            <img src={item.imgUrl} alt="" width="250px" height="110px" />
-
-
-                                            <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
-                                            <input type="checkbox" style={{
-                                                "marginLeft": "40%",
-                                                "width": "40px",
-                                                "height": "40px"
-                                            }} onChange={() => { this.checkboxChange(item._id, item.name, item.inCart) }} checked={item.isSelected} />
-
-                                        </div>
+                                    <div key={item._id}>
+                                        <h1 style={{ "textAlign": "left" }}>{i + 1}. {item.name}</h1>
                                     </div>
                                 )
                             })
                         }
                     </div>
                 </div>
-                <Cart cartItems={this.state.cartItems} items={this.state.items}
-                    removeItemFromCart={this.removeItemFromCart}
-                    resetIsSelected={this.resetIsSelected}
-                    requestOrder={this.requestOrder} />
-            </div>
+
+            </div >
         );
     }
 } 

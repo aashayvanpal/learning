@@ -252,35 +252,36 @@ export default class CustomerRequest extends React.Component {
                 <h1>Listing selected items - {this.state.reqOrder.length}</h1>
                 <br />
                 <div style={{ "display": "flex" }}>
-                    <Table hover style={{ "border": "2px solid black", "marginRight": "150px", "background": "darkkhaki" }}>
-                        <thead>
-                            <tr >
-                                <th scope="row"><h2>Sl No</h2></th>
+                    <div style={{ "marginRight": "20px" }}>
+                        <Table hover style={{ "border": "2px solid black", "background": "darkkhaki" }}>
+                            <thead>
+                                <tr >
+                                    <th scope="row"><h2>Sl No</h2></th>
+                                    <th scope="row" ><h2>Item Name</h2></th>
+                                    <th scope="row" ><h2>Quantity</h2></th>
+                                    <th scope="row" ><h2>Price</h2></th>
+                                    <th scope="row" ><h2>Remove</h2></th>
+                                </tr>
 
-                                <th scope="row" ><h2>Item Name</h2></th>
-                                <th scope="row" ><h2>Quantity</h2></th>
-                                <th scope="row" ><h2>Price</h2></th>
-                                <th scope="row" ><h2>Remove</h2></th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            {
-                                this.state.reqOrder.map((item, i) => {
-                                    return (
-                                        <tr key={item.name}>
-                                            <td><h2>{i + 1}</h2></td>
-                                            <td><h2>{item.name}</h2></td>
-                                            <td><button onClick={() => { this.minusHandle(item.id) }}>-</button><input name="quantity" onChange={(e) => { this.handleChange(e, item.quantity, item.id) }} value={item.quantity} style={{ "width": "50px", textAlign: "center" }} /><button onClick={(e) => { this.plusHandle(item.id, e) }}>+</button></td>
-                                            <td><h2>{item.price * item.quantity}</h2></td>
-                                            <td><button onClick={() => { this.handleRemove(item.id) }}>Remove</button></td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </Table>
-                    <Link to="/Menu">Back</Link>
+                            </thead>
+                            <tbody>
+                                {
+                                    this.state.reqOrder.map((item, i) => {
+                                        return (
+                                            <tr key={item.name}>
+                                                <td><h2>{i + 1}</h2></td>
+                                                <td><h2>{item.name}</h2></td>
+                                                <td><button onClick={() => { this.minusHandle(item.id) }}>-</button><input name="quantity" onChange={(e) => { this.handleChange(e, item.quantity, item.id) }} value={item.quantity} style={{ "width": "50px", textAlign: "center" }} /><button onClick={(e) => { this.plusHandle(item.id, e) }}>+</button></td>
+                                                <td><h2>{item.price * item.quantity}</h2></td>
+                                                <td><button onClick={() => { this.handleRemove(item.id) }}>Remove</button></td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </Table>
+                        <Link to="/Menu">Back</Link>
+                    </div>
                     <CustomerForm handleCustomerSubmit={this.handleCustomerSubmit} />
                 </div>
                 {/* <button onClick={this.handleSubmit}>Submit Enquiry</button> */}

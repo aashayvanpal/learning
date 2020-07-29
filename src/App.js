@@ -3,6 +3,7 @@
 import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import Menu from './components/ItemList';
+import MenuList from './components/ItemCard';
 import OrderList from './components/OrderList';
 import OrderShow from './components/order/Show.js';
 
@@ -17,6 +18,7 @@ import ItemDetailsForm from './components/ItemDetailsForm.js';
 import CustomerRequest from './components/CustomerRequest.js'
 
 import './css/app-css.css'
+import ItemCard from './components/ItemCard';
 
 function App() {
   return (
@@ -32,9 +34,9 @@ function App() {
             "textAlign": "left",
             "color": "black",
             "fontSize": "64px",
-            "margin-right": "200px",
-            "margin-left": "20px",
-            "font-family": "Old Standard TT"
+            "marginRight": "200px",
+            "marginLeft": "20px",
+            "fontFamily": "Old Standard TT"
           }}>Aaswad Caterers</h1>
           <h2 className="linkEnquiry">Contact Us</h2>
           <h2 className="linkEnquiry">Submit Enquiry</h2>
@@ -108,6 +110,7 @@ function App() {
                 <span id="Link">Cart</span>
               </h1>
               <Menu />
+              <ItemCard />
             </Route>
 
             <Route path="/Cart" >

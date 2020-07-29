@@ -1,7 +1,6 @@
 // Routing url inside a function
 import React from 'react'
 import { Link } from 'react-router-dom'
-// {/* <td style={{ "border": "2px solid black" }}>{item.name}</td> */ }
 
 export default function DisplayList(props) {
     console.log('props', props)

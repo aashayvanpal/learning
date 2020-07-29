@@ -29,10 +29,14 @@ export default class ItemForm extends Component {
         e.preventDefault()
         console.log("Add item button clicked!")
 
+        let categories = []
+        categories.push("all")
+        this.state.category.split(",").map(category => { categories.push(category) })
+        console.log("categories setState array :", categories)
         const item = {
             name: this.state.name,
             price: this.state.price,
-            category: this.state.category,
+            category: categories,
             imgUrl: this.state.imgUrl,
             display: false
         }

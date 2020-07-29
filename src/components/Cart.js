@@ -30,10 +30,10 @@ export default class Cart extends React.Component {
                     "textAlign": "center",
                     "width": "240px",
                     "height": "72px",
-                    "padding-top": "10px",
-                    "margin-top": "-32px",
-                    "margin-left": "20px",
-                    "box-shadow": "6px 6px 6px"
+                    "paddingTop": "10px",
+                    "marginTop": "-32px",
+                    "marginLeft": "20px",
+                    "boxShadow": "6px 6px 6px"
                 }}> Cart :</h1>
                 {
                     this.props.items.length === 0 ? (<h1>no items in cart</h1>)
@@ -56,7 +56,7 @@ export default class Cart extends React.Component {
                                 <Link to='/request'><button
                                     style={{
                                         "padding": "12px",
-                                        "margin-left": "60px",
+                                        "marginLeft": "60px",
                                         "marginTop": "20px"
                                     }}
                                     onClick={() => {
