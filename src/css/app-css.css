@@ -233,3 +233,8 @@
   box-shadow: 6px 6px 5px;
   margin-top: -34px;
 }
+
+.form-input {
+  font-size: 1.5rem;
+  margin: 5px;
+}

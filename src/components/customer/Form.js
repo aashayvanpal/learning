@@ -76,41 +76,40 @@ export default class CustomerForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} style={{ "border": "2px solid black", "padding": "50px" }}>
-                <h1>Add Your Details </h1><br />
+                <h1 style={{ "marginTop": "-30px" }}>Add Your Details </h1><br />
+                <input name="fullName" className="form-input" value={this.state.fullName} onChange={this.handleChange} placeholder="Full Name" />
+                <br />
+
+                <input name="phoneNumber" className="form-input" value={this.state.phoneNumber} onChange={this.handleChange} placeholder="Phone Number" />
+                <br />
+
+                <input name="email" className="form-input" value={this.state.email} onChange={this.handleChange} placeholder="Email" />
+                <br />
+
+                <input name="address" className="form-input" value={this.state.address} onChange={this.handleChange} placeholder="Address" />
+                <br />
+
+                <input name="queries" className="form-input" value={this.state.queries} onChange={this.handleChange} placeholder="Queries" />
+                <br />
+
+                <input name="eventName" className="form-input" value={this.state.eventName} onChange={this.handleChange} placeholder="Event Name" />
+                <br />
+
+                <input name="numberOfPeople" className="form-input" value={this.state.numberOfPeople} onChange={this.handleChange} placeholder="Number of people" />
+                <br />
+
+                <input name="eventDate" className="form-input" value={this.state.eventDate} onChange={this.handleChange} placeholder="Event Date" />
+                <br />
+
+                <input name="eventTime" className="form-input" value={this.state.eventTime} onChange={this.handleChange} placeholder="Event Time" />
+                <br />
                 <label>
-                    <input name="fullName" value={this.state.fullName} onChange={this.handleChange} placeholder="Full Name" />
+                    <span className="form-input">Home Delivery</span><input name="homeDelivery" className="form-input" checked={this.state.homeDelivery} onChange={this.handleCheckboxChange} type="checkbox" />
                 </label><br />
-                <label>
-                    <input name="phoneNumber" value={this.state.phoneNumber} onChange={this.handleChange} placeholder="Phone Number" />
+                <label >
+                    <span className="form-input">Service</span><input name="service" className="form-input" checked={this.state.service} onChange={this.handleCheckboxChangeService} type="checkbox" />
                 </label><br />
-                <label>
-                    <input name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" />
-                </label><br />
-                <label>
-                    <input name="address" value={this.state.address} onChange={this.handleChange} placeholder="Address" />
-                </label><br />
-                <label>
-                    <input name="queries" value={this.state.queries} onChange={this.handleChange} placeholder="Queries" />
-                </label><br />
-                <label>
-                    <input name="eventName" value={this.state.eventName} onChange={this.handleChange} placeholder="Event Name" />
-                </label><br />
-                <label>
-                    <input name="numberOfPeople" value={this.state.numberOfPeople} onChange={this.handleChange} placeholder="Number of people" />
-                </label><br />
-                <label>
-                    <input name="eventDate" value={this.state.eventDate} onChange={this.handleChange} placeholder="Event Date" />
-                </label><br />
-                <label>
-                    <input name="eventTime" value={this.state.eventTime} onChange={this.handleChange} placeholder="Event Time" />
-                </label><br />
-                <label>
-                    Home Delivery<input name="homeDelivery" checked={this.state.homeDelivery} onChange={this.handleCheckboxChange} type="checkbox" />
-                </label><br />
-                <label>
-                    Service<input name="service" checked={this.state.service} onChange={this.handleCheckboxChangeService} type="checkbox" />
-                </label><br />
-                <input type="submit" value="Submit Enquiry" onClick={this.props.handleSubmit} />
+                <input type="submit" className="form-input" value="Submit Enquiry" onClick={this.props.handleSubmit} />
 
             </form>
         )
