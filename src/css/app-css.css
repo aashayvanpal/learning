@@ -21,7 +21,7 @@
 .Nav-bar {
   background-color: #04045f;
   width: 15%;
-
+  display: none;
   font-size: 30px;
 }
 
@@ -138,11 +138,14 @@
 }
 
 .Link-Navigations {
-  /* background-color: #dbb539; */
-  background-color: #f5d76c;
+  /* background-color: #f5d76c; */
+  background-color: #ffffff;
   padding: 20px;
   text-align: center;
   border-radius: 2px solid;
+  width: 800px;
+  border: 2px solid;
+  margin-left: 15%;
 }
 
 .topNav {
@@ -152,6 +155,10 @@
 #mySidenavMobile {
   display: none;
   background-color: white;
+}
+
+.Menu-Cart {
+  display: flex;
 }
 
 @media screen and (max-width: 900px) {
@@ -207,4 +214,22 @@
   height: 63px;
   width: 49px;
   margin-top: 15px;
+}
+
+.inner-Menu {
+  background-color: #dbc268;
+  margin-right: 20px;
+}
+
+#Menu-style {
+  background-color: rgb(245, 237, 192);
+  border: 2px solid black;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  z-index: 30;
+  width: 780px;
+  margin-left: 77px;
+  box-shadow: 6px 6px 5px;
+  margin-top: -34px;
 }

@@ -21,30 +21,49 @@ export default class Cart extends React.Component {
         // console.log("check props for cart items to show :", this.props.items.length)
         console.log("check props for cart items to show :", this.props.items)
         return (
-            <div>
-                <h1 style={{ "backgroundColor": "rgb(245, 237, 192)", "border": "2px solid black", "textAlign": "center", "width": "260px" }}> Cart :</h1>
+            <div className="inner-Cart" style={{
+                "backgroundColor": "#DBC268"
+            }}>
+                <h1 style={{
+                    "backgroundColor": "rgb(245, 237, 192)",
+                    "border": "2px solid black",
+                    "textAlign": "center",
+                    "width": "240px",
+                    "height": "72px",
+                    "padding-top": "10px",
+                    "margin-top": "-32px",
+                    "margin-left": "20px",
+                    "box-shadow": "6px 6px 6px"
+                }}> Cart :</h1>
                 {
                     this.props.items.length === 0 ? (<h1>no items in cart</h1>)
                         :
                         (
-                            <div>{
-                                this.props.items.filter(item => item.isSelected === true).map((item, i) => {
-                                    return (
-                                        <div key={item._id} style={{ "display": "flex" }}>
-                                            <h2>{i + 1}.{item.name}</h2>
-                                            <button onClick={() => {
-                                                this.props.resetIsSelected(item._id)
-                                                // this.props.removeItemFromCart(item.id)
-                                            }}>X</button>
-                                        </div>
-                                    )
-                                })
-                            }
-                                <Link to='/request'><button onClick={() => {
-                                    // console.log('request button clicked!')
-                                    // window.alert('request button clicked')
-                                    this.props.requestOrder()
-                                }}>Review Selections</button></Link>
+                            <div style={{ "width": "280px" }}>
+                                {
+                                    this.props.items.filter(item => item.isSelected === true).map((item, i) => {
+                                        return (
+                                            <div key={item._id} style={{ "display": "flex", "margin-left": "20px" }}>
+                                                <h2 style={{ "padding": "5px" }}>{i + 1}. {item.name}</h2>
+                                                <button onClick={() => {
+                                                    this.props.resetIsSelected(item._id)
+                                                    // this.props.removeItemFromCart(item.id)
+                                                }}>X</button>
+                                            </div>
+                                        )
+                                    })
+                                }
+                                <Link to='/request'><button
+                                    style={{
+                                        "padding": "12px",
+                                        "margin-left": "60px",
+                                        "marginTop": "20px"
+                                    }}
+                                    onClick={() => {
+                                        // console.log('request button clicked!')
+                                        // window.alert('request button clicked')
+                                        this.props.requestOrder()
+                                    }}>Review Selections</button></Link>
                             </div>
                         )
                 }

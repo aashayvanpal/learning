@@ -33,7 +33,8 @@ function App() {
             "color": "black",
             "fontSize": "64px",
             "margin-right": "200px",
-            "margin-left": "20px"
+            "margin-left": "20px",
+            "font-family": "Old Standard TT"
           }}>Aaswad Caterers</h1>
           <h2 className="linkEnquiry">Contact Us</h2>
           <h2 className="linkEnquiry">Submit Enquiry</h2>
@@ -106,21 +107,7 @@ function App() {
                 <span id="Link">Menu</span>
                 <span id="Link">Cart</span>
               </h1>
-              <div>
-                <h1 style={{
-                  "background-color": "rgb(245, 237, 192)",
-                  "border": " 2px solid black",
-                  "text-align": "center",
-                  "padding": "10px",
-                  "position": "relative",
-                  "z-index": "30",
-                  "width": "830px",
-                  "margin-left": "50px",
-
-
-                }}>Choose Your Menu</h1>
-                <Menu />
-              </div>
+              <Menu />
             </Route>
 
             <Route path="/Cart" >

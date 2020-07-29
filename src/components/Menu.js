@@ -376,42 +376,58 @@ export default class Menu extends React.Component {
     }
     render() {
         return (
-            <div className="menu">
-                <div>
-                    Breakfast
-                <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" placeholder="Search your item" style={{ "padding": "5px", "font-size": "22px" }} /><button>Search</button>
-                </div>
-                <div>
-                    {
-                        this.state.searchFilter.map((item, i) => {
-                            return (
-                                <div key={item._id} className="card"
-                                    style={{
-                                        "display": "inline-block",
-                                        "background-color": "#f5d76c",
-                                        "borderWidth": "5px",
-                                        "margin": "20px",
-                                        "width": "300px",
-                                        "height": "250px"
-                                    }}>
+            <div className="Menu-Cart" style={{
+                "padding": "60px 10px 0px 10px",
+                "margin-top": "-20px"
+            }}>
+                <div className="inner-Menu" >
+                    <h1 id="Menu-style">Choose Your Menu</h1>
+
+                    <div>
+                        <h1 style={{
+                            "display": "inline-block",
+                            "margin": "30px"
+                        }}>Breakfast</h1>
+                        <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" placeholder="Search your item" style={{
+                            "padding": "5px",
+                            "font-size": "22px",
+                            "background-color": "#f5edc0",
+                            "margin": "10px"
+                        }} /><button style={{ "padding": "12px" }}>Search</button>
+                    </div>
+                    <div>
+                        {
+                            this.state.searchFilter.map((item, i) => {
+                                return (
+                                    <div key={item._id} className="card"
+                                        style={{
+                                            "display": "inline-block",
+                                            "background-color": "#f5d76c",
+                                            "borderWidth": "5px",
+                                            "marginLeft": "10px",
+                                            "marginBottom": "10px",
+                                            "width": "300px",
+                                            "height": "300px"
+                                        }}>
 
 
-                                    <div key={item.id} className='card-body'  >
-                                        <img src={item.imgUrl} alt="" width="150px" height="103px" />
+                                        <div key={item.id} className='card-body'  >
+                                            <img src={item.imgUrl} alt="" width="250px" height="110px" />
 
 
-                                        <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
-                                        <input type="checkbox" style={{
-                                            "marginLeft": "40%",
-                                            "width": "40px",
-                                            "height": "40px"
-                                        }} onChange={() => { this.checkboxChange(item._id, item.name, item.inCart) }} checked={item.isSelected} />
+                                            <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
+                                            <input type="checkbox" style={{
+                                                "marginLeft": "40%",
+                                                "width": "40px",
+                                                "height": "40px"
+                                            }} onChange={() => { this.checkboxChange(item._id, item.name, item.inCart) }} checked={item.isSelected} />
 
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        })
-                    }
+                                )
+                            })
+                        }
+                    </div>
                 </div>
                 <Cart cartItems={this.state.cartItems} items={this.state.items}
                     removeItemFromCart={this.removeItemFromCart}
