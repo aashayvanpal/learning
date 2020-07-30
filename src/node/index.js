@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
 
 app.use('/', router)
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('./build'))
+}
+
 app.listen(port, () => {
     console.log('listening to port :', port)
 })

@@ -38,8 +38,16 @@ function App() {
             "marginLeft": "20px",
             "fontFamily": "Old Standard TT"
           }}>Aaswad Caterers</h1>
-          <h2 className="linkEnquiry">Contact Us</h2>
-          <h2 className="linkEnquiry">Submit Enquiry</h2>
+          <h2 className="linkEnquiry"><button
+            onClick={() => { window.alert('Please call on :9743419673') }}
+            style={{ "backgroundColor": "#dbc268", "border": "none" }}
+          >Contact Us</button></h2>
+          <h2 className="linkEnquiry">
+            <button
+              style={{ "backgroundColor": "#dbc268", "border": "none" }}>
+              Submit Enquiry
+            </button>
+          </h2>
 
           <div className="user">
 
@@ -57,9 +65,9 @@ function App() {
           </div>
 
           <div className="topNav">
-            <span><Link to='/' style={{ "color": "black" }}>Home</Link></span>&nbsp;
+            {/* <span><Link to='/' style={{ "color": "black" }}>Home</Link></span>&nbsp;
           <span><Link to='/Menu' style={{ "color": "black" }}>Menu</Link></span>&nbsp;
-          <span><Link to='/Cart' style={{ "color": "black" }} >My Cart </Link></span>
+          <span><Link to='/Cart' style={{ "color": "black" }} >My Cart </Link></span> */}
 
             <div id="mySidenavMobile">
               <button id="x-mark" className="closebtn" onClick={() => {
@@ -105,9 +113,9 @@ function App() {
 
             <Route path="/Menu" >
               <h1 className="Link-Navigations">
-                <span id="Link">Home</span>
-                <span id="Link">Menu</span>
-                <span id="Link">Cart</span>
+                <span id="Link"><Link to="/">Home</Link></span>
+                <span id="Link"><Link to="/Menu">Menu</Link></span>
+                <span id="Link"><Link to="/Cart">Cart</Link></span>
               </h1>
               <Menu />
               <ItemCard />
