@@ -280,7 +280,7 @@ export default class CustomerRequest extends React.Component {
                                 }
                             </tbody>
                         </Table>
-                        <Link to="/Menu">Back</Link>
+                        <Link to="/Menu"><button>Back</button></Link>
                     </div>
                     <CustomerForm handleCustomerSubmit={this.handleCustomerSubmit} />
                 </div>

@@ -41,7 +41,6 @@ export default class ItemShow extends React.Component {
                 let fullName = this.state.order.customer.fullName
                 let address = this.state.order.customer.address
                 let email = this.state.order.customer.email
-                let eventDate = this.state.order.customer.eventDate
                 let eventName = this.state.order.customer.eventName
                 let numberOfPeople = this.state.order.customer.numberOfPeople
                 console.log('numberOfPeople :', this.state.order.customer.numberOfPeople)
@@ -53,6 +52,16 @@ export default class ItemShow extends React.Component {
                 let service = this.state.order.customer.service
                 let items = this.state.order.items
                 let status = this.state.order.status
+                let eventDate = this.state.order.customer.eventDate.toString()
+                // console.log("Event Date check:", eventDate)
+                // console.log("Event Date check typeof:", typeof (eventDate))
+                // console.log("Event Date check here:", eventDate.substr(8, 2) + "/" + eventDate.substr(5, 2) + "/" + eventDate.substr(0, 4))
+                eventDate = eventDate.substr(8, 2) + "/" + eventDate.substr(5, 2) + "/" + eventDate.substr(0, 4)
+                // console.log("The Date is :",eventDate.subStr(8, 2) + "/" + eventDate.subStr(5, 2) + "/" + eventDate.subStr(0, 4))
+                // console.log("The Date is :",eventDate.subString(0,5))
+
+                // const dateConverted = eventDate.subStr(8, 2) + "/" + eventDate.subStr(5, 2) + "/" + eventDate.subStr(0, 4)
+                // console.log("date converted:", dateConverted)
 
                 this.setState({
                     fullName,
@@ -105,6 +114,7 @@ export default class ItemShow extends React.Component {
                     <h1>Customer Name : {this.state.fullName}</h1>
                     <h1>Event Name : {this.state.eventName}</h1>
                     <h1>Number of People : {this.state.numberOfPeople}</h1>
+                    <h1>Event Date : {this.state.eventDate}</h1>
                     <h1>Event Time : {this.state.eventTime}</h1>
                     <h1>Phone Number : {this.state.phoneNumber}</h1>
                     <h1>Address : {this.state.address}</h1>

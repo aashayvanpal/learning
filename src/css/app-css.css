@@ -193,11 +193,12 @@
 }
 
 .linkEnquiry {
-  margin-top: 40px;
+  margin: 40px 20px;
 }
 
 .header {
-  display: flex;
+  width: 100%;
+  display: inline-flex;
   background-color: #dbc268;
   margin-bottom: 13px;
   box-shadow: 5px 10px 6px;
@@ -238,8 +239,8 @@
   padding: 10px;
   position: relative;
   z-index: 30;
-  width: 780px;
-  margin-left: 77px;
+  width: 80%;
+  margin-left: 10%;
   box-shadow: 6px 6px 5px;
   margin-top: -34px;
 }
@@ -248,3 +249,17 @@
   font-size: 1.5rem;
   margin: 5px;
 }
+
+/* .card-body {
+  background-color: #bbe1fa;
+  height: 100%;
+} */
+/* .card {
+  display: inline-flex;
+  background-color: #f5d76c;
+  border-width: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 300px;
+} */

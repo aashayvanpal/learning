@@ -1,4 +1,7 @@
 import React from 'react'
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 export default class CustomerForm extends React.Component {
     constructor(props) {
@@ -14,7 +17,8 @@ export default class CustomerForm extends React.Component {
             eventDate: '',
             eventTime: '',
             homeDelivery: false,
-            service: false
+            service: false,
+            startDate: new Date()
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -51,6 +55,8 @@ export default class CustomerForm extends React.Component {
         e.preventDefault()
         console.log("submit enquiry button clicked! check this ")
 
+
+
         const customer = {
             fullName: this.state.fullName,
             phoneNumber: this.state.phoneNumber,
@@ -59,7 +65,7 @@ export default class CustomerForm extends React.Component {
             queries: this.state.queries,
             eventName: this.state.eventName,
             numberOfPeople: this.state.numberOfPeople,
-            eventDate: this.state.eventDate,
+            eventDate: this.state.startDate,
             eventTime: this.state.eventTime,
             homeDelivery: this.state.homeDelivery,
             service: this.state.service
@@ -72,6 +78,12 @@ export default class CustomerForm extends React.Component {
         console.log("customer Data: ", customer)
         this.props.handleCustomerSubmit(customer)
     }
+
+    handleDateChange = date => {
+        this.setState({
+            startDate: date
+        });
+    };
 
     render() {
         return (
@@ -98,8 +110,17 @@ export default class CustomerForm extends React.Component {
                 <input name="numberOfPeople" className="form-input" value={this.state.numberOfPeople} onChange={this.handleChange} placeholder="Number of people" />
                 <br />
 
-                <input name="eventDate" className="form-input" value={this.state.eventDate} onChange={this.handleChange} placeholder="Event Date" />
-                <br />
+                {/* <input name="eventDate" className="form-input" value={this.state.eventDate} onChange={this.handleChange} placeholder="Event Date" />
+                <br /> */}
+
+                {/* date start */}
+                <DatePicker className="form-input"
+                    selected={this.state.startDate}
+                    onChange={this.handleDateChange}
+                    dateFormat="Pp"
+                    showTimeSelect
+                />
+                {/* date end */}
 
                 <input name="eventTime" className="form-input" value={this.state.eventTime} onChange={this.handleChange} placeholder="Event Time" />
                 <br />

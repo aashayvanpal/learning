@@ -260,7 +260,9 @@ export default class ItemList extends Component {
                                                     this.handleApproveOrder(item._id)
                                                 }}>Approve</button>
                                             </td>
-                                            <td className="listing-table" >{item.customer.eventDate}</td>
+                                            <td className="listing-table" >{
+                                                item.customer.eventDate.substr(8, 2) + "/" + item.customer.eventDate.substr(5, 2) + "/" + item.customer.eventDate.substr(0, 4)
+                                            }</td>
                                         </tr>
                                     )
                                 })
@@ -294,7 +296,9 @@ export default class ItemList extends Component {
                                             <td className="listing-table" >{i + 1}</td>
                                             <td className="listing-table" ><Link to={`/orders/${item._id}`}>{item.customer.fullName}</Link></td>
                                             <td className="listing-table" ><button>update</button></td>
-                                            <td className="listing-table" >{item.customer.eventDate}</td>
+                                            <td className="listing-table" >{
+                                                item.customer.eventDate.substr(8, 2) + "/" + item.customer.eventDate.substr(5, 2) + "/" + item.customer.eventDate.substr(0, 4)
+                                            }</td>
                                             <td className="listing-table" ><button onClick={() => {
                                                 this.handleRemoveOrder(item._id)
                                             }}>Remove</button></td>
@@ -329,7 +333,9 @@ export default class ItemList extends Component {
                                         <tr key={item._id}>
                                             <td className="listing-table" >{i + 1}</td>
                                             <td className="listing-table" ><Link to={`/orders/${item._id}`}>{item.customer.fullName}</Link></td>
-                                            <td className="listing-table" >{item.customer.eventDate}</td>
+                                            <td className="listing-table" >{
+                                                item.customer.eventDate.substr(8, 2) + "/" + item.customer.eventDate.substr(5, 2) + "/" + item.customer.eventDate.substr(0, 4)
+                                            }</td>
                                             <td className="listing-table" ><button onClick={() => {
                                                 this.handleRemoveOrder(item._id)
                                             }}>Remove</button></td>

@@ -33,10 +33,16 @@ export default class Cart extends React.Component {
                     "paddingTop": "10px",
                     "marginTop": "-32px",
                     "marginLeft": "20px",
+                    "marginRight": "20px",
                     "boxShadow": "6px 6px 6px"
                 }}> Cart :</h1>
                 {
-                    this.props.items.length === 0 ? (<h1>no items in cart</h1>)
+                    this.props.items.filter(item => item.isSelected === true).length === 0 ? (
+                        <h1 style={{
+                            "margin": "30px",
+                            "textAlign": "center"
+                        }}>No items in cart</h1>
+                    )
                         :
                         (
                             <div style={{ "width": "280px" }}>
@@ -48,7 +54,20 @@ export default class Cart extends React.Component {
                                                 <button onClick={() => {
                                                     this.props.resetIsSelected(item._id)
                                                     // this.props.removeItemFromCart(item.id)
-                                                }}>X</button>
+
+                                                }}
+                                                    style={{
+                                                        "border-radius": "20%",
+                                                        "color": "white",
+                                                        "background": "red",
+                                                        "cursor": "pointer",
+                                                        "height": "35px",
+                                                        "width": "40px",
+                                                        "margin-top": "6px",
+
+                                                    }}><span style={{
+                                                        "fontWeight": "bold"
+                                                    }}>-</span></button>
                                             </div>
                                         )
                                     })

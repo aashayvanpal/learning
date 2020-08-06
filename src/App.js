@@ -38,53 +38,53 @@ function App() {
             "marginLeft": "20px",
             "fontFamily": "Old Standard TT"
           }}>Aaswad Caterers</h1>
-          <h2 className="linkEnquiry"><button
-            onClick={() => { window.alert('Please call on :9743419673') }}
-            style={{ "backgroundColor": "#dbc268", "border": "none" }}
-          >Contact Us</button></h2>
-          <h2 className="linkEnquiry">
-            <button
-              style={{ "backgroundColor": "#dbc268", "border": "none" }}>
-              Submit Enquiry
+          <div style={{ "display": "flex", "position": "absolute", "right": "15px" }}>
+            <h2 className="linkEnquiry"><button
+              onClick={() => { window.alert('Please call on :9743419673') }}
+              style={{ "backgroundColor": "#dbc268", "border": "none" }}
+            >Contact Us</button></h2>
+            <h2 className="linkEnquiry">
+              <button
+                style={{ "backgroundColor": "#dbc268", "border": "none" }}>
+                Submit Enquiry
             </button>
-          </h2>
+            </h2>
 
-          <div className="user">
+            <div className="user">
 
-            <img src="./images/User.png" alt="" />
-          </div>
+              <img src="./images/User.png" alt="" />
+            </div>
 
-          <div id="burger" onClick={() => {
-            console.log('burger clicked!')
-            document.getElementById("mySidenavMobile").style.width = "180px";
-            document.getElementById("mySidenavMobile").style.display = "inline";
-          }}>
-            <div id="bar"></div>
-            <div id="bar"></div>
-            <div id="bar"></div>
-          </div>
+            <div id="burger" onClick={() => {
+              console.log('burger clicked!')
+              document.getElementById("mySidenavMobile").style.width = "180px";
+              document.getElementById("mySidenavMobile").style.display = "inline";
+            }}>
+              <div id="bar"></div>
+              <div id="bar"></div>
+              <div id="bar"></div>
+            </div>
 
-          <div className="topNav">
-            {/* <span><Link to='/' style={{ "color": "black" }}>Home</Link></span>&nbsp;
+            <div className="topNav">
+              {/* <span><Link to='/' style={{ "color": "black" }}>Home</Link></span>&nbsp;
           <span><Link to='/Menu' style={{ "color": "black" }}>Menu</Link></span>&nbsp;
           <span><Link to='/Cart' style={{ "color": "black" }} >My Cart </Link></span> */}
 
-            <div id="mySidenavMobile">
-              <button id="x-mark" className="closebtn" onClick={() => {
-                console.log('clicked on close button')
-                document.getElementById("mySidenavMobile").style.display = "none";
-                document.getElementById("mySidenavMobile").style.width = "0";
-              }}>&times;</button>
-              <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/Menu">Menu</a></li>
-                <li><a href="/cart">My Cart</a></li>
-              </ul>
+              <div id="mySidenavMobile">
+                <button id="x-mark" className="closebtn" onClick={() => {
+                  console.log('clicked on close button')
+                  document.getElementById("mySidenavMobile").style.display = "none";
+                  document.getElementById("mySidenavMobile").style.width = "0";
+                }}>&times;</button>
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/Menu">Menu</a></li>
+                  <li><a href="/cart">My Cart</a></li>
+                </ul>
+              </div>
+
             </div>
-
-
           </div>
-
         </div>
 
 

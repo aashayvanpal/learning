@@ -74,6 +74,8 @@ export default class Menu extends React.Component {
         this.requestOrder = this.requestOrder.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleSelect = this.handleSelect.bind(this)
+        this.clearSearch = this.clearSearch.bind(this)
+
 
 
     }
@@ -354,6 +356,7 @@ export default class Menu extends React.Component {
 
     handleChange = (e) => {
         console.log('Inside handleChange')
+        console.log('e.target:', e.target)
         console.log('e.target.value:', e.target.value)
         console.log('this.state.items:', this.state.items)
         console.log('this.state.items filtered:', this.state.items.filter(item => item.name.includes(e.target.value)))
@@ -376,6 +379,19 @@ export default class Menu extends React.Component {
 
 
     }
+
+    clearSearch() {
+        console.log("clear search button clicked!")
+        // this.handleChange(document.getElementById("inputSearch"))
+        this.setState({
+            searchFilter: this.state.items
+        })
+        console.log(document.getElementById("inputSearch"))
+        console.log(document.getElementById("filterItems").value = "all")
+        document.getElementById("inputSearch").value = ""
+        document.getElementById("filterItems").value = "all"
+        this.setState({ displayType: "ALL" })
+    }
     render() {
         return (
             <div className="Menu-Cart" style={{
@@ -390,12 +406,12 @@ export default class Menu extends React.Component {
                             "display": "inline-block",
                             "margin": "30px"
                         }}>{this.state.displayType}</h1>
-                        <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" placeholder="Search your item" style={{
+                        <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" id="inputSearch" placeholder="Search your item" style={{
                             "padding": "5px",
                             "fontSize": "22px",
                             "backgroundColor": "#f5edc0",
                             "margin": "10px"
-                        }} /><button style={{ "padding": "12px", "marginRight": "30px" }}>Search</button>
+                        }} /><button style={{ "padding": "12px", "marginRight": "30px" }} onClick={this.clearSearch}>Clear</button>
                         <h2 style={{ "fontSize": "22px", "display": "inline-block" }}>Filter Items </h2>
 
                         <select onChange={this.handleSelect}
@@ -403,6 +419,8 @@ export default class Menu extends React.Component {
                                 "fontSize": "22px",
                                 "padding": "10px"
                             }}
+
+                            id="filterItems"
                         >
                             <option value="all">All</option>
                             <option value="breakfast">Breakfast</option>
@@ -411,7 +429,7 @@ export default class Menu extends React.Component {
                             <option value="sweets">Sweets</option>
                             <option value="snacks">Snacks</option>
                         </select>
-                        <hr style={{"height":"10px"}}/>
+                        <hr style={{ "height": "10px" }} />
                     </div>
                     <div>
                         {
@@ -428,17 +446,20 @@ export default class Menu extends React.Component {
                                             "height": "300px"
                                         }}>
 
-
-                                        <div key={item.id} className='card-body'  >
-                                            <img src={item.imgUrl} alt="" width="250px" height="110px" />
-
-
-                                            <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
+                                        {/* <div key={item._id} className="card"> */}
+                                        <div key={item.id} className='card-body' style={{ "cursor": "pointer", "zIndex": "1" }} onClick={() => { this.checkboxChange(item._id, item.name, item.inCart) }} >
+                                            <div style={{ "width": "250px", "height": "110px" }}>
+                                                <img src={item.imgUrl} alt={item.name + " image"} width="250px" height="110px" />
+                                            </div>
+                                            <div style={{ "height": "100px", "width": "250px", "display": "table-cell", "vertical-align": "middle" }}>
+                                                <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
+                                            </div>
                                             <input type="checkbox" style={{
                                                 "marginLeft": "40%",
                                                 "width": "40px",
-                                                "height": "40px"
-                                            }} onChange={() => { this.checkboxChange(item._id, item.name, item.inCart) }} checked={item.isSelected} />
+                                                "height": "40px",
+                                                "cursor": "pointer"
+                                            }} checked={item.isSelected} />
 
                                         </div>
                                     </div>
@@ -447,7 +468,8 @@ export default class Menu extends React.Component {
                         }
                     </div>
                 </div>
-                <Cart cartItems={this.state.cartItems} items={this.state.items}
+                <Cart cartItems={this.state.cartItems}
+                    items={this.state.items}
                     removeItemFromCart={this.removeItemFromCart}
                     resetIsSelected={this.resetIsSelected}
                     requestOrder={this.requestOrder} />
