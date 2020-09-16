@@ -43,7 +43,7 @@
 }
 
 .content-showcase {
-  margin: 10px;
+  margin: 15px;
 }
 
 .button-color3 {
@@ -97,6 +97,12 @@
   margin: 20px 65px 16px;
 }
 
+#splash-img {
+  background: url("../images/Vector 1.png");
+  width: 1000vh;
+  height: 1000vh;
+  display: block;
+}
 #burger {
   cursor: pointer;
   display: none;
@@ -225,6 +231,7 @@
   height: 63px;
   width: 49px;
   margin-top: 15px;
+  border: none;
 }
 
 .inner-Menu {
@@ -248,6 +255,32 @@
 .form-input {
   font-size: 1.5rem;
   margin: 5px;
+}
+
+.SignUpCard {
+  background-color: #f5edc0;
+  width: 886px;
+  margin-left: 20%;
+  border-radius: 48px;
+  padding: 25px;
+  border: 2px solid black;
+}
+
+.inputBox {
+  width: 634px;
+  height: 80px;
+  padding: 10px;
+  margin: 15px;
+  text-align: center;
+  margin-left: 12%;
+  font-size: 32px;
+  border-radius: 50px;
+  box-shadow: 5px 5px;
+}
+
+#caterer {
+  height: 50px;
+  width: 30px;
 }
 
 /* .card-body {

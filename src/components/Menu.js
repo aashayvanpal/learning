@@ -57,7 +57,7 @@ export default class Menu extends React.Component {
             inputSearch: '',
             displayType: '',
             searchFilter: [],
-
+            username: ''
         }
 
         this.incrementHandle = this.incrementHandle.bind(this)
@@ -139,6 +139,21 @@ export default class Menu extends React.Component {
 
     componentDidMount() {
 
+        // Do a get request to /account to get user name , add x-auth as header to it
+        // just set the token in localStorage and get it in x-auth , the code is working fine,,,
+        axios.get('/account', {
+            headers: { 'x-auth': localStorage.getItem('token') }
+        })
+            .then(dataRequest => {
+                console.log("data :", dataRequest)
+                this.setState({
+                    username: dataRequest.data.username
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
         function itemsFilter(items) {
             return (items.filter(item => item.display === true))
         }
@@ -166,6 +181,7 @@ export default class Menu extends React.Component {
             .catch(err => {
                 console.log(err)
             })
+
     }
 
 
@@ -399,7 +415,7 @@ export default class Menu extends React.Component {
                 "marginTop": "-20px"
             }}>
                 <div className="inner-Menu" >
-                    <h1 id="Menu-style">Choose Your Menu</h1>
+                    <h1 id="Menu-style">Choose Your Menu -{this.state.username}</h1>
 
                     <div>
                         <h1 style={{
@@ -451,7 +467,7 @@ export default class Menu extends React.Component {
                                             <div style={{ "width": "250px", "height": "110px" }}>
                                                 <img src={item.imgUrl} alt={item.name + " image"} width="250px" height="110px" />
                                             </div>
-                                            <div style={{ "height": "100px", "width": "250px", "display": "table-cell", "vertical-align": "middle" }}>
+                                            <div style={{ "height": "100px", "width": "250px", "display": "table-cell", "verticalAlign": "middle" }}>
                                                 <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
                                             </div>
                                             <input type="checkbox" style={{
@@ -459,7 +475,7 @@ export default class Menu extends React.Component {
                                                 "width": "40px",
                                                 "height": "40px",
                                                 "cursor": "pointer"
-                                            }} checked={item.isSelected} />
+                                            }} checked={item.isSelected} onChange={() => { }} />
 
                                         </div>
                                     </div>

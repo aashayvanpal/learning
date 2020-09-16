@@ -252,7 +252,7 @@ export default class CustomerRequest extends React.Component {
                 <h1>Listing selected items - {this.state.reqOrder.length}</h1>
                 <br />
                 <div style={{ "display": "flex" }}>
-                    <div style={{ "marginRight": "20px" }}>
+                    <div style={{ "marginRight": "20px", "width": "70%" }}>
                         <Table hover style={{ "border": "2px solid black", "background": "darkkhaki" }}>
                             <thead>
                                 <tr >

@@ -3,6 +3,8 @@ const router = express.Router()
 
 const itemController = require('../controllers/itemController.js')
 const approveController = require('../controllers/approveController.js')
+const { usersRouter } = require('../controllers/UsersController.js')
+
 
 
 // const customerController = require('../app/controllers/customerController.js')
@@ -39,9 +41,11 @@ router.delete('/orders/:id', approveController.destroy)
 router.get('/orders/:id', approveController.show)
 
 
-
-
-
+// Registeration 
+router.post('/register', usersRouter)
+router.post('/login', usersRouter)
+router.get('/account', usersRouter)
+router.delete('/logout', usersRouter)
 
 
 

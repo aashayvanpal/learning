@@ -87,7 +87,7 @@ export default class CustomerForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} style={{ "border": "2px solid black", "padding": "50px" }}>
+            <form onSubmit={this.handleSubmit} style={{ "border": "2px solid black", "padding": "50px", "width": "36%" }}>
                 <h1 style={{ "marginTop": "-30px" }}>Add Your Details </h1><br />
                 <input name="fullName" className="form-input" value={this.state.fullName} onChange={this.handleChange} placeholder="Full Name" />
                 <br />

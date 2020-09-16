@@ -17,7 +17,8 @@ export default class ItemShow extends React.Component {
             homeDelivery: false,
             phoneNumber: '',
             service: false,
-            items: []
+            items: [],
+            total: 0
         }
 
     }
@@ -119,21 +120,25 @@ export default class ItemShow extends React.Component {
                     <h1>Phone Number : {this.state.phoneNumber}</h1>
                     <h1>Address : {this.state.address}</h1>
                     <h1>Email : {this.state.email}</h1>
-                    <h1>Service : {this.state.service ? "true" : "false"}</h1>
-                    <h1>Home Delivery : {this.state.homeDelivery ? "true" : "false"}</h1>
+                    <h1>Service : {this.state.service ? "Yes" : "No"}</h1>
+                    <h1>Home Delivery : {this.state.homeDelivery ? "Yes" : "No"}</h1>
                     <h1>Status : {this.state.status}</h1>
                     <h1><Link to="/orders"><button>Back</button></Link></h1>
                 </div>
 
                 <div style={{ "border": "2px solid black", "padding": "20px" }}>
-                    <h1>Listing Items {this.state.items.length}</h1>
+                    <h1>Listing Items - {this.state.items.length}</h1>
+                    <h1>Item Name  - Quantity -  Price</h1>
                     <ol>
                         {
                             this.state.items.map(item => {
-                                return <h1 key={item.id}><li>{item.name} - {item.quantity}</li></h1>
+                                this.state.total += item.quantity * item.price
+                                return <h1 key={item.id}><li>{item.name} - {item.quantity} - {item.quantity * item.price}</li></h1>
                             })
                         }
                     </ol>
+                    <h1>Total = {this.state.total}</h1>
+
                 </div>
             </div>
         )

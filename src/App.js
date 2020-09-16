@@ -7,6 +7,7 @@ import MenuList from './components/ItemCard';
 import OrderList from './components/OrderList';
 import OrderShow from './components/order/Show.js';
 
+
 import AddUserData from './components/AddUserData.js';
 // import Calender from './GUI/Calender.js';
 import ItemList from './components/item/List.js';
@@ -19,6 +20,11 @@ import CustomerRequest from './components/CustomerRequest.js'
 
 import './css/app-css.css'
 import ItemCard from './components/ItemCard';
+import SignUpForm from './components/SignUpForm.js'
+import SignInForm from './components/SignInForm.js'
+
+import UserButton from './components/UserButton.js'
+
 
 function App() {
   return (
@@ -41,19 +47,25 @@ function App() {
           <div style={{ "display": "flex", "position": "absolute", "right": "15px" }}>
             <h2 className="linkEnquiry"><button
               onClick={() => { window.alert('Please call on :9743419673') }}
-              style={{ "backgroundColor": "#dbc268", "border": "none" }}
+              style={{ "backgroundColor": "#dbc268", "border": "none", "cursor": "pointer" }}
             >Contact Us</button></h2>
+
             <h2 className="linkEnquiry">
               <button
-                style={{ "backgroundColor": "#dbc268", "border": "none" }}>
+                style={{ "backgroundColor": "#dbc268", "border": "none", "cursor": "pointer" }}>
                 Submit Enquiry
             </button>
             </h2>
 
-            <div className="user">
+            {/* <div > */}
+            {/* <button onClick={() => { console.log("iamge clicked!") }}>
 
-              <img src="./images/User.png" alt="" />
-            </div>
+                <img src="./images/User.png" alt="" />
+              </button> */}
+            {/* <input type="image" src="./images/User.png" alt="image"  /> */}
+            {/* <button className="user" onClick={() => { console.log('clicked image') }} /> */}
+            <UserButton />
+            {/* </div> */}
 
             <div id="burger" onClick={() => {
               console.log('burger clicked!')
@@ -108,7 +120,11 @@ function App() {
           </div>
           <div className="content-showcase">
             <Route exact path="/" >
-              <h1 >Home component</h1>
+              <h1 >Aaswad Landing Page</h1>
+              <Link to='/Register' ><h1>Register</h1></Link>
+
+              <h2 >add order now button</h2>
+              <div id="splash-img" > </div>
             </Route>
 
             <Route path="/Menu" >
@@ -117,6 +133,7 @@ function App() {
                 <span id="Link"><Link to="/Menu">Menu</Link></span>
                 <span id="Link"><Link to="/Cart">Cart</Link></span>
               </h1>
+              <h1>Welcome - {}</h1>
               <Menu />
               <ItemCard />
             </Route>
@@ -187,6 +204,24 @@ function App() {
               <h1>Listing Details :</h1>
               <ItemDetailsForm />
             </Route>
+
+            <Route path="/Register" >
+              {/* <h1> Registration page </h1> */}
+              <div className="SignUpCard">
+                <h1 style={{ "fontSize": "36px", "textAlign": "center" }}> Sign Up </h1>
+                <SignUpForm />
+              </div>
+            </Route>
+
+            <Route path="/Signin" >
+              {/* <h1> Signin page </h1> */}
+              <div className="SignUpCard">
+                <h1 style={{ "fontSize": "36px", "textAlign": "center" }}> Sign In </h1>
+
+                <SignInForm />
+              </div>
+            </Route>
+
           </div>
         </div>
       </BrowserRouter>

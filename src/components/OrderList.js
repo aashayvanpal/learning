@@ -231,7 +231,7 @@ export default class ItemList extends Component {
     render() {
         return (
             <div>
-                <div style={{ "backgroundColor": "red" }}>
+                <div style={{ "backgroundColor": "burlywood" }}>
                     <h1>Approve orders - {this.state.approves.length}</h1>
 
                     <table className="listing-table" style={{ "fontWeight": "bold" }}>
