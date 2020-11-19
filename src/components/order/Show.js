@@ -7,6 +7,7 @@ export default class ItemShow extends React.Component {
         super()
         this.state = {
             order: {},
+            id: '',
             fullName: '',
             address: '',
             email: '',
@@ -45,6 +46,9 @@ export default class ItemShow extends React.Component {
 
                 console.log('Showing :', this.state.order)
                 console.log('fullname :', this.state.order.customer.fullName)
+                console.log('id :', this.state.order._id)
+
+                let id = this.state.order._id
                 let fullName = this.state.order.customer.fullName
                 let address = this.state.order.customer.address
                 let email = this.state.order.customer.email
@@ -71,6 +75,7 @@ export default class ItemShow extends React.Component {
                 // console.log("date converted:", dateConverted)
 
                 this.setState({
+                    id,
                     fullName,
                     address,
                     email,
@@ -139,7 +144,7 @@ export default class ItemShow extends React.Component {
                     <h1>Service : {this.state.service ? "Yes" : "No"}</h1>
                     <h1>Home Delivery : {this.state.homeDelivery ? "Yes" : "No"}</h1>
                     <h1>Status : {this.state.status}</h1>
-                    <h1>OrderID : {}</h1>
+                    <h1>OrderID : {this.state.id}</h1>
                     <h1><Link to="/orders"><button>Back</button></Link></h1>
                 </div>
 
@@ -160,6 +165,7 @@ export default class ItemShow extends React.Component {
                             {
                                 this.state.items.map((item, i) => {
                                     this.state.total += item.quantity * item.price
+
                                     return (
                                         <tr key={i}>
                                             <td>{i + 1}</td>
