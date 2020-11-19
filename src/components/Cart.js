@@ -67,16 +67,17 @@ export default class Cart extends React.Component {
 
                                                     }}><span style={{
                                                         "fontWeight": "bold"
-                                                    }}>-</span></button>
+                                                    }}>X</span></button>
                                             </div>
                                         )
                                     })
                                 }
                                 <Link to='/request'><button
                                     style={{
-                                        "padding": "12px",
+                                        "padding": "20px",
                                         "marginLeft": "60px",
-                                        "marginTop": "20px"
+                                        "marginTop": "20px",
+                                        "background": "#f5edc0"
                                     }}
                                     onClick={() => {
                                         // console.log('request button clicked!')

@@ -32,7 +32,7 @@ export default class ItemShow extends React.Component {
     }
 
     render() {
-        const { display, name, price, category, imgUrl } = this.state.item
+        const { display, name, price, category, imgUrl, measured } = this.state.item
         console.log("display item? :", display)
         console.log("category isArray? :", Array.isArray(category))
         return (
@@ -41,6 +41,7 @@ export default class ItemShow extends React.Component {
                 <h1>Item Name :{name}</h1>
                 <h1>Price :{price}</h1>
                 <h1>Category :{category}</h1>
+                <h1>Measured in :{measured}</h1>
                 <h1>Image-URL :{imgUrl}</h1>
                 <h1>Display :{display ? ('True') : ('False')}</h1>
                 <Link to='/items'><button>Back</button></Link>

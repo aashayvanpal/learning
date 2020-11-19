@@ -10,6 +10,7 @@ export default class ItemForm extends Component {
             name: props.item ? props.item.name : "",
             price: props.item ? props.item.price : "",
             category: props.item ? props.item.category : "",
+            measured: props.item ? props.item.measured : "",
             imgUrl: props.item ? props.item.imgUrl : "",
             display: props.item ? props.item.display : ""
         }
@@ -31,12 +32,13 @@ export default class ItemForm extends Component {
 
         let categories = []
         categories.push("all")
-        this.state.category.split(",").map(category => { categories.push(category) })
+        this.state.category.split(",").map(category => { return categories.push(category) })
         console.log("categories setState array :", categories)
         const item = {
             name: this.state.name,
             price: this.state.price,
             category: categories,
+            measured: this.state.measured,
             imgUrl: this.state.imgUrl,
             display: false
         }
@@ -78,24 +80,52 @@ export default class ItemForm extends Component {
     render() {
         return (
             <div className="content-primary">
-                <h2>Add Item details</h2>
+                <h2 style={{
+                    "textAlign": "center",
+                    "padding": "20px",
+                    "color": "white",
+                    "background": "#0173a9",
+                    "fontWeight": "bold"
+                }}>Add Item details</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label className="labels">Name
-                        <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />&nbsp;&nbsp;
+                        <input type="text" name="name" value={this.state.name} onChange={this.handleChange}
+                            style={{ "marginLeft": "150px" }}
+                        />&nbsp;&nbsp;
                     </label><br />
                     <label className="labels">Price
-                        <input type="text" name="price" value={this.state.price} onChange={this.handleChange} />&nbsp;&nbsp;
+                        <input type="text" name="price" value={this.state.price} onChange={this.handleChange}
+                            style={{ "marginLeft": "160px" }}
+                        />&nbsp;&nbsp;
                     </label><br />
                     <label className="labels">Category
-                        <input type="text" name="category" value={this.state.category} onChange={this.handleChange} />&nbsp;&nbsp;
+                        <input type="text" name="category" value={this.state.category} onChange={this.handleChange}
+                            style={{ "marginLeft": "105px" }}
+                        />&nbsp;&nbsp;
                     </label><br />
+
+                    <label className="labels">Measured in
+                        {/* <input type="text" name="category" value={this.state.category} onChange={this.handleChange}
+                            style={{ "marginLeft": "105px" }}
+                        />&nbsp;&nbsp; */}
+                        <select name="measured" value={this.state.measured} onChange={this.handleChange} style={{ "marginLeft": "65px" }}>
+                            <option value="">--</option>
+                            <option value="pc">pc</option>
+                            <option value="Kg">Kg</option>
+                            <option value="plate">plate</option>
+                        </select>
+                    </label><br />
+
                     <label className="labels">Image-URL
-                        <input type="text" name="imgUrl" value={this.state.imgUrl} onChange={this.handleChange} />&nbsp;&nbsp;
+                        <input type="text" name="imgUrl" value={this.state.imgUrl} onChange={this.handleChange}
+                            style={{ "marginLeft": "75px" }}
+
+                        />&nbsp;&nbsp;
                     </label><br />
 
-                    <Link to='/items'><button className="button-color3">Back</button></Link>
+                    <Link to='/items'><button className="button-color3" style={{ "margin": "50px 30px 50px 100px" }}>Back</button></Link>
 
-                    <input className="button-color3" type="submit" value="Add Item" style={{ "marginLeft": "250px" }} />
+                    <input className="button-color3" type="submit" value="Add Item" style={{ "marginLeft": "250px", "width": "300px" }} />
 
                 </form>
 

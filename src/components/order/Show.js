@@ -23,6 +23,12 @@ export default class ItemShow extends React.Component {
 
     }
 
+    generateBill() {
+        console.log("Print button clicked!")
+        window.open(window.location.href + "/print", '_blank')
+
+    }
+
     componentDidMount() {
         console.log('Order Show component mounted !')
         console.log('this.params', this.params)
@@ -76,8 +82,18 @@ export default class ItemShow extends React.Component {
                     phoneNumber,
                     service,
                     items,
-                    status
+                    status,
                 })
+
+                const orderPrint = {
+                    fullName: this.state.fullName,
+                    eventDate: this.state.eventDate,
+                    phoneNumber: this.state.phoneNumber,
+                    items: this.state.items,
+                    total: this.state.total
+
+                }
+                localStorage.setItem("order", JSON.stringify(orderPrint))
             })
             .catch(err => {
                 console.log(err)
@@ -123,22 +139,44 @@ export default class ItemShow extends React.Component {
                     <h1>Service : {this.state.service ? "Yes" : "No"}</h1>
                     <h1>Home Delivery : {this.state.homeDelivery ? "Yes" : "No"}</h1>
                     <h1>Status : {this.state.status}</h1>
+                    <h1>OrderID : {}</h1>
                     <h1><Link to="/orders"><button>Back</button></Link></h1>
                 </div>
 
                 <div style={{ "border": "2px solid black", "padding": "20px" }}>
                     <h1>Listing Items - {this.state.items.length}</h1>
-                    <h1>Item Name  - Quantity -  Price</h1>
-                    <ol>
-                        {
-                            this.state.items.map(item => {
-                                this.state.total += item.quantity * item.price
-                                return <h1 key={item.id}><li>{item.name} - {item.quantity} - {item.quantity * item.price}</li></h1>
-                            })
-                        }
-                    </ol>
-                    <h1>Total = {this.state.total}</h1>
 
+                    <table style={{ "borderCollapse": "collapse", "border": "2px solid black" }}>
+                        <thead style={{ "border": "2px solid black" }}>
+                            <tr>
+                                <td>Sl No.</td>
+                                <td>Item Name</td>
+                                <td>Quantity</td>
+                                <td>Price</td>
+                                <td>Total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.items.map((item, i) => {
+                                    this.state.total += item.quantity * item.price
+                                    return (
+                                        <tr key={i}>
+                                            <td>{i + 1}</td>
+                                            <td>{item.name}</td>
+                                            <td>{item.quantity} {item.measured}</td>
+                                            <td>{item.price}</td>
+                                            <td>{item.quantity * item.price}</td>
+                                        </tr>
+                                    )
+
+                                    // return <h1 key={item.id}><li>{item.name} - {item.quantity} - {item.price} -{item.quantity * item.price}</li></h1>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                    <h1>Grand Total = {this.state.total}</h1>
+                    <button onClick={this.generateBill}>Generate Bill</button>
                 </div>
             </div>
         )

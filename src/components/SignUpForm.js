@@ -2,16 +2,59 @@ import React from 'react'
 import axios from '../config/axios.js'
 
 
+const initialState = {
+    name: "",
+    email: '',
+    password: '',
+    userType: 'Customer',
+    nameError: '',
+    emailError: '',
+}
+
+
 export default class SignUpForm extends React.Component {
     constructor() {
         super()
-        this.state = {
-            name: "",
-            email: '',
-            password: '',
-            isCaterer: false,
-        }
+        this.state = initialState
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    validate = () => {
+        let nameError = ""
+        let emailError = ""
+
+        let specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '~', '_', '`', '(', ')', '+', '-', '/', '.', ',', '[', ']', '{', '}', '?', ':', ';', '\'', '"', "|", ">", "<"]
+        let digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+        if (this.state.name.length < 5) {
+            nameError = "Error: The full name cannot be less than 5 characters"
+        }
+
+        if (specialChars.some(char => this.state.name.includes(char))) {
+            nameError = "Error: The full name cannot contain special characters"
+        }
+
+        if (digits.some(digit => this.state.name.includes(digit))) {
+            nameError = "Error: The full name cannot contain numbers 0-9 "
+        }
+
+
+        if (this.state.email.length < 5) {
+            emailError = "Error: The email addess cannot be less than 5 characters"
+        }
+
+
+        if (!this.state.email.includes('@')) {
+            emailError = "Error: The email address should contain @ symbol"
+        }
+
+        if (emailError || nameError) {
+            this.setState({ emailError, nameError })
+            return false
+        }
+
+        return true
+
     }
 
 
@@ -22,29 +65,40 @@ export default class SignUpForm extends React.Component {
         console.log("Signup data :", this.state)
         // post request to create new user
 
-        const user = {
-            "username": this.state.name,
-            "email": this.state.email,
-            "password": this.state.password,
-        }
 
-        axios.post('/register', user, {
-            headers: {
-                "x-auth": localStorage.getItem('token')
+        // validation
+        const isValid = this.validate()
+
+        if (isValid) {
+            const user = {
+                "username": this.state.name.toUpperCase(),
+                "email": this.state.email,
+                "password": this.state.password,
+                "userType": this.state.userType
             }
-        })
-            .then(response => {
-                if (response.data.errors) {
-                    console.log('Validation Error : ', response.data.errors)
-                    window.alert(response.data.message)
-                }
-                else {
-                    console.log('successfully created user', response.data)
-                    // this.props.history.push('/items')
+
+            axios.post('/register', user, {
+                headers: {
+                    "x-auth": localStorage.getItem('token')
                 }
             })
+                .then(response => {
+                    if (response.data.errors) {
+                        console.log('Validation Error : ', response.data.errors)
+                        window.alert(response.data.message)
+                    }
+                    else {
+                        console.log('successfully created user', response.data)
+                        // this.props.history.push('/items')
+                    }
+                })
 
-        alert('account created successfully')
+            alert('account created successfully')
+
+            // Clear form
+            this.setState(initialState)
+        }
+
     }
 
     handleChange = (e) => {
@@ -57,7 +111,12 @@ export default class SignUpForm extends React.Component {
         console.log('this.state.isCaterer before:', this.state.isCaterer)
         let change = !this.state.isCaterer
         console.log('change:', change)
-        this.setState({ isCaterer: change })
+        if (change) {
+            this.setState({ userType: "Caterer" })
+        }
+        else {
+            this.setState({ userType: "Customer" })
+        }
         console.log('this.state.isCaterer after:', this.state.isCaterer)
     }
 
@@ -66,9 +125,14 @@ export default class SignUpForm extends React.Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input className="inputBox" placeholder="Full Name" name="name" onChange={this.handleChange} value={this.state.name} /><br />
-                    <input className="inputBox" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} /><br />
-                    <input className="inputBox" type="password" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} /><br />
+                    <input id="inputName" placeholder="Full Name" name="name" onChange={this.handleChange} value={this.state.name} /><br />
+                    {this.state.nameError ? (<div style={{ "color": "red", "marginLeft": "120px" }}>{this.state.nameError}</div>) : null}
+
+                    <input id="inputEmail" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} /><br />
+                    {this.state.emailError ? (<div style={{ "color": "red", "marginLeft": "120px" }}>{this.state.emailError}</div>) : null}
+
+                    <input id="inputPassword" type="password" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} /><br />
+
                     <input type="checkbox" id="caterer" name="isCaterer" onChange={this.handleCheckboxChange} checked={this.state.isCaterer}
                         style={{
                             "marginLeft": "30%",
@@ -77,9 +141,7 @@ export default class SignUpForm extends React.Component {
                         "fontSize": "32px",
                         "marginLeft": "30px",
                     }} htmlFor="caterer" > I am Caterer</label><br />
-                    <input style={{
-                        "marginLeft": "35%",
-                    }} type="submit" value="Create Account"
+                    <input type="submit" value="Create Account"
                         style={{
                             "marginLeft": "27%", "padding": "25px", "width": "350px", "borderRadius": "50px", "color": " white",
                             "backgroundColor": "#dbc268", "fontSize": "32px", "boxShadow": "5px"

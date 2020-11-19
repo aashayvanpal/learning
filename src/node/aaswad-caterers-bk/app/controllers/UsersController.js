@@ -64,7 +64,8 @@ router.post('/login', function (req, res) {
 // localhost:3001/users/account
 router.get('/account', authenticateUser, function (req, res) {
     const { user } = req
-    res.send({ username: user.username, email: user.email })
+    console.log("user-data: ", user.userType)
+    res.send({ username: user.username, email: user.email, userType: user.userType })
 })
 
 // localhost:3001/users/logout

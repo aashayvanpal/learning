@@ -47,6 +47,8 @@ import React from 'react'
 import axios from '../config/axios'
 import Cart from './Cart.js'
 
+
+
 export default class Menu extends React.Component {
     constructor() {
         super()
@@ -57,7 +59,8 @@ export default class Menu extends React.Component {
             inputSearch: '',
             displayType: '',
             searchFilter: [],
-            username: ''
+            username: '',
+            userType: ''
         }
 
         this.incrementHandle = this.incrementHandle.bind(this)
@@ -145,10 +148,37 @@ export default class Menu extends React.Component {
             headers: { 'x-auth': localStorage.getItem('token') }
         })
             .then(dataRequest => {
-                console.log("data :", dataRequest)
+                console.log("user data :", dataRequest)
                 this.setState({
-                    username: dataRequest.data.username
+                    username: dataRequest.data.username,
+                    userType: dataRequest.data.userType
+
                 })
+
+
+                axios.get('/Menu', {
+                    headers: {
+                        'x-auth': localStorage.getItem('token')
+                    }
+                })
+                    .then(response => {
+                        console.log('Data : ', response.data)
+                        const items = response.data
+                        console.log('items after request :', items)
+                        console.log('items after filtering :')
+                        var filteredItems = itemsFilter(items)
+                        filteredItems.forEach(item => { item.isSelected = false })
+
+                        // filteredItems.forEach(item => { item.inCart = false })
+
+                        this.setState({ items: filteredItems })
+                        this.setState({ searchFilter: this.state.items })
+                        console.log("this.state.items:", this.state.items)
+
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch(err => {
                 console.log(err)
@@ -158,29 +188,7 @@ export default class Menu extends React.Component {
             return (items.filter(item => item.display === true))
         }
 
-        axios.get('/Menu', {
-            headers: {
-                'x-auth': localStorage.getItem('token')
-            }
-        })
-            .then(response => {
-                console.log('Data : ', response.data)
-                const items = response.data
-                console.log('items after request :', items)
-                console.log('items after filtering :')
-                var filteredItems = itemsFilter(items)
-                filteredItems.forEach(item => { item.isSelected = false })
 
-                // filteredItems.forEach(item => { item.inCart = false })
-
-                this.setState({ items: filteredItems })
-                this.setState({ searchFilter: this.state.items })
-                console.log("this.state.items:", this.state.items)
-
-            })
-            .catch(err => {
-                console.log(err)
-            })
 
     }
 
@@ -356,6 +364,7 @@ export default class Menu extends React.Component {
                 id: item._id,
                 name: item.name,
                 price: item.price,
+                measured: item.measured,
                 quantity: 1,
             }
         ));
@@ -410,85 +419,100 @@ export default class Menu extends React.Component {
     }
     render() {
         return (
-            <div className="Menu-Cart" style={{
-                "padding": "60px 10px 0px 10px",
-                "marginTop": "-20px"
-            }}>
-                <div className="inner-Menu" >
-                    <h1 id="Menu-style">Choose Your Menu -{this.state.username}</h1>
+            <div>
+                <h1>Welcome - {this.state.username} you are - {this.state.userType}</h1>
 
-                    <div>
-                        <h1 style={{
-                            "display": "inline-block",
-                            "margin": "30px"
-                        }}>{this.state.displayType}</h1>
-                        <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" id="inputSearch" placeholder="Search your item" style={{
-                            "padding": "5px",
-                            "fontSize": "22px",
-                            "backgroundColor": "#f5edc0",
-                            "margin": "10px"
-                        }} /><button style={{ "padding": "12px", "marginRight": "30px" }} onClick={this.clearSearch}>Clear</button>
-                        <h2 style={{ "fontSize": "22px", "display": "inline-block" }}>Filter Items </h2>
+                { this.state.userType === "Admin" ? (
 
-                        <select onChange={this.handleSelect}
-                            style={{
-                                "fontSize": "22px",
-                                "padding": "10px"
-                            }}
+                    <div className="Menu-Cart" style={{
+                        "padding": "60px 10px 0px 10px",
+                        "marginTop": "-20px"
+                    }}>
 
-                            id="filterItems"
-                        >
-                            <option value="all">All</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch</option>
-                            <option value="dinner">Dinner</option>
-                            <option value="sweets">Sweets</option>
-                            <option value="snacks">Snacks</option>
-                        </select>
-                        <hr style={{ "height": "10px" }} />
-                    </div>
-                    <div>
-                        {
-                            this.state.searchFilter.map((item, i) => {
-                                return (
-                                    <div key={item._id} className="card"
-                                        style={{
-                                            "display": "inline-block",
-                                            "backgroundColor": "#f5d76c",
-                                            "borderWidth": "5px",
-                                            "marginLeft": "10px",
-                                            "marginBottom": "10px",
-                                            "width": "300px",
-                                            "height": "300px"
-                                        }}>
+                        <div className="inner-Menu" >
+                            <h1 id="Menu-style">Choose Your Menu</h1>
 
-                                        {/* <div key={item._id} className="card"> */}
-                                        <div key={item.id} className='card-body' style={{ "cursor": "pointer", "zIndex": "1" }} onClick={() => { this.checkboxChange(item._id, item.name, item.inCart) }} >
-                                            <div style={{ "width": "250px", "height": "110px" }}>
-                                                <img src={item.imgUrl} alt={item.name + " image"} width="250px" height="110px" />
+                            <div>
+                                <h1 style={{
+                                    "display": "inline-block",
+                                    "margin": "30px"
+                                }}>{this.state.displayType}</h1>
+                                <input onChange={this.handleChange} value={this.inputSearch} name="inputSearch" id="inputSearch" placeholder="Search your item" style={{
+                                    "padding": "5px",
+                                    "fontSize": "22px",
+                                    "backgroundColor": "#f5edc0",
+                                    "margin": "10px"
+                                }} /><button style={{ "padding": "12px", "marginRight": "30px" }} onClick={this.clearSearch}>Clear</button>
+                                <h2 style={{ "fontSize": "22px", "display": "inline-block" }}>Filter Items </h2>
+
+                                <select onChange={this.handleSelect}
+                                    style={{
+                                        "fontSize": "22px",
+                                        "padding": "10px"
+                                    }}
+
+                                    id="filterItems"
+                                >
+                                    <option value="all">All</option>
+                                    <option value="breakfast">Breakfast</option>
+                                    <option value="lunch">Lunch</option>
+                                    <option value="dinner">Dinner</option>
+                                    <option value="sweets">Sweets</option>
+                                    <option value="snacks">Snacks</option>
+                                    <option value="special">Special</option>
+                                </select>
+                                <hr style={{ "height": "10px" }} />
+                            </div>
+                            <div>
+                                {
+                                    this.state.searchFilter.map((item, i) => {
+                                        return (
+                                            <div key={item._id} className="card"
+                                                style={{
+                                                    "display": "inline-block",
+                                                    "backgroundColor": "#f5d76c",
+                                                    "borderWidth": "5px",
+                                                    "marginLeft": "10px",
+                                                    "marginBottom": "10px",
+                                                    "width": "300px",
+                                                    "height": "300px"
+                                                }}>
+
+                                                {/* <div key={item._id} className="card"> */}
+                                                <div key={item.id} className='card-body' style={{ "cursor": "pointer", "zIndex": "1" }} onClick={() => { this.checkboxChange(item._id, item.name, item.inCart) }} >
+                                                    <div style={{ "width": "250px", "height": "110px" }}>
+                                                        <img src={item.imgUrl} alt={item.name + " image"} width="250px" height="110px" />
+                                                    </div>
+                                                    <div style={{ "height": "100px", "width": "250px", "display": "table-cell", "verticalAlign": "middle" }}>
+                                                        <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
+                                                    </div>
+                                                    <input type="checkbox" style={{
+                                                        "marginLeft": "40%",
+                                                        "width": "40px",
+                                                        "height": "40px",
+                                                        "cursor": "pointer"
+                                                    }} checked={item.isSelected} onChange={() => { }} />
+
+                                                </div>
                                             </div>
-                                            <div style={{ "height": "100px", "width": "250px", "display": "table-cell", "verticalAlign": "middle" }}>
-                                                <h1 style={{ "textAlign": "center" }}>{item.name}</h1>
-                                            </div>
-                                            <input type="checkbox" style={{
-                                                "marginLeft": "40%",
-                                                "width": "40px",
-                                                "height": "40px",
-                                                "cursor": "pointer"
-                                            }} checked={item.isSelected} onChange={() => { }} />
-
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
+                                        )
+                                    })
+                                }
+                            </div>
+                        </div>
+                        <Cart cartItems={this.state.cartItems}
+                            items={this.state.items}
+                            removeItemFromCart={this.removeItemFromCart}
+                            resetIsSelected={this.resetIsSelected}
+                            requestOrder={this.requestOrder} />
                     </div>
-                </div>
-                <Cart cartItems={this.state.cartItems}
-                    items={this.state.items}
-                    removeItemFromCart={this.removeItemFromCart}
-                    resetIsSelected={this.resetIsSelected}
-                    requestOrder={this.requestOrder} />
+                )
+                    :
+                    (
+                        null
+                    )
+
+                }
             </div>
         );
     }

@@ -72,8 +72,8 @@ class SignInForm extends React.Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input className="inputBox" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} /><br />
-                    <input className="inputBox" type="password" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} /><br />
+                    <input id="inputEmail" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} /><br />
+                    <input id="inputPassword" type="password" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} /><br />
                     <input type="checkbox" id="caterer" name="isCaterer" onChange={this.handleCheckboxChange} checked={this.state.isCaterer}
                         style={{
                             "marginLeft": "30%",
@@ -82,9 +82,7 @@ class SignInForm extends React.Component {
                         "fontSize": "32px",
                         "marginLeft": "30px",
                     }} htmlFor="caterer" > I am Caterer</label><br />
-                    <input style={{
-                        "marginLeft": "35%",
-                    }} type="submit" value="Log In"
+                    <input type="submit" value="Log In"
                         style={{
                             "marginLeft": "27%", "padding": "25px", "width": "350px", "borderRadius": "50px", "color": " white",
                             "backgroundColor": "#dbc268", "fontSize": "32px", "boxShadow": "5px"

@@ -15,6 +15,10 @@ const itemSchema = new Schema({
         type: Array,
         required: true
     },
+    measured: {
+        type: String,
+        required: true
+    },
     imgUrl: {
         type: String,
     },

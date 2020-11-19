@@ -1,11 +1,21 @@
 // Add exact path for adddetails
+/*
+Fixes :
+Authentication to individual paths (/menu,/orders) 
+  add order now when user is logged out
+  add User icon to the right top corner when logged in 
+put welcome message and add the username to the logout menu options
+show only the user's items , menus , orders 
+*/
+
+
 
 import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import Menu from './components/ItemList';
-import MenuList from './components/ItemCard';
 import OrderList from './components/OrderList';
 import OrderShow from './components/order/Show.js';
+import OrderPrint from './components/order/Print.js';
 
 
 import AddUserData from './components/AddUserData.js';
@@ -102,9 +112,21 @@ function App() {
 
 
         <div className="align" >
-          <div className="Nav-bar">
+          <div id="Nav-bar">
             <ul style={{ "listStyleType": "none" }}>
+              <button style={{
+                "marginLeft": "109px",
+                "background": "#0e235f",
+                "border": "none",
+                "color": "white",
+                "cursor": "pointer"
+              }} onClick={() => {
+                var navBarElement = document.getElementById("Nav-bar")
+                navBarElement.style.display = "none"
 
+                var showElement = document.getElementById("ShowButton")
+                showElement.style.display = "block"
+              }}>X</button>
               <Link to='/' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Home</li></Link>
               <Link to='/Menu' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Menu</li></Link>
 
@@ -119,21 +141,58 @@ function App() {
             </ul>
           </div>
           <div className="content-showcase">
+
+
+
             <Route exact path="/" >
+              <div id="gold-cut-top"> </div>
+
               <h1 >Aaswad Landing Page</h1>
               <Link to='/Register' ><h1>Register</h1></Link>
 
               <h2 >add order now button</h2>
-              <div id="splash-img" > </div>
+              {/* <div id="splash-img"> </div>
+              <div id="splash-img2"> </div>
+              <div id="splash-img3"> </div> */}
+
+              <div id="gold-right-cut"> </div>
+              <div id="bottom-right-cut"> </div>
+
+
+              <footer style={{ "width": "1275px", "marginLeft": "-15px" }}>
+                <div id="left-bottom-cut"> </div>
+                <div style={{ "display": "inline-flex", "width": "1275px" }}>
+                  <div style={{ "marginTop": "50px", "marginLeft": "64px" }}>
+                    <h2>Order Now!</h2>
+                    <h2>Deals</h2>
+                  </div>
+                  <h2 style={{ "marginTop": "90px" }}>About Us</h2>
+
+                  <div style={{ "marginTop": "50px" }}>
+                    <h2>Connect with us</h2>
+                    <h2>Facebook</h2>
+                    <h2>Write to us
+                    varsha.vanpal@gmail.com
+                    </h2>
+                  </div>
+                </div>
+              </footer>
             </Route>
 
             <Route path="/Menu" >
+              <button id="ShowButton" onClick={() => {
+                var navBarElement = document.getElementById("Nav-bar")
+                navBarElement.style.display = "block"
+
+                var showElement = document.getElementById("ShowButton")
+                showElement.style.display = "none"
+
+              }}>Show</button>
               <h1 className="Link-Navigations">
                 <span id="Link"><Link to="/">Home</Link></span>
                 <span id="Link"><Link to="/Menu">Menu</Link></span>
                 <span id="Link"><Link to="/Cart">Cart</Link></span>
               </h1>
-              <h1>Welcome - {}</h1>
               <Menu />
               <ItemCard />
             </Route>
@@ -172,6 +231,14 @@ function App() {
 
 
             <Route exact={true} path="/items" >
+              <button id="ShowButton" onClick={() => {
+                var navBarElement = document.getElementById("Nav-bar")
+                navBarElement.style.display = "block"
+
+                var showElement = document.getElementById("ShowButton")
+                showElement.style.display = "none"
+
+              }}>Show</button>
               <ItemList />
             </Route>
 
@@ -184,7 +251,10 @@ function App() {
             <Route path="/items/show/:id" component={ItemShow} />
 
 
-
+            <Route path="/items/add/adddetails" >
+              <h1>Listing Details :</h1>
+              <ItemDetailsForm />
+            </Route>
 
             {/* <Route path="/orders/add" >
             <h1>Add Orders :</h1>
@@ -196,14 +266,15 @@ function App() {
 
             </Route>
             <Route exact path="/orders" >
+
               <OrderList />
             </Route>
             <Route exact path="/orders/:id" component={OrderShow} />
 
-            <Route path="/items/add/adddetails" >
-              <h1>Listing Details :</h1>
-              <ItemDetailsForm />
-            </Route>
+
+
+            <Route path="/orders/:id/print" component={OrderPrint} />
+
 
             <Route path="/Register" >
               {/* <h1> Registration page </h1> */}
@@ -227,7 +298,7 @@ function App() {
       </BrowserRouter>
 
 
-    </div>
+    </div >
   );
 }
 

@@ -1,7 +1,8 @@
 
 import React from 'react'
 import axios from '../config/axios'
-import Cart from './Cart.js'
+// import Cart from './Cart.js'
+// Can render Cart compoennt for reusing cart component
 
 export default class ItemCard extends React.Component {
     constructor() {

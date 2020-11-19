@@ -18,16 +18,21 @@
   font-size: 21px;
 }
 
-.Nav-bar {
+#Nav-bar {
   background-color: #04045f;
   width: 15%;
-  display: none;
   font-size: 30px;
+  display: none;
+  z-index: 2;
 }
 
-.Nav-bar ul li:hover {
+#Nav-bar ul li:hover {
   background-color: #4c4cfd73;
   color: white;
+  transition: 0.75s;
+  font-size: 35px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .Nav-barLink {
@@ -52,6 +57,7 @@
   color: white;
   padding: 15px;
   font-size: 25px;
+  font-weight: bold;
 }
 
 .button-color3:hover {
@@ -79,16 +85,18 @@
 .button-color5 {
   background-color: red;
   color: white;
+  font-weight: bold;
 }
 
 .button-color5:hover {
   background-color: rgb(255, 169, 10);
   color: black;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .labels {
-  margin: 20px;
+  margin: 20px 20px 20px 100px;
   font-size: 30px;
 }
 
@@ -97,12 +105,59 @@
   margin: 20px 65px 16px;
 }
 
-#splash-img {
-  background: url("../images/Vector 1.png");
-  width: 1000vh;
-  height: 1000vh;
+#gold-cut-top {
+  background: url("../images/gold-cut-top.svg") no-repeat;
+  width: 100%;
+  height: 32%;
+  display: block;
+  margin: -28px -17px 10px -130px;
+}
+
+#gold-right-cut {
+  background: url("../images/gold-right-cut.svg") no-repeat;
+  width: 100%;
+  height: 100%;
   display: block;
 }
+
+#bottom-right-cut {
+  background: url("../images/bottom-right-cut.svg") no-repeat;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0px 0px -221px 0px;
+}
+
+#left-bottom-cut {
+  background: url("../images/left-bottom-cut.svg") no-repeat;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0px 0px -450px 0px;
+}
+
+#splash-img {
+  background: url("../images/Vector 1.png") no-repeat;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#splash-img2 {
+  background: url("../images/Vector 2.png") no-repeat;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#splash-img3 {
+  background: url("../images/Vector 3.png") no-repeat;
+  height: 100%;
+  width: 100%;
+
+  display: block;
+}
+
 #burger {
   cursor: pointer;
   display: none;
@@ -266,7 +321,7 @@
   border: 2px solid black;
 }
 
-.inputBox {
+#inputName {
   width: 634px;
   height: 80px;
   padding: 10px;
@@ -276,6 +331,41 @@
   font-size: 32px;
   border-radius: 50px;
   box-shadow: 5px 5px;
+
+  background: url(../images/username-icon.png) no-repeat 40px 15px;
+  background-color: white;
+  background-size: 50px 50px;
+}
+
+#inputPassword {
+  width: 634px;
+  height: 80px;
+  padding: 10px;
+  margin: 15px;
+  text-align: center;
+  margin-left: 12%;
+  font-size: 32px;
+  border-radius: 50px;
+  box-shadow: 5px 5px;
+
+  background: url(../images/password-icon.png) no-repeat 40px 15px;
+  background-color: white;
+  background-size: 50px 50px;
+}
+
+#inputEmail {
+  width: 634px;
+  height: 80px;
+  padding: 10px;
+  margin: 15px;
+  text-align: center;
+  margin-left: 12%;
+  font-size: 32px;
+  border-radius: 50px;
+  box-shadow: 5px 5px;
+  background: url(../images/Email-icon.png) no-repeat 40px 15px;
+  background-color: white;
+  background-size: 50px 50px;
 }
 
 #caterer {

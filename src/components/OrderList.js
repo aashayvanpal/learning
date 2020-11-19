@@ -231,6 +231,16 @@ export default class ItemList extends Component {
     render() {
         return (
             <div>
+
+                <button id="ShowButton" onClick={() => {
+                    var navBarElement = document.getElementById("Nav-bar")
+                    navBarElement.style.display = "block"
+
+                    var showElement = document.getElementById("ShowButton")
+                    showElement.style.display = "none"
+
+                }}>Show</button>
+
                 <div style={{ "backgroundColor": "burlywood" }}>
                     <h1>Approve orders - {this.state.approves.length}</h1>
 

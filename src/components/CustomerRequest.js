@@ -14,6 +14,8 @@ export default class CustomerRequest extends React.Component {
         this.handleRemove = this.handleRemove.bind(this)
         this.plusHandle = this.plusHandle.bind(this)
         this.minusHandle = this.minusHandle.bind(this)
+        this.disableButton = this.disableButton.bind(this)
+        this.EnableButton = this.EnableButton.bind(this)
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
 
@@ -34,9 +36,13 @@ export default class CustomerRequest extends React.Component {
         this.setState({
             reqOrder: parsedItems
         })
+        console.log(this.state.reqOrder)
+
         console.log('after setstate')
 
-        console.log(this.state)
+        console.log(this.state.reqOrder)
+
+
     }
 
     handleRemove = (id) => {
@@ -44,6 +50,22 @@ export default class CustomerRequest extends React.Component {
         this.setState((prevState) => ({
             reqOrder: prevState.reqOrder.filter(item => item.id !== id)
         }))
+    }
+
+
+    disableButton = (index) => {
+        console.log("disable the - button for the id :", index + 1)
+        var minusButtonId = document.getElementById(index + 1)
+        console.log("minusButton", minusButtonId)
+        minusButtonId.disabled = true
+    }
+
+
+    EnableButton = (index) => {
+        console.log("Enable the - button for the id :", index + 1)
+        var minusButtonId = document.getElementById(index + 1)
+        console.log("minusButton", minusButtonId)
+        minusButtonId.disabled = false
     }
 
     minusHandle = (id) => {
@@ -67,7 +89,17 @@ export default class CustomerRequest extends React.Component {
         var changedItems = this.state.reqOrder
         changedItems[index].quantity = changedItems[index].quantity - 1
 
+
+
         this.setState({ reqOrder: changedItems })
+        // If the quantity goes below 0 disable the - button 
+
+        if (changedItems[index].quantity <= 0) {
+            this.disableButton(index)
+        } else {
+            this.EnableButton(index)
+        }
+
 
         console.log('Items found\'s quantity after:', this.state.reqOrder)
         console.log('end of - Function')
@@ -98,6 +130,13 @@ export default class CustomerRequest extends React.Component {
         changedItems[index].quantity = Number(changedItems[index].quantity) + 1
 
         this.setState({ reqOrder: changedItems })
+
+        if (changedItems[index].quantity <= 0) {
+            this.disableButton(index)
+        } else {
+            this.EnableButton(index)
+        }
+
 
         console.log('Items found\'s quantity after:', this.state.reqOrder)
         console.log('end of + Function')
@@ -231,6 +270,11 @@ export default class CustomerRequest extends React.Component {
             reqOrder: changedItems
         })
 
+        if (changedItems[index].quantity <= 0) {
+            this.disableButton(index)
+        } else {
+            this.EnableButton(index)
+        }
 
 
         // this.setState(prevState => ({
@@ -249,6 +293,14 @@ export default class CustomerRequest extends React.Component {
     render() {
         return (
             <div style={{ "display": "inline" }}>
+                <button id="ShowButton" onClick={() => {
+                    var navBarElement = document.getElementById("Nav-bar")
+                    navBarElement.style.display = "block"
+
+                    var showElement = document.getElementById("ShowButton")
+                    showElement.style.display = "none"
+
+                }}>Show</button>
                 <h1>Listing selected items - {this.state.reqOrder.length}</h1>
                 <br />
                 <div style={{ "display": "flex" }}>
@@ -269,23 +321,25 @@ export default class CustomerRequest extends React.Component {
                                     this.state.reqOrder.map((item, i) => {
                                         return (
                                             <tr key={item.name}>
-                                                <td><h2>{i + 1}</h2></td>
+                                                <td><h2>{i + 1}.</h2></td>
                                                 <td><h2>{item.name}</h2></td>
-                                                <td><button onClick={() => { this.minusHandle(item.id) }}>-</button><input name="quantity" onChange={(e) => { this.handleChange(e, item.quantity, item.id) }} value={item.quantity} style={{ "width": "50px", textAlign: "center" }} /><button onClick={(e) => { this.plusHandle(item.id, e) }}>+</button></td>
+                                                <td><button id={i + 1} onClick={() => { this.minusHandle(item.id) }}>-</button><input name="quantity" onChange={(e) => { this.handleChange(e, item.quantity, item.id) }} value={item.quantity} style={{ "width": "50px", textAlign: "center" }} /><button onClick={(e) => { this.plusHandle(item.id, e) }}>+</button><h5>{item.measured}</h5></td>
                                                 <td><h2>{item.price * item.quantity}</h2></td>
-                                                <td><button onClick={() => { this.handleRemove(item.id) }}>Remove</button></td>
+                                                <td><button className="button-color5" style={{ "padding": "10px" }} onClick={() => { this.handleRemove(item.id) }}>Remove</button></td>
                                             </tr>
                                         )
                                     })
                                 }
                             </tbody>
                         </Table>
-                        <Link to="/Menu"><button>Back</button></Link>
+
+                        <h5 >*For any specific quries please contact through WhatsApp</h5> <br />
+                        <Link to="/Menu"><button style={{ "padding": "15px" }}>Back</button></Link>
                     </div>
                     <CustomerForm handleCustomerSubmit={this.handleCustomerSubmit} />
                 </div>
                 {/* <button onClick={this.handleSubmit}>Submit Enquiry</button> */}
-            </div>
+            </div >
         );
     }
 }

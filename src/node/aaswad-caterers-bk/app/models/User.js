@@ -30,6 +30,9 @@ const userSchema = new Schema({
         minlength: 6,
         maxlength: 128
     },
+    userType: {
+        type: String
+    },
     tokens: [
         {
             token: {
