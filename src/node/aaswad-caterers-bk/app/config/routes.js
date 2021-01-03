@@ -4,6 +4,8 @@ const router = express.Router()
 const itemController = require('../controllers/itemController.js')
 const approveController = require('../controllers/approveController.js')
 const { usersRouter } = require('../controllers/UsersController.js')
+// const { default: ContactUs } = require('../../../../components/contact/Contact.js')
+const ContactUsController = require('../controllers/contactUsController.js')
 
 
 
@@ -47,6 +49,9 @@ router.post('/login', usersRouter)
 router.get('/account', usersRouter)
 router.delete('/logout', usersRouter)
 
+
+// For Querries
+router.post('/contactus', ContactUsController.create)
 
 
 module.exports = router

@@ -12,7 +12,9 @@ export default class ItemForm extends Component {
             category: props.item ? props.item.category : "",
             measured: props.item ? props.item.measured : "",
             imgUrl: props.item ? props.item.imgUrl : "",
-            display: props.item ? props.item.display : ""
+            display: props.item ? props.item.display : "",
+            ingredients: props.item ? props.item.ingredients : "",
+            recipie: props.item ? props.item.recipie : "",
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -40,7 +42,9 @@ export default class ItemForm extends Component {
             category: categories,
             measured: this.state.measured,
             imgUrl: this.state.imgUrl,
-            display: false
+            display: false,
+            ingredients: this.state.ingredients,
+            recipie: this.state.recipie
         }
         this.props.item && (item.id = this.props.item._id)
 
@@ -117,8 +121,20 @@ export default class ItemForm extends Component {
                     </label><br />
 
                     <label className="labels">Image-URL
-                        <input type="text" name="imgUrl" value={this.state.imgUrl} onChange={this.handleChange}
-                            style={{ "marginLeft": "75px" }}
+                        <textarea type="text" name="imgUrl" value={this.state.imgUrl} onChange={this.handleChange}
+                            style={{ "marginLeft": "75px", "width": "500px", "height": "200px" }}
+
+                        />&nbsp;&nbsp;
+                    </label><br />
+                    <label className="labels">Ingredients
+                        <textarea type="text" name="ingredients" value={this.state.ingredients} onChange={this.handleChange}
+                            style={{ "marginLeft": "75px", "width": "500px", "height": "250px" }}
+
+                        />&nbsp;&nbsp;
+                    </label><br />
+                    <label className="labels">Recipie
+                        <textarea type="text" name="recipie" value={this.state.recipie} onChange={this.handleChange}
+                            style={{ "marginLeft": "75px", "width": "500px", "height": "250px" }}
 
                         />&nbsp;&nbsp;
                     </label><br />

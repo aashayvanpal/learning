@@ -95,7 +95,8 @@ export default class ItemShow extends React.Component {
                     eventDate: this.state.eventDate,
                     phoneNumber: this.state.phoneNumber,
                     items: this.state.items,
-                    total: this.state.total
+                    total: this.state.total,
+                    id: this.state.id
 
                 }
                 localStorage.setItem("order", JSON.stringify(orderPrint))
@@ -132,7 +133,7 @@ export default class ItemShow extends React.Component {
         return (
             <div style={{ "display": "flex" }}>
                 <div>
-                    <h1>Showing item details</h1>
+                    <h1>Showing order details:-</h1>
                     <h1>Customer Name : {this.state.fullName}</h1>
                     <h1>Event Name : {this.state.eventName}</h1>
                     <h1>Number of People : {this.state.numberOfPeople}</h1>

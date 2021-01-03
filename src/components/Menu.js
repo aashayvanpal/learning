@@ -482,6 +482,7 @@ export default class Menu extends React.Component {
                                                 <div key={item.id} className='card-body' style={{ "cursor": "pointer", "zIndex": "1" }} onClick={() => { this.checkboxChange(item._id, item.name, item.inCart) }} >
                                                     <div style={{ "width": "250px", "height": "110px" }}>
                                                         <img src={item.imgUrl} alt={item.name + " image"} width="250px" height="110px" />
+                                                        {/* <img src={require(item.imgUrl)} alt={item.name + " image"} width="250px" height="110px" /> */}
                                                     </div>
                                                     <div style={{ "height": "100px", "width": "250px", "display": "table-cell", "verticalAlign": "middle" }}>
                                                         <h1 style={{ "textAlign": "center" }}>{item.name}</h1>

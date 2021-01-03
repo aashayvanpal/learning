@@ -24,6 +24,12 @@ const itemSchema = new Schema({
     },
     display: {
         type: Boolean,
+    },
+    ingredients: {
+        type: String
+    },
+    recipie: {
+        type: String
     }
 })
 

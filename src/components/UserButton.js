@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import axios from '../config/axios';
 import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 
@@ -37,6 +38,7 @@ const UserButton = (props) => {
         <DropdownItem header> (Username)</DropdownItem>
         <DropdownItem disabled>Action</DropdownItem>
         <DropdownItem>Another Action</DropdownItem>
+        <DropdownItem><Link to="/settings">Settings</Link></DropdownItem>
         <DropdownItem divider />
         <DropdownItem onClick={logout}>Logout</DropdownItem>
       </DropdownMenu>

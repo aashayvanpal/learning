@@ -1,11 +1,41 @@
-// Add exact path for adddetails
+// App version 1.0
+// Add exact path for add details
 /*
 Fixes :
+Front end for home/landing page must be completed 
+All pages must be made responsive
+
+in  bill add per plate cost with respect to number of people
+
+/qurries section , display customer qurries
+
+Clear the code clutter ,clean up unwated comments and also refine the code with comments on each function
+Authentication : If not logged in , redirect to Login page
 Authentication to individual paths (/menu,/orders) 
   add order now when user is logged out
   add User icon to the right top corner when logged in 
 put welcome message and add the username to the logout menu options
 show only the user's items , menus , orders 
+in /orders , when remove button is clicked , pop up confirmation message (are you sure you want to delete? message)
+  Update button should select the previous selected items and add to cart
+  Search order and filter by customer name
+  Add a filter to get orders between 2 dates
+Add vendors , transport ,customer backend code 
+settings option
+Dashboard creation - graphs , profits ,incomes
+create settings option from the user icon dropdown
+All all images to items
+on click of clear button on /menu page , the cursor must be blinking on the search bar
+Make the whole website responsive
+Create contact page(v1.0):
+Bugs :
+Css placement for the map is not perfect , all pages are not responsive 
+Fix all fontsizes of contact us page , add the customer querry from the contact us page
+querry CRUD
+querry Validation
+
+Major Update:(v1.0.1)
+Trying to integrate Google maps in contact us page
 */
 
 
@@ -34,6 +64,11 @@ import SignUpForm from './components/SignUpForm.js'
 import SignInForm from './components/SignInForm.js'
 
 import UserButton from './components/UserButton.js'
+import Contact from './components/contact/Contact.js'
+import Footer from './components/Footer.js'
+import HomePage from './components/HomePage.js'
+import Qurries from './components/Qurries.js'
+
 
 
 function App() {
@@ -48,24 +83,26 @@ function App() {
         <div className="header">
           <h1 style={{
             "textAlign": "left",
-            "color": "black",
             "fontSize": "64px",
             "marginRight": "200px",
             "marginLeft": "20px",
-            "fontFamily": "Old Standard TT"
-          }}>Aaswad Caterers</h1>
+            "fontFamily": "Old Standard TT",
+          }}><Link to="/" style={{ "textDecoration": "none", "color": "black" }}>Aaswad Caterers</Link></h1>
           <div style={{ "display": "flex", "position": "absolute", "right": "15px" }}>
-            <h2 className="linkEnquiry"><button
-              onClick={() => { window.alert('Please call on :9743419673') }}
-              style={{ "backgroundColor": "#dbc268", "border": "none", "cursor": "pointer" }}
-            >Contact Us</button></h2>
 
             <h2 className="linkEnquiry">
-              <button
+              <Link to="/Register"
                 style={{ "backgroundColor": "#dbc268", "border": "none", "cursor": "pointer" }}>
-                Submit Enquiry
-            </button>
+                Order Now !
+              </Link>
             </h2>
+            
+            <h2 className="linkEnquiry">
+              <Link to="/contactus"
+                style={{ "backgroundColor": "#dbc268", "border": "none", "cursor": "pointer" }}
+              >Contact Us</Link>
+            </h2>
+
 
             {/* <div > */}
             {/* <button onClick={() => { console.log("iamge clicked!") }}>
@@ -128,6 +165,7 @@ function App() {
                 showElement.style.display = "block"
               }}>X</button>
               <Link to='/' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Home</li></Link>
+              <Link to='/Dashboard' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Dashboard</li></Link>
               <Link to='/Menu' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Menu</li></Link>
 
               <Link to='/orders' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Orders</li></Link>
@@ -138,6 +176,7 @@ function App() {
               <Link to='/users/add' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Customers</li></Link>
               <Link to='/users/add' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Recipies</li></Link>
               <Link to='/Calender' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Calender</li></Link>
+              <Link to='/Qurries' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Qurries</li></Link>
             </ul>
           </div>
           <div className="content-showcase">
@@ -145,38 +184,15 @@ function App() {
 
 
             <Route exact path="/" >
-              <div id="gold-cut-top"> </div>
 
-              <h1 >Aaswad Landing Page</h1>
-              <Link to='/Register' ><h1>Register</h1></Link>
-
-              <h2 >add order now button</h2>
-              {/* <div id="splash-img"> </div>
-              <div id="splash-img2"> </div>
-              <div id="splash-img3"> </div> */}
-
-              <div id="gold-right-cut"> </div>
-              <div id="bottom-right-cut"> </div>
+              <HomePage />
 
 
-              <footer style={{ "width": "1275px", "marginLeft": "-15px" }}>
-                <div id="left-bottom-cut"> </div>
-                <div style={{ "display": "inline-flex", "width": "1275px" }}>
-                  <div style={{ "marginTop": "50px", "marginLeft": "64px" }}>
-                    <h2>Order Now!</h2>
-                    <h2>Deals</h2>
-                  </div>
-                  <h2 style={{ "marginTop": "90px" }}>About Us</h2>
+            </Route>
 
-                  <div style={{ "marginTop": "50px" }}>
-                    <h2>Connect with us</h2>
-                    <h2>Facebook</h2>
-                    <h2>Write to us
-                    varsha.vanpal@gmail.com
-                    </h2>
-                  </div>
-                </div>
-              </footer>
+            <Route path="/dashboard" >
+              <h1 style={{ "backgroundColor": "green" }}>Dashboard:</h1>
+
             </Route>
 
             <Route path="/Menu" >
@@ -293,6 +309,25 @@ function App() {
               </div>
             </Route>
 
+            <Route path="/contactus">
+              <Contact />
+            </Route>
+
+            <Route path="/settings" >
+              <h1 style={{ "backgroundColor": "blue" }}>Settings:</h1>
+              <h1 style={{}}>App Version : 1.0v</h1>
+
+            </Route>
+
+            <Route path="/aboutus" >
+              <h1 style={{ "backgroundColor": "blue" }}>About us Page</h1>
+
+            </Route>
+
+            <Route path="/Qurries" >
+              <h1 style={{ "backgroundColor": "blue" }}>Qurries Page</h1>
+
+            </Route>
           </div>
         </div>
       </BrowserRouter>

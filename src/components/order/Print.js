@@ -1,5 +1,12 @@
 import React from 'react'
 
+// Displaying image to center css :
+// display: block;
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 50%;
+
+
 export default class OrderPrint extends React.Component {
     constructor() {
         super()
@@ -34,7 +41,7 @@ export default class OrderPrint extends React.Component {
         // const header = document.getElementsByClassName("header")
         // // header.remove()
         // console.log("header :", header)
-        const { fullName, items, eventDate, phoneNumber } = JSON.parse(localStorage.getItem('order'))
+        const { fullName, items, eventDate, phoneNumber, id } = JSON.parse(localStorage.getItem('order'))
 
         console.log("items", items)
         console.log("isArray items", Array.isArray(items))
@@ -149,18 +156,30 @@ export default class OrderPrint extends React.Component {
 
 
                 <br />
-                <img src="https://static.toiimg.com/photo/msid-66475760/66475760.jpg?952246" alt="" width="45%" height="300px"
+                {/* <img src="https://static.toiimg.com/photo/msid-66475760/66475760.jpg?952246" alt="" width="45%" height="300px"
                     style={{
                         "marginRight": "50px", "marginLeft": "30px"
                     }} />
 
                 <img src="https://i.pinimg.com/originals/8f/f5/ec/8ff5ec000c3b3ac91d12f88a6d0fd39c.jpg" alt="" width="45%" height="300px"
-                    style={{ "marginLeft": "auto", "marginRight": "auto" }} /><br />
+                    style={{ "marginLeft": "auto", "marginRight": "auto" }} /><br /> */}
                 <br />
                 <br />
-                <h3 style={{ "textAlign": "center" }}><b>
+                {/* <h3 style={{ "textAlign": "center" }}><b>
                     Happy Diwali</b>
-                </h3><br /> <br />
+                </h3><br /> <br /> */}
+
+
+                <img src={require("../../images/food-items-images/3.jpg")} alt="" width="45%" height="300px"
+                    style={{
+                        "marginRight": "50px", "marginLeft": "30px"
+                    }} />
+
+                <br /> <br /><br /> <br />
+                <h5 style={{ "textAlign": "right" }}><b>
+                    OrderID :{id}</b>
+                </h5><br /> <br />
+
             </div >
         )
     }
