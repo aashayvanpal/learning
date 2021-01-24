@@ -22,7 +22,7 @@ export default class ContactUs extends React.Component {
                     }}>Contact Us</h1>
                 </div>
                 <div style={{ "height": "133px", "marginBottom": "20px" }}>
-                    <img src={require("/home/aashay/code/dct-academy/learning/src/images/curve-top.svg")}
+                    <img src={require("../../images/curve-top.svg")}
                         style={{
                             "width": "100%",
                             "position": "relative",
