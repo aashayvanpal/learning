@@ -183,6 +183,7 @@ export default class ItemShow extends React.Component {
                         </tbody>
                     </table>
                     <h1>Grand Total = {this.state.total}</h1>
+                    <h1>Per plate cost = {this.state.total / this.state.numberOfPeople}</h1>
                     <button onClick={this.generateBill}>Generate Bill</button>
                 </div>
             </div>

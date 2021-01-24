@@ -311,7 +311,7 @@ export default class CustomerRequest extends React.Component {
                                     <th scope="row"><h2>Sl No</h2></th>
                                     <th scope="row" ><h2>Item Name</h2></th>
                                     <th scope="row" ><h2>Quantity</h2></th>
-                                    <th scope="row" ><h2>Price</h2></th>
+                                    {/* <th scope="row" ><h2>Price</h2></th> */}
                                     <th scope="row" ><h2>Remove</h2></th>
                                 </tr>
 
@@ -323,8 +323,10 @@ export default class CustomerRequest extends React.Component {
                                             <tr key={item.name}>
                                                 <td><h2>{i + 1}.</h2></td>
                                                 <td><h2>{item.name}</h2></td>
-                                                <td><button id={i + 1} onClick={() => { this.minusHandle(item.id) }}>-</button><input name="quantity" onChange={(e) => { this.handleChange(e, item.quantity, item.id) }} value={item.quantity} style={{ "width": "50px", textAlign: "center" }} /><button onClick={(e) => { this.plusHandle(item.id, e) }}>+</button><h5>{item.measured}</h5></td>
-                                                <td><h2>{item.price * item.quantity}</h2></td>
+                                                <td><button id={i + 1} onClick={() => { this.minusHandle(item.id) }}>-</button><input name="quantity" onChange={(e) => { this.handleChange(e, item.quantity, item.id) }} value={item.quantity} style={{ "width": "50px", textAlign: "center" }} /><button onClick={(e) => { this.plusHandle(item.id, e) }}>+</button>
+                                                    {/* <h5>{item.measured}</h5> */}
+                                                </td>
+                                                {/* <td><h2>{item.price * item.quantity}</h2></td> */}
                                                 <td><button className="button-color5" style={{ "padding": "10px" }} onClick={() => { this.handleRemove(item.id) }}>Remove</button></td>
                                             </tr>
                                         )
@@ -333,7 +335,7 @@ export default class CustomerRequest extends React.Component {
                             </tbody>
                         </Table>
 
-                        <h5 >*For any specific quries please contact through WhatsApp</h5> <br />
+                        <h5 >*For any specific queries please contact through WhatsApp - 9742814239</h5> <br />
                         <Link to="/Menu"><button style={{ "padding": "15px" }}>Back</button></Link>
                     </div>
                     <CustomerForm handleCustomerSubmit={this.handleCustomerSubmit} />

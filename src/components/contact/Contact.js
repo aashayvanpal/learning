@@ -16,7 +16,7 @@ export default class ContactUs extends React.Component {
                     <h1 style={{
                         "textAlign": "center",
                         "color": "white",
-                        "marginTop": "-140px",
+                        "marginTop": "-115px",
                         "fontSize": "100px",
                         "fontWeight": "bold"
                     }}>Contact Us</h1>
@@ -55,11 +55,17 @@ export default class ContactUs extends React.Component {
                             "marginTop": "50px",
                             "textAlign": "center"
                         }}>Contact Details</h1>
-                        <div style={{ "display": "flex" }}>
-                            <img src={require("../../images/map-image.png")} alt="" width="60px" height="60px" style={{ "margin": "20px" }} />
-                            <h1 style={{
-                                "fontSize": "30px"
-                            }}>#34 Soundarya, 1st Main ,            4th Cross, GMR Layout , Geddalahalli, Sanjaynagar, Bangalore -560094</h1>
+                        <div>
+                            <div style={{ "display": "flex" }}>
+                                <img src={require("../../images/map-image.png")} alt="" width="60px" height="60px" style={{ "margin": "20px" }} />
+                                <h1 style={{
+                                    "fontSize": "30px"
+                                }}>#34 Soundarya, 1st Main ,            4th Cross, GMR Layout , Geddalahalli, Sanjaynagar, Bangalore -560094</h1>
+                            </div>
+                            <p style={{ "textAlign": "center", "fontSize": "22px" }}>
+                                <a target="_blank" href="https://www.google.com/maps/place/33,+3rd+Main+Rd,+Geddalahalli,+KEB+Layout,+GMR+Layout,+Bengaluru,+Karnataka+560094/@13.0316457,77.5764478,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17c22c50239b:0x9595acf3f2c457cc!8m2!3d13.0316405!4d77.5786365">Get Directions</a>
+                            </p>
+
                         </div>
 
                         <div style={{ "display": "flex" }}>
@@ -87,11 +93,13 @@ export default class ContactUs extends React.Component {
                 <div style={{
                     "position": "relative",
                     "width": "1264px",
-                    "height": "1048px",
+                    "height": "850px",
                     "left": "-10px",
                     "backgroundColor": "rgb(219, 194, 104)"
                 }}>
-                    Map
+                    <h1 style={{ "textAlign": "center" }}>Our Location</h1>
+                    <img src={require("../../images/map-location.png")} alt="" style={{ "display": "block", "marginLeft": "auto", "marginRight": "auto" }} />
+
                 </div>
                 <Footer />
             </div>

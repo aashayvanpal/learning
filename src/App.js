@@ -1,11 +1,10 @@
-// App version 1.0
+// App version 1.0.1
 // Add exact path for add details
 /*
 Fixes :
 Front end for home/landing page must be completed 
 All pages must be made responsive
 
-in  bill add per plate cost with respect to number of people
 
 /qurries section , display customer qurries
 
@@ -27,6 +26,8 @@ create settings option from the user icon dropdown
 All all images to items
 on click of clear button on /menu page , the cursor must be blinking on the search bar
 Make the whole website responsive
+About us page
+Add tool tips for - how it works
 Create contact page(v1.0):
 Bugs :
 Css placement for the map is not perfect , all pages are not responsive 
@@ -34,8 +35,12 @@ Fix all fontsizes of contact us page , add the customer querry from the contact 
 querry CRUD
 querry Validation
 
+HTML5 Link that dials the number:<a href="tel:9742814239">Call us</a>
+HTML5 Link that runs email to <a href="mailto:example@example.com">Send email</a>
+rendering price and measured properties in customer request for caterer-user
 Major Update:(v1.0.1)
 Trying to integrate Google maps in contact us page
+Default error page loading
 */
 
 
@@ -315,7 +320,7 @@ function App() {
 
             <Route path="/settings" >
               <h1 style={{ "backgroundColor": "blue" }}>Settings:</h1>
-              <h1 style={{}}>App Version : 1.0v</h1>
+              <h1 style={{}}>App Version : 1.0.1v</h1>
 
             </Route>
 

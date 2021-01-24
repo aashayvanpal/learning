@@ -11,19 +11,29 @@ import {
 
 const items = [
   {
-    src: require("../images/vadapav.jpg"),
-    altText: 'Slide 1',
-    caption: 'Slide 1'
+    src: require("../images/landing-page-images/buffet1.jpg"),
+    altText: 'buffet 1',
+    caption: 'buffet 1'
   },
   {
-    src: require("../images/2.jpg"),
-    altText: 'Slide 2',
-    caption: 'Slide 2'
+    src: require("../images/landing-page-images/buffet2.jpg"),
+    altText: 'buffet 2',
+    caption: 'buffet 2'
   },
   {
-    src: require("../images/3.png"),
-    altText: 'Slide 3',
-    caption: 'Slide 3'
+    src: require("../images/landing-page-images/buffet3.jpg"),
+    altText: 'buffet 3',
+    caption: 'buffet 3'
+  },
+  {
+    src: require("../images/landing-page-images/buffet4.jpg"),
+    altText: 'buffet 4',
+    caption: 'buffet 4'
+  },
+  {
+    src: require("../images/landing-page-images/buffet5.jpg"),
+    altText: 'buffet 5',
+    caption: 'buffet 5'
   }
 ];
 
@@ -55,7 +65,7 @@ const ShowCarousel = (props) => {
         onExited={() => setAnimating(false)}
         key={item.src}
       >
-        <img src={item.src} alt={item.altText} height="500px" width="100%" />
+        <img src={item.src} alt={item.altText} height="550" width="100%" />
         <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
       </CarouselItem>
     );

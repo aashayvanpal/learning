@@ -18,8 +18,9 @@ export default function HomePage() {
             {/* <div id="gold-right-cut"> </div> */}
             <Carousel />
             {/* <div id="bottom-right-cut"> </div> */}
-            <h1 style={{ "textAlign": "center", "marginTop": "50px" }}>Heading</h1>
-            <h2 style={{ "textAlign": "center" }}>Supporting sub-heading</h2>
+            <h1 style={{ "textAlign": "center", "marginTop": "50px" }}>Home is where,</h1>
+            <h1 style={{ "textAlign": "center" }}>I'm with food</h1>
+
 
             <div>
                 <Link to='/Register'
@@ -29,6 +30,10 @@ export default function HomePage() {
                         "display": "block", "marginTop": "50px", "marginBottom": "50px", "textAlign": "center",
                         "border": "2px solid black"
                     }}>Order Now !</Link>
+            </div>
+            <div>
+                <img src={require("../images/landing-page-images/Veg-image.png")} alt="veg image" />
+                <h3>Pure Vegetarian</h3>
             </div>
 
             {/* <div style={{
@@ -45,7 +50,7 @@ export default function HomePage() {
                         "background": "#dbc268",
                         "textAlign": "center",
                         "marginBottom": "0px",
-                    }}>Features and benefits</h1>
+                    }}>Benefits and Features</h1>
                     <div style={{ "display": "flex", "background": "#dbc268" }}>
                         <div style={{ "height": "400px", "width": "30%", "margin": "10px", "backgroundColor": "red", "textAlign": "center", "borderRadius": "15px" }}>
                             <img width="120px" height="120px" />

@@ -245,6 +245,10 @@ export default class ItemList extends Component {
                     <h1>Approve orders - {this.state.approves.length}</h1>
 
                     <table className="listing-table" style={{ "fontWeight": "bold" }}>
+                        <caption>
+                            {/* <h1>Approve orders - {this.state.approves.length}</h1> */}
+
+                        </caption>
                         <thead className="listing-table" >
                             <tr>
                                 <td className="listing-table" >Sl no</td>
@@ -328,6 +332,7 @@ export default class ItemList extends Component {
                     <input placeholder="Search Order" />
                     <button>Search</button>
                     <table>
+
                         <thead>
                             <tr>
                                 <td className="listing-table">Sl no</td>
@@ -336,6 +341,7 @@ export default class ItemList extends Component {
                                 <td className="listing-table">Remove</td>
                             </tr>
                         </thead>
+                        
                         <tbody>
                             {
                                 this.state.completed.map((item, i) => {

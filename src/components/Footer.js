@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
-        <footer style={{ "width": "1275px", "marginLeft": "-15px" }}>
+        <footer style={{ "width": "100%", "marginLeft": "-15px" }}>
             <div id="left-bottom-cut"> </div>
             <div style={{ "display": "inline-flex", "width": "1275px" }}>
                 <div style={{ "marginTop": "50px", "marginLeft": "64px" }}>
