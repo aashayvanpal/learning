@@ -5,7 +5,6 @@ Fixes :
 Front end for home/landing page must be completed 
 All pages must be made responsive
 
-
 /qurries section , display customer qurries
 
 Clear the code clutter ,clean up unwated comments and also refine the code with comments on each function
