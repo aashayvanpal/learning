@@ -165,8 +165,8 @@ export default class ItemShow extends React.Component {
                         <tbody>
                             {
                                 this.state.items.map((item, i) => {
-                                    this.state.total += item.quantity * item.price
-
+                                    // this.state.total += item.quantity * item.price
+                                    this.setState(prevState => { prevState.total += item.quantity * item.price })
                                     return (
                                         <tr key={i}>
                                             <td>{i + 1}</td>
