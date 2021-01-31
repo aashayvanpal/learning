@@ -1,4 +1,4 @@
-// App version 1.0.1
+// App version 1.0.2
 // Add exact path for add details
 /*
 Fixes :
@@ -70,9 +70,9 @@ import SignInForm from './components/SignInForm.js'
 
 import UserButton from './components/UserButton.js'
 import Contact from './components/contact/Contact.js'
-import Footer from './components/Footer.js'
+// import Footer from './components/Footer.js'
 import HomePage from './components/HomePage.js'
-import Qurries from './components/Qurries.js'
+// import Qurries from './components/Qurries.js'
 
 
 
@@ -81,6 +81,8 @@ function App() {
     <div className="app">
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossOrigin="anonymous"></link>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet"></link>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
 
       <BrowserRouter >
@@ -101,7 +103,7 @@ function App() {
                 Order Now !
               </Link>
             </h2>
-            
+
             <h2 className="linkEnquiry">
               <Link to="/contactus"
                 style={{ "backgroundColor": "#dbc268", "border": "none", "cursor": "pointer" }}
@@ -151,9 +153,12 @@ function App() {
           </div>
         </div>
 
-
+        <Route exact path="/" >
+          <HomePage />
+        </Route>
 
         <div className="align" >
+
           <div id="Nav-bar">
             <ul style={{ "listStyleType": "none" }}>
               <button style={{
@@ -184,16 +189,12 @@ function App() {
               <Link to='/Qurries' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Qurries</li></Link>
             </ul>
           </div>
+
+
+
+
+
           <div className="content-showcase">
-
-
-
-            <Route exact path="/" >
-
-              <HomePage />
-
-
-            </Route>
 
             <Route path="/dashboard" >
               <h1 style={{ "backgroundColor": "green" }}>Dashboard:</h1>
@@ -320,7 +321,7 @@ function App() {
 
             <Route path="/settings" >
               <h1 style={{ "backgroundColor": "blue" }}>Settings:</h1>
-              <h1 style={{}}>App Version : 1.0.1v</h1>
+              <h1 style={{}}>App Version : 1.0.2v</h1>
 
             </Route>
 

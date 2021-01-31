@@ -12,11 +12,11 @@ import {
 const items = [
   {
     src: require("../images/landing-page-images/buffet1.jpg"),
-    altText: 'buffet 1',
-    caption: 'buffet 1'
+    altText: '',
+    caption: 'Sweet Special'
   },
   {
-    src: require("../images/landing-page-images/buffet2.jpg"),
+    src: require("../images/landing-page-images/buffet2.png"),
     altText: 'buffet 2',
     caption: 'buffet 2'
   },

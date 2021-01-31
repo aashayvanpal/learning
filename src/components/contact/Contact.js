@@ -3,10 +3,6 @@ import MessageForm from './Form.js'
 import Footer from '../Footer.js'
 
 export default class ContactUs extends React.Component {
-    constructor() {
-        super()
-
-    }
     render() {
         return (
             <div>
@@ -63,7 +59,7 @@ export default class ContactUs extends React.Component {
                                 }}>#34 Soundarya, 1st Main ,            4th Cross, GMR Layout , Geddalahalli, Sanjaynagar, Bangalore -560094</h1>
                             </div>
                             <p style={{ "textAlign": "center", "fontSize": "22px" }}>
-                                <a target="_blank" href="https://www.google.com/maps/place/33,+3rd+Main+Rd,+Geddalahalli,+KEB+Layout,+GMR+Layout,+Bengaluru,+Karnataka+560094/@13.0316457,77.5764478,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17c22c50239b:0x9595acf3f2c457cc!8m2!3d13.0316405!4d77.5786365">Get Directions</a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/33,+3rd+Main+Rd,+Geddalahalli,+KEB+Layout,+GMR+Layout,+Bengaluru,+Karnataka+560094/@13.0316457,77.5764478,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae17c22c50239b:0x9595acf3f2c457cc!8m2!3d13.0316405!4d77.5786365">Get Directions</a>
                             </p>
 
                         </div>
