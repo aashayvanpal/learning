@@ -46,9 +46,9 @@ export default function Footer() {
                     <h2 style={{ "fontWeight": "bold", "width": "100%" }}>Follow us on :-</h2>
                     <div style={{ "display": "flex", "justify-content": "center" }}>
                         <div>
-                            <img src={facebook} height="55px" />
-                            <img src={gmail} height="55px" />
-                            <img src={whatsApp} height="55px" />
+                            <img alt="facebook-img" src={facebook} height="55px" />
+                            <img alt="gmail-img" src={gmail} height="55px" />
+                            <img alt="whatsApp-img" src={whatsApp} height="55px" />
                         </div>
                     </div>
 

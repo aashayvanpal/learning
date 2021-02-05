@@ -194,7 +194,7 @@ export default function HomePage() {
 
                                 <div className="container">
                                     <div className="realCard">
-                                        <img src={orderfood} />
+                                        <img alt="orderfood-img" src={orderfood} />
                                         <div className="card1">
                                             <h2>ORDER YOUR FOOD</h2>
                                             <h4>Fully Customized delicasies according to your taste</h4>
@@ -202,7 +202,7 @@ export default function HomePage() {
                                     </div>
 
                                     <div className="realCard">
-                                        <img src={deliver} />
+                                        <img alt="deliver-img" src={deliver} />
                                         <div className="card2">
                                             <h2>DELIVER  OR  PICKUP</h2>
                                             <h4>Services that we provide depend on the type of event and are fullfilled according to your convinience</h4>
@@ -210,7 +210,7 @@ export default function HomePage() {
                                     </div>
 
                                     <div className="realCard">
-                                        <img src={cook} />
+                                        <img alt="cook-img" src={cook} />
                                         <div className="card1">
                                             <h2 >DELICIOUS RECIPIE</h2>
                                             <h4>Homely, hygenic and tasty food is superwised by our expert chef Varsha Vanpal</h4>
