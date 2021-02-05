@@ -25,53 +25,39 @@ export default function Footer() {
         //         </div>
         //     </div>
         // </footer>
-        <footer style={{
-            "width": "100%",
-            "backgroundColor": "rgb(0,0,0,0.78)",
-            "color": "#DBC268",
-        }}>
+        <footer className="footer">
             <div style={{
-                "display": "inline-flex",
-                "width": "100%"
+                "display": "flex"
             }}>
-                <div style={{
-                    "marginTop": "50px",
-                    "width": "30%",
-                    "textAlign": "center"
-                }}>
-                    <h2><Link to="/signin" style={{ "color": "#DBC268", "fontWeight": "bold" }}>Order Now!</Link></h2>
-                    <h2><Link to="/" style={{ "color": "#DBC268", "fontWeight": "bold" }}>Deals</Link></h2>
-                </div>
-                <div style={{
-                    "display": "block",
-                    "marginTop": "50px",
-                    "textAlign": "center",
-                    "width": "30%"
-                }}>
-                    <h2><Link to="/aboutus" style={{ "color": "#DBC268", "fontWeight": "bold" }}>About Us</Link></h2>
-                    <h2><Link to="/contactus" style={{ "color": "#DBC268", "fontWeight": "bold" }}>Contact Us</Link></h2>
-                </div>
+                <div className="footer-c1" >
+                    <div className="footer-c1-box1">
+                        <h2><Link to="/" >Order Now!</Link></h2>
+                        <h2><Link to="/" >Deals</Link></h2>
+                    </div>
 
-                <div style={{
-                    "marginTop": "50px",
-                    "textAlign": "center",
-                    "width": "40%"
-                }}>
-                    <h2 style={{ "fontWeight": "bold" }}>Follow us on :-</h2>
+                    <div className="footer-c1-box2">
+                        <h2><Link to="/aboutus"   >About Us</Link></h2>
+                        <h2><Link to="/contactus" >Contact Us</Link></h2>
+                    </div>
+
+                </div>
+                <div className="footer-c2">
+
+                    <h2 style={{ "fontWeight": "bold", "width": "100%" }}>Follow us on :-</h2>
                     <div style={{ "display": "flex", "justify-content": "center" }}>
                         <div>
-                            <img src={facebook} height="55px" alt="facebook-icon" />
-                            <img src={gmail} height="55px" alt="gmail-icon" />
-                            <img src={whatsApp} height="55px" alt="whatsApp-icon" />
+                            <img src={facebook} height="55px" />
+                            <img src={gmail} height="55px" />
+                            <img src={whatsApp} height="55px" />
                         </div>
                     </div>
 
                 </div>
-
             </div>
+
             <div style={{ "marginTop": "50px", "textAlign": "center" }}>
                 © copyrights reserved 2021
-            </div>
+                    </div>
         </footer>
     )
 }

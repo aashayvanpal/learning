@@ -46,14 +46,11 @@ import vegImage from '../images/landing-page-images/Veg-image.png'
 // </div>
 
 
-
+// making responsive: 
+// problem with footer
 export default function HomePage() {
     return (
-        <Container fluid style={{
-            'flexDirection': 'column',
-            'justifyContent': 'center',
-            'alignItems': 'center',
-        }}>
+        <Container fluid>
             <Row>
                 <Col>
 
@@ -86,7 +83,7 @@ export default function HomePage() {
                 <img src={right} />
             </div> */}
 
-                        <div>
+                        {/* <div>
                             <div style={{ "position": "relative" }}>
                                 <img src={designLeft} alt="designleft" style={{ "position": "absolute", "left": "0px", "zIndex": "2", "width": "100%", "height": "100%" }} />
 
@@ -114,6 +111,22 @@ export default function HomePage() {
                                 </div >
                             </div >
 
+                        </div > */}
+
+                        <div style={{ "position": "relative" }}>
+                            <img src={designLeft} alt="designleft" id="designLeft" />
+                            <div style={{ "display": "block", "height": "1000px", "width": "100%", "backgroundColor": "#F5EDC0" }}>
+                                <div className="center-align">
+                                    <h1 className="h1-heading" id="txt1">Home is where,</h1>
+                                    <h1 className="h1-heading" id="txt2">I'm with food</h1>
+                                    <Link to='/Register' id="OrderNow"
+                                    >ORDER NOW !</Link>
+                                </div>
+                                <div id="vegImg-placement">
+                                    <img id="vegImg" src={vegImage} alt="veg-img" />
+                                    <h3 style={{ "textAlign": "center", "marginBottom": "250px" }}>Pure Vegetarian</h3>
+                                </div>
+                            </div >
                         </div >
 
 
@@ -128,28 +141,28 @@ export default function HomePage() {
                                     "fontFamily": 'Playball',
                                     "fontSize": "90px"
                                 }}>Benefits and Features</h1>
-                                <div style={{ "display": "flex" }}>
-                                    {/* <div style={{ "height": "400px", "width": "30%", "margin": "10px", "backgroundColor": "#DDB24C", "textAlign": "center", "borderRadius": "15px" }}>
+                                {/* <div style={{ "height": "400px", "width": "30%", "margin": "10px", "backgroundColor": "#DDB24C", "textAlign": "center", "borderRadius": "15px" }}>
                             <img width="120px" height="120px" />
                             <h2>ORDER YOUR FOOD</h2>
-                          Fully Customized delicasies according to your taste
-                        </div>
-                        <div style={{ "height": "400px", "width": "30%", "margin": "10px", "backgroundColor": "#DDB24C", "textAlign": "center", "borderRadius": "15px" }}>
+                            Fully Customized delicasies according to your taste
+                            </div>
+                            <div style={{ "height": "400px", "width": "30%", "margin": "10px", "backgroundColor": "#DDB24C", "textAlign": "center", "borderRadius": "15px" }}>
                             <img width="120px" height="120px" />
                             <h2>DELIVER OR PICKUP</h2>
-                           Services that we provide depend on the type of event and are fullfilled according to your convinience
-                        </div>
-                        <div style={{ "height": "400px", "width": "30%", "margin": "10px", "backgroundColor": "#DDB24C", "textAlign": "center", "borderRadius": "15px" }}>
+                            Services that we provide depend on the type of event and are fullfilled according to your convinience
+                            </div>
+                            <div style={{ "height": "400px", "width": "30%", "margin": "10px", "backgroundColor": "#DDB24C", "textAlign": "center", "borderRadius": "15px" }}>
                             <img width="120px" height="120px" />
                             <h2>DELICIOUS RECIPIE</h2>
-
+                            
                             Homely, hygenic and tasty food is superwised by our expert chef Varsha Vanpal
                         </div> */}
 
+                                {/* <div style={{ "display": "flex" }}>
                                     <div style={{ "display": "flex", "backgroundColor": "#F5EDC0", "marginBottom": "50px" }}>
 
                                         <div className="realCard">
-                                            <img src={orderfood} alt="orderfoodImage"/>
+                                            <img src={orderfood} alt="orderfoodImage" />
                                             <div className="card1">
                                                 <h2>ORDER YOUR FOOD</h2>
                                                 <h4>Fully Customized delicasies according to your taste</h4>
@@ -157,7 +170,7 @@ export default function HomePage() {
                                         </div>
 
                                         <div className="realCard">
-                                            <img src={deliver} alt="deliverIcon"/>
+                                            <img src={deliver} alt="deliverIcon" />
                                             <div className="card2">
                                                 <h2>DELIVER  OR  PICKUP</h2>
                                                 <h4>Services that we provide depend on the type of event and are fullfilled according to your convinience</h4>
@@ -165,7 +178,7 @@ export default function HomePage() {
                                         </div>
 
                                         <div className="realCard">
-                                            <img src={cook} alt="cookImage"/>
+                                            <img src={cook} alt="cookImage" />
                                             <div className="card1">
                                                 <h2 >DELICIOUS RECIPIE</h2>
                                                 <h4>Homely, hygenic and tasty food is superwised by our expert chef Varsha Vanpal</h4>
@@ -173,10 +186,37 @@ export default function HomePage() {
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                         <path fill="#dbc268" fill-opacity="1" d="M0,96L60,85.3C120,75,240,53,360,58.7C480,64,600,96,720,101.3C840,107,960,85,1080,74.7C1200,64,1320,64,1380,64L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
                     </svg> */}
+
+
+                                <div className="container">
+                                    <div className="realCard">
+                                        <img src={orderfood} />
+                                        <div className="card1">
+                                            <h2>ORDER YOUR FOOD</h2>
+                                            <h4>Fully Customized delicasies according to your taste</h4>
+                                        </div>
+                                    </div>
+
+                                    <div className="realCard">
+                                        <img src={deliver} />
+                                        <div className="card2">
+                                            <h2>DELIVER  OR  PICKUP</h2>
+                                            <h4>Services that we provide depend on the type of event and are fullfilled according to your convinience</h4>
+                                        </div>
+                                    </div>
+
+                                    <div className="realCard">
+                                        <img src={cook} />
+                                        <div className="card1">
+                                            <h2 >DELICIOUS RECIPIE</h2>
+                                            <h4>Homely, hygenic and tasty food is superwised by our expert chef Varsha Vanpal</h4>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -196,6 +236,9 @@ export default function HomePage() {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fill="#dbc268" fill-opacity="1" d="M0,96L60,85.3C120,75,240,53,360,58.7C480,64,600,96,720,101.3C840,107,960,85,1080,74.7C1200,64,1320,64,1380,64L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
             </svg> */}
+
+
+
                         <Footer />
                     </div>
                 </Col>
