@@ -51,7 +51,6 @@ import OrderList from './components/OrderList';
 import OrderShow from './components/order/Show.js';
 import OrderPrint from './components/order/Print.js';
 
-
 import AddUserData from './components/AddUserData.js';
 // import Calender from './GUI/Calender.js';
 import ItemList from './components/item/List.js';
@@ -60,6 +59,7 @@ import ItemShow from './components/item/Show.js';
 // import ItemForm from './components/item/Form.js';
 import ItemNew from './components/item/New.js';
 import ItemDetailsForm from './components/ItemDetailsForm.js';
+
 import CustomerRequest from './components/CustomerRequest.js'
 
 import './css/app-css.css'
@@ -72,7 +72,8 @@ import Contact from './components/contact/Contact.js'
 // import Footer from './components/Footer.js'
 import HomePage from './components/HomePage.js'
 // import Qurries from './components/Qurries.js'
-
+import './css/HomePage/header.css'
+// make header as a component
 
 
 
@@ -87,38 +88,14 @@ function App() {
       <BrowserRouter >
 
         <div className="header">
-          <h1 style={{
-            "textAlign": "left",
-            "fontSize": "64px",
-            "marginRight": "200px",
-            "marginLeft": "20px",
-            "fontFamily": "Old Standard TT",
-          }}><Link to="/" style={{ "textDecoration": "none", "color": "black" }}>Aaswad Caterers</Link></h1>
-          <div style={{ "display": "flex", "position": "absolute", "right": "15px" }}>
+          {/* Dont render User-button icon if user is not logged in (conditional rendering)*/}
+          {/* Make Order Now! a button and fancy looking */}
 
-            <h2 className="linkEnquiry">
-              <Link to="/Register"
-                style={{ "backgroundColor": "#dbc268", "border": "none", "cursor": "pointer" }}>
-                Order Now !
-              </Link>
-            </h2>
-
-            <h2 className="linkEnquiry">
-              <Link to="/contactus"
-                style={{ "backgroundColor": "#dbc268", "border": "none", "cursor": "pointer" }}
-              >Contact Us</Link>
-            </h2>
-
-
-            {/* <div > */}
-            {/* <button onClick={() => { console.log("iamge clicked!") }}>
-
-                <img src="./images/User.png" alt="" />
-              </button> */}
-            {/* <input type="image" src="./images/User.png" alt="image"  /> */}
-            {/* <button className="user" onClick={() => { console.log('clicked image') }} /> */}
+          <Link to="/" className="header-txt" >Aaswad Caterers</Link>
+          <div className="header-link-container">
+            <Link to="/Register" className="linkEnquiry">Order Now !</Link>
+            <Link to="/contactus" className="linkEnquiry">Contact Us</Link>
             <UserButton />
-            {/* </div> */}
 
             <div id="burger" onClick={() => {
               console.log('burger clicked!')
@@ -131,10 +108,6 @@ function App() {
             </div>
 
             <div className="topNav">
-              {/* <span><Link to='/' style={{ "color": "black" }}>Home</Link></span>&nbsp;
-          <span><Link to='/Menu' style={{ "color": "black" }}>Menu</Link></span>&nbsp;
-          <span><Link to='/Cart' style={{ "color": "black" }} >My Cart </Link></span> */}
-
               <div id="mySidenavMobile">
                 <button id="x-mark" className="closebtn" onClick={() => {
                   console.log('clicked on close button')
@@ -201,6 +174,7 @@ function App() {
             </Route>
 
             <Route path="/Menu" >
+              {/* Render ItemCard for a different view (conditional rendering) */}
               <button id="ShowButton" onClick={() => {
                 var navBarElement = document.getElementById("Nav-bar")
                 navBarElement.style.display = "block"
@@ -219,6 +193,7 @@ function App() {
             </Route>
 
             <Route path="/Cart" >
+              {/* Must show current cart details */}
               <h1 style={{ "backgroundColor": "green" }}>Cart:</h1>
 
             </Route>
@@ -298,7 +273,6 @@ function App() {
 
 
             <Route path="/Register" >
-              {/* <h1> Registration page </h1> */}
               <div className="SignUpCard">
                 <h1 style={{ "fontSize": "36px", "textAlign": "center" }}> Sign Up </h1>
                 <SignUpForm />
@@ -306,7 +280,6 @@ function App() {
             </Route>
 
             <Route path="/Signin" >
-              {/* <h1> Signin page </h1> */}
               <div className="SignUpCard">
                 <h1 style={{ "fontSize": "36px", "textAlign": "center" }}> Sign In </h1>
 

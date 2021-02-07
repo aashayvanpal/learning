@@ -159,27 +159,6 @@
   display: block;
 }
 
-#burger {
-  cursor: pointer;
-  display: none;
-  float: right;
-}
-
-#bar {
-  height: 5px;
-  background-color: white;
-  width: 40px;
-
-  margin-top: 8px;
-}
-
-/* Media qurry */
-@media screen and (max-width: 900px) {
-  #burger {
-    display: inline-block;
-  }
-}
-
 #Link {
   color: #000000;
   cursor: pointer;
@@ -254,34 +233,6 @@
   }
 }
 
-.linkEnquiry {
-  margin: 40px 20px;
-}
-
-.header {
-  width: 100%;
-  display: inline-flex;
-  background-color: #dbc268;
-  margin-bottom: 13px;
-  box-shadow: 5px 10px 6px;
-}
-
-/* .card {
-  display: inline-block;
-  background-color: #c3b091;
-  width: 200px;
-  border-width: 5px;
-  margin: 20px;
-} */
-
-/* .card{
-  display: inline-block;
-  background-color: #f5d76c;
-  border-width: 5px;
-  margin: 20px;
-  width: 200px;
-  height:300px;
-} */
 .user {
   background-image: url("../images/User.png");
   height: 63px;
@@ -374,20 +325,6 @@
   width: 30px;
 }
 
-/* .card-body {
-  background-color: #bbe1fa;
-  height: 100%;
-} */
-/* .card {
-  display: inline-flex;
-  background-color: #f5d76c;
-  border-width: 5px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  width: 300px;
-  height: 300px;
-} */
-
 .Qurrie-form {
   width: 427px;
   height: 70px;
@@ -432,12 +369,17 @@
   text-align: center;
 }
 
-.card1 h4,
-.card2 h4 {
+.card1 h5,
+.card2 h5 {
   color: white;
   position: relative;
   top: 160px;
   z-index: 20;
+}
+
+.card1 span,
+.card2 span {
+  color: green;
 }
 
 .realCard {
@@ -558,9 +500,12 @@
 
 .footer {
   width: 100%;
-  background-color: rgb(0, 0, 0, 0.78);
-  color: #dbc268;
+  /* background-color: rgb(0, 0, 0, 0.78); */
   font-weight: bold;
+  display: flex;
+}
+.footer h2 {
+  justify-content: center;
 }
 
 .footer-c1 {
@@ -571,7 +516,7 @@
 .footer-c1-box1,
 .footer-c1-box2 {
   margin-top: 50px;
-  width: 50%;
+  width: 100%;
   text-align: center;
 }
 
@@ -582,33 +527,39 @@
 
 .footer-c2 {
   margin-top: 50px;
-  text-align: center;
   width: 30%;
+  text-align: center;
 }
 
+.footer-c2 h2 {
+  width: 100%;
+  font-weight: bold;
+  justify-content: center;
+}
 @media screen and (max-width: 900px) {
+  .footer {
+    display: block;
+  }
   .footer-c1 {
     display: block;
-
-    width: 50%;
+    width: 100%;
   }
 
   .footer-c1 a {
     font-size: 20px;
-    width: 66%;
+    width: 100%;
   }
   .footer-c2 {
-    width: 50%;
+    width: 100%;
+    margin-top: 0px;
   }
 
   .footer-c2 h2 {
+    justify-content: center;
     font-size: 20px;
+    font-weight: bold;
   }
 
-  /* .footer-c1-box1,
-  .footer-c1-box2 {
-    width: 100%;
-  } */
   .footer-c1-box2 {
     margin-top: 0px;
   }

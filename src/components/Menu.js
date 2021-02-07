@@ -1,53 +1,6 @@
-//Bug at this.state.isFavouriate
-//How to render single component price value ,Quantity
-
-// items: [
-//     { id: 1, name: 'Dahivada', category: "dessert", price: 45, image: 'https://i.ndtvimg.com/i/2018-02/dahi-bhalla_650x400_61519796037.jpg',quantity: 0, smalldisc: 'this is dahi wada', largedisc: "", showItemQtyBar: false },
-
-//     { id: 2, name: 'Sandwich',quantity: 0, category: "snacks", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQi-pcmPUSXX_lShEsi4UB32Nu_gZhyZSuHKtRsX9tiHh1z4WtnQ&s', smalldisc: 'this is a sandwich', largedisc: "", showItemQtyBar: false },
-
-//     { id: 3, name: 'Vada Pav',quantity: 0, category: "snacks", price: 40, image: 'https://c8.alamy.com/comp/P79NX5/vada-pav-from-maharashtra-india-P79NX5.jpg', smalldisc: ' Fast food dish native to the state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle.', largedisc: "", showItemQtyBar: false },
-
-// ]
-
-// Card Body with the buttons
-// <button type="button" className="btn btn-outline-primary"
-//                                             onClick={this.CartHandle}> Add </button>
-//                                         <button type="button" className="btn btn-outline-primary"
-//                                             onClick={this.CartRemoveHandle}> Remove </button>
-//                                         <button type="button" className="btn btn-outline-primary"
-//                                             onClick={this.favouriteHandle}> Favoirate </button>
-
-//                                         {
-//                                             this.state.items[i].showItemQtyBar ?
-//                                                 <div style={{ "display": "inline-block" }} >
-//                                                     <div>
-//                                                         <h1>Quantity :</h1>
-//                                                         <h1>{this.state.items[i].quantity}</h1>
-//                                                         <button type="button" className="btn btn-outline-primary"
-//                                                             onClick={this.incrementHandle}> + </button>
-
-//                                                         <button type="button" className="btn btn-outline-primary"
-//                                                             onClick={this.decrementHandle}>  - </button>
-//                                                         <button type="button" className="btn btn-outline-primary"
-//                                                             onClick={this.resetHandle}> Reset </button>
-//                                                     </div>
-//                                                     <div>
-//                                                         <h1>Price :</h1>
-//                                                         <h1>{this.state.items[i].price * this.state.items[i].quantity}</h1>
-//                                                         {/* how to get id which is clicked? */}
-//                                                     </div>
-
-//                                                 </div>
-//                                                 :
-//                                                 null
-//                                         }
-
 import React from 'react'
 import axios from '../config/axios'
 import Cart from './Cart.js'
-
-
 
 export default class Menu extends React.Component {
     constructor() {
@@ -70,7 +23,6 @@ export default class Menu extends React.Component {
         this.CartRemoveHandle = this.CartRemoveHandle.bind(this)
         this.favouriteHandle = this.favouriteHandle.bind(this)
         this.checkboxChange = this.checkboxChange.bind(this)
-        // this.removeItemFromCart = this.removeItemFromCart.bind(this)
         this.isCheckedValue = this.isCheckedValue.bind(this)
         this.resetIsSelected = this.resetIsSelected.bind(this)
         this.toggleIsSelected = this.toggleIsSelected.bind(this)
@@ -114,8 +66,6 @@ export default class Menu extends React.Component {
         console.log('state.items[0].showItemQtyBar after setState :', this.state.items[0].showItemQtyBar)
 
         console.log('Crossed setstate!')
-
-
     }
 
 
@@ -124,8 +74,6 @@ export default class Menu extends React.Component {
             isFavourite: true
         })
         console.log('Favourite button was clicked!')
-
-
         console.log("I got updated! ")
 
         console.log("Favourite :", this.state.isFavourite)
@@ -188,13 +136,7 @@ export default class Menu extends React.Component {
             return (items.filter(item => item.display === true))
         }
 
-
-
     }
-
-
-
-
 
 
     decrementHandle(i) {
