@@ -1,0 +1,83 @@
+/* Make card desired width and place it with an image upgrade */
+.SignUpCard {
+  border-radius: 48px;
+  padding: 20px;
+  border: 2px solid black;
+}
+
+.signup-form {
+  width: 100%;
+}
+.signup-form-center {
+  display: flex;
+  position: relative;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 218px;
+}
+.input-box input {
+  width: 100%;
+  height: 80px;
+  margin: 15px;
+  text-align: center;
+  margin: 20px 0px 5px 0px;
+  font-size: 32px;
+  border-radius: 25px;
+  /* box-shadow: 3px 3px white; */
+  border: 2px solid black;
+
+  background-color: white;
+}
+
+#inputName {
+  background: url(../../images/username-icon.png) no-repeat 40px 15px;
+  background-size: 50px 50px;
+}
+
+#inputEmail {
+  background: url(../../images/Email-icon.png) no-repeat 40px 15px;
+  background-size: 50px 50px;
+}
+
+#inputPassword {
+  background: url(../../images/password-icon.png) no-repeat 40px 15px;
+  background-size: 50px 50px;
+}
+
+#caterer {
+  height: 50px;
+  width: 30px;
+}
+
+#create-account-wrapper {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#create-account-button {
+  padding: 25px;
+  width: 350px;
+  border-radius: 50px;
+  color: white;
+  background-color: #dbc268;
+  font-size: 32px;
+  box-shadow: 5px;
+}
+
+#already-have-account {
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 514px) {
+  #already-have-account {
+    font-size: 20px;
+  }
+}
+.content-showcase {
+  width: 100%;
+}

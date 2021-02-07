@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from '../config/axios.js'
-
+import '../css/LoginDetails/Signup.css'
+import { Container, Row, Col } from 'reactstrap'
 
 const initialState = {
     name: "",
@@ -11,7 +12,7 @@ const initialState = {
     emailError: '',
 }
 
-
+// Make responsive
 export default class SignUpForm extends React.Component {
     constructor() {
         super()
@@ -123,33 +124,37 @@ export default class SignUpForm extends React.Component {
     render() {
 
         return (
+            // <Container fluid>
+            //     <Row>
+            //         <Col>
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input id="inputName" placeholder="Full Name" name="name" onChange={this.handleChange} value={this.state.name} /><br />
-                    {this.state.nameError ? (<div style={{ "color": "red", "marginLeft": "120px" }}>{this.state.nameError}</div>) : null}
+                <form onSubmit={this.handleSubmit} className="signup-form">
+                    <div className="input-box">
+                        <input id="inputName" placeholder="Full Name" name="name" onChange={this.handleChange} value={this.state.name} /><br />
+                        {this.state.nameError ? (<div style={{ "color": "red", "marginLeft": "120px" }}>{this.state.nameError}</div>) : null}
 
-                    <input id="inputEmail" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} /><br />
-                    {this.state.emailError ? (<div style={{ "color": "red", "marginLeft": "120px" }}>{this.state.emailError}</div>) : null}
+                        <input id="inputEmail" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} /><br />
+                        {this.state.emailError ? (<div style={{ "color": "red", "marginLeft": "120px" }}>{this.state.emailError}</div>) : null}
 
-                    <input id="inputPassword" type="password" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} /><br />
+                        <input id="inputPassword" type="password" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} /><br />
+                    </div>
 
-                    <input type="checkbox" id="caterer" name="isCaterer" onChange={this.handleCheckboxChange} checked={this.state.isCaterer}
-                        style={{
-                            "marginLeft": "30%",
-                        }} />
-                    <label style={{
-                        "fontSize": "32px",
-                        "marginLeft": "30px",
-                    }} htmlFor="caterer" > I am Caterer</label><br />
-                    <input type="submit" value="Create Account"
-                        style={{
-                            "marginLeft": "27%", "padding": "25px", "width": "350px", "borderRadius": "50px", "color": " white",
-                            "backgroundColor": "#dbc268", "fontSize": "32px", "boxShadow": "5px"
-                        }}
-                    />
+                    <div className="signup-form-center">
+                        <input type="checkbox" id="caterer" name="isCaterer" onChange={this.handleCheckboxChange} checked={this.state.isCaterer} />
+                        <label style={{
+                            "fontSize": "32px",
+                            "marginLeft": "30px",
+                        }} htmlFor="caterer" > I'm Caterer</label>
+                    </div>
+                    <br />
+                    <div id="create-account-wrapper">
+                        <input type="submit" value="Create Account" id="create-account-button" />
+                    </div>
+
+                <h3 id="already-have-account">Already have an account ? <a href="/signin">Sign in</a></h3>
                 </form>
-                <h3 style={{ "textAlign": "center", "marginTop": "20px" }}>Already have an account ? <a href="/signin">Sign in</a></h3>
             </div>
+
         )
     }
 }

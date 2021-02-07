@@ -264,66 +264,7 @@
   margin: 5px;
 }
 
-.SignUpCard {
-  background-color: #f5edc0;
-  width: 886px;
-  margin-left: 20%;
-  border-radius: 48px;
-  padding: 25px;
-  border: 2px solid black;
-}
 
-#inputName {
-  width: 634px;
-  height: 80px;
-  padding: 10px;
-  margin: 15px;
-  text-align: center;
-  margin-left: 12%;
-  font-size: 32px;
-  border-radius: 50px;
-  box-shadow: 5px 5px;
-
-  background: url(../images/username-icon.png) no-repeat 40px 15px;
-  background-color: white;
-  background-size: 50px 50px;
-}
-
-#inputPassword {
-  width: 634px;
-  height: 80px;
-  padding: 10px;
-  margin: 15px;
-  text-align: center;
-  margin-left: 12%;
-  font-size: 32px;
-  border-radius: 50px;
-  box-shadow: 5px 5px;
-
-  background: url(../images/password-icon.png) no-repeat 40px 15px;
-  background-color: white;
-  background-size: 50px 50px;
-}
-
-#inputEmail {
-  width: 634px;
-  height: 80px;
-  padding: 10px;
-  margin: 15px;
-  text-align: center;
-  margin-left: 12%;
-  font-size: 32px;
-  border-radius: 50px;
-  box-shadow: 5px 5px;
-  background: url(../images/Email-icon.png) no-repeat 40px 15px;
-  background-color: white;
-  background-size: 50px 50px;
-}
-
-#caterer {
-  height: 50px;
-  width: 30px;
-}
 
 .Qurrie-form {
   width: 427px;

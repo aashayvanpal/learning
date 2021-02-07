@@ -64,12 +64,20 @@
   }
   .header-txt {
     text-align: center;
-    font-size: 45px;
+    font-size: 40px;
     margin-top: 10px;
   }
   #burger {
     display: inline-block;
     margin-top: 20px;
     margin-left: 30px;
+  }
+}
+
+@media screen and (max-width:507px){
+  .header-txt{
+    font-size: 38px;
+    margin-top: 20px;
+
   }
 }
