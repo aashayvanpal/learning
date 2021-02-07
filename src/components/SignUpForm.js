@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from '../config/axios.js'
 import '../css/LoginDetails/Signup.css'
-import { Container, Row, Col } from 'reactstrap'
 
 const initialState = {
     name: "",
