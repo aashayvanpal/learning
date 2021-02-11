@@ -27,6 +27,8 @@ on click of clear button on /menu page , the cursor must be blinking on the sear
 Make the whole website responsive
 About us page
 Add tool tips for - how it works
+
+Write more test scripts (next update)
 Create contact page(v1.0):
 Bugs :
 Css placement for the map is not perfect , all pages are not responsive 
@@ -165,6 +167,7 @@ function App() {
                     <Link to='/users/add' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Recipies</li></Link>
                     <Link to='/Calender' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Calender</li></Link>
                     <Link to='/Qurries' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Qurries</li></Link>
+                    <Link to='/Deals' className="Nav-barLink" style={{ "textDecoration": "none" }}><li>Deals</li></Link>
                   </ul>
                 </div>
 
@@ -310,6 +313,11 @@ function App() {
 
                   <Route path="/aboutus" >
                     <h1 style={{ "backgroundColor": "blue" }}>About us Page</h1>
+
+                  </Route>
+
+                  <Route path="/Deals" >
+                    <h1 style={{ "backgroundColor": "blue" }}>Deals Page</h1>
 
                   </Route>
 
