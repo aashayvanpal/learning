@@ -25,9 +25,18 @@
   font-size: 32px;
   border-radius: 25px;
   /* box-shadow: 3px 3px white; */
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  
+}
 
-  background-color: white;
+
+#inputEmail2,
+#inputPassword2 {
+  width: 100%;
+  height: 80px;
+  /* margin: 10px; */
+  text-align: center;
+  border-radius: 20px;
 }
 
 #inputName {
@@ -35,12 +44,12 @@
   background-size: 50px 50px;
 }
 
-#inputEmail {
+#inputEmail2 {
   background: url(../../images/Email-icon.png) no-repeat 40px 15px;
   background-size: 50px 50px;
 }
 
-#inputPassword {
+#inputPassword2 {
   background: url(../../images/password-icon.png) no-repeat 40px 15px;
   background-size: 50px 50px;
 }
@@ -75,7 +84,7 @@
 
 @media screen and (max-width: 514px) {
   #already-have-account {
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 .content-showcase {

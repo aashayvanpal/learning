@@ -1,0 +1,31 @@
+#inputEmail,
+#inputPassword {
+  width: 100%;
+  height: 80px;
+  margin: 10px;
+  font-size: 32px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+#inputName {
+  background: url(../../images/username-icon.png) no-repeat 40px 15px;
+  background-size: 50px 50px;
+}
+
+#inputEmail {
+  background: url(../../images/Email-icon.png) no-repeat 40px 15px;
+  background-size: 50px 50px;
+}
+
+#inputPassword {
+  background: url(../../images/password-icon.png) no-repeat 40px 15px;
+  background-size: 50px 50px;
+}
+
+
+@media screen and (max-width: 514px) {
+  #already-have-account {
+    font-size: 15px;
+  }
+}

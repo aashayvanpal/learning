@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from '../config/axios.js'
 import { withRouter } from 'react-router';
+import '../css/LoginDetails/Signin.css'
+
 
 
 class SignInForm extends React.Component {
@@ -74,22 +76,55 @@ class SignInForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <input id="inputEmail" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} /><br />
                     <input id="inputPassword" type="password" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} /><br />
-                    <input type="checkbox" id="caterer" name="isCaterer" onChange={this.handleCheckboxChange} checked={this.state.isCaterer}
-                        style={{
-                            "marginLeft": "30%",
-                        }} />
-                    <label style={{
-                        "fontSize": "32px",
-                        "marginLeft": "30px",
-                    }} htmlFor="caterer" > I am Caterer</label><br />
-                    <input type="submit" value="Log In"
-                        style={{
-                            "marginLeft": "27%", "padding": "25px", "width": "350px", "borderRadius": "50px", "color": " white",
-                            "backgroundColor": "#dbc268", "fontSize": "32px", "boxShadow": "5px"
-                        }}
-                    />
+                    <div style={{
+                        "alignItems": "center"
+
+                    }}>
+                        <div style={{
+                            "position": "relative",
+                            "marginLeft": "auto",
+                            "marginRight": "auto",
+                            "display": "flex",
+                            "width": "238px"
+
+                        }}>
+                            <input type="checkbox" id="caterer" name="isCaterer" onChange={this.handleCheckboxChange} checked={this.state.isCaterer}
+
+                                style={{
+                                }} />
+                            <label style={{
+
+                                "fontSize": "32px",
+                                "marginLeft": "30px",
+                            }} htmlFor="caterer" > I am Caterer</label><br />
+                        </div>
+                        <div style={{
+                            "position": "relative",
+                            "marginLeft": "auto",
+                            "marginRight": "auto",
+                            "display": "flex",
+                            "width": "100%"
+
+                        }}>
+                            <input type="submit" value="Log In"
+                                style={{
+                                    "position": "relative",
+                                    "marginLeft": "auto",
+                                    "marginRight": "auto",
+                                    "padding": "25px",
+                                    "width": "100%",
+                                    "borderRadius": "50px",
+                                    "color": " white",
+                                    "backgroundColor": "#dbc268",
+                                    "fontSize": "32px",
+                                    "boxShadow": "5px"
+                                }}
+                            />
+                        </div>
+                    </div>
+
                 </form>
-                <h3 style={{ "textAlign": "center", "marginTop": "20px" }}>Don't have an account ? <a href="/register">Sign Up</a></h3>
+                <h3 id="already-have-account">Don't have an account ? <a href="/register">Sign Up</a></h3>
             </div>
         )
     }

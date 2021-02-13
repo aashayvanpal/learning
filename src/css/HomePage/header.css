@@ -58,14 +58,16 @@
   /* Work around for the user image ,because image is position:absolute */
   .header {
     height: 80px;
+    margin-left: 0px;
   }
   .linkEnquiry {
     display: none;
   }
   .header-txt {
-    text-align: center;
+    text-align: left;
     font-size: 40px;
     margin-top: 10px;
+    margin-left: 0px;
   }
   #burger {
     display: inline-block;
@@ -74,10 +76,9 @@
   }
 }
 
-@media screen and (max-width:507px){
-  .header-txt{
-    font-size: 38px;
-    margin-top: 20px;
-
+@media screen and (max-width: 507px) {
+  .header-txt {
+    font-size: 25px;
+    margin-top: 30px;
   }
 }
