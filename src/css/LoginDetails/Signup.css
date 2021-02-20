@@ -26,9 +26,7 @@
   border-radius: 25px;
   /* box-shadow: 3px 3px white; */
   /* border: 2px solid black; */
-  
 }
-
 
 #inputEmail2,
 #inputPassword2 {
@@ -68,13 +66,21 @@
 }
 
 #create-account-button {
-  padding: 25px;
+  padding: 20px;
   width: 350px;
   border-radius: 50px;
+  border: 2px solid black;
   color: white;
   background-color: #dbc268;
   font-size: 32px;
-  box-shadow: 5px;
+}
+
+#create-account-button:hover {
+  color: "black";
+  background-color: #b5900b;
+  box-shadow: 5px 5px grey;
+  transition: 1s;
+  font-weight: bold;
 }
 
 #already-have-account {

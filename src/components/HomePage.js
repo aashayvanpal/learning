@@ -29,8 +29,7 @@ export default function HomePage() {
                                 <div className="center-align">
                                     <h1 className="h1-heading" id="txt1">Home is where,</h1>
                                     <h1 className="h1-heading" id="txt2">I'm with food</h1>
-                                    <Link to='/Register' id="OrderNow"
-                                    >ORDER NOW !</Link>
+                                    <Link to='/Register' id="OrderNow">ORDER NOW !</Link>
                                 </div>
                                 <div id="vegImg-placement">
                                     <img id="vegImg" src={vegImage} alt="veg-img" />

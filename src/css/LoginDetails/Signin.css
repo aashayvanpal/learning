@@ -23,6 +23,28 @@
   background-size: 50px 50px;
 }
 
+#logIn {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 300px;
+  border-radius: 50px;
+  color: white;
+  background-color: #dbc268;
+  font-size: 32px;
+  box-shadow: 5px;
+  border: 2px solid black;
+}
+#logIn:hover {
+  color: "black";
+  background-color: #b5900b;
+  box-shadow: 5px 5px grey;
+  transition: 1s;
+  font-weight: bold;
+}
 
 @media screen and (max-width: 514px) {
   #already-have-account {

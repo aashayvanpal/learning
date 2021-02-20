@@ -106,20 +106,7 @@ class SignInForm extends React.Component {
                             "width": "100%"
 
                         }}>
-                            <input type="submit" value="Log In"
-                                style={{
-                                    "position": "relative",
-                                    "marginLeft": "auto",
-                                    "marginRight": "auto",
-                                    "padding": "25px",
-                                    "width": "100%",
-                                    "borderRadius": "50px",
-                                    "color": " white",
-                                    "backgroundColor": "#dbc268",
-                                    "fontSize": "32px",
-                                    "boxShadow": "5px"
-                                }}
-                            />
+                            <input type="submit" value="Log In" id="logIn"/>
                         </div>
                     </div>
 

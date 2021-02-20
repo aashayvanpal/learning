@@ -67,7 +67,7 @@
     text-align: left;
     font-size: 40px;
     margin-top: 10px;
-    margin-left: 0px;
+    margin-left: 10px;
   }
   #burger {
     display: inline-block;
@@ -80,5 +80,7 @@
   .header-txt {
     font-size: 25px;
     margin-top: 30px;
+    margin-left: 10px;
+
   }
 }

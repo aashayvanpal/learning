@@ -16,7 +16,7 @@ const items = [
     caption: 'Sweet Special'
   },
   {
-    src: require("../images/landing-page-images/buffet2.png"),
+    src: require("../images/landing-page-images/image 2.png"),
     altText: 'buffet 2',
     caption: 'buffet 2'
   },

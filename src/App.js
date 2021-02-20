@@ -1,6 +1,33 @@
 // App version 1.0.2
 // Add exact path for add details
 /*
+
+Important:
+make form to the right , place image to left
+create logo
+remove you are logged in message and place inside the usericon
+make user icon rendering proper
+clear button in /menu change 
+add 3 items (showing 2 items)
+add footer for /menu  (render small footer)
+put all images
+lunch (options) fix the positioning properly
+in cart put table (invisible) to place and fix the cancle option
+review selections button change
+inside menu add pagination showing 20 items only (use slice method)
+dont render item card (not needed for now)
+/request add logged in user details to appear on the form
+submit enquiry button make button better
+add pop for order has been placed 
+tracking order status 
+user has to see order has been placed (reference numbers)
+
+
+
+
+
+Download menu card pdf file (add to database)
+
 Fixes :
 Front end for home/landing page must be completed 
 All pages must be made responsive
@@ -96,7 +123,7 @@ function App() {
             <BrowserRouter >
 
               <div className="header">
-                {/* Dont render User-button icon if user is not logged in (conditional rendering)*/}
+                {/* Important Dont render User-button icon if user is not logged in (conditional rendering)*/}
                 {/* Make Order Now! a button and fancy looking */}
 
                 <Link to="/" className="header-txt" >Aaswad Caterers</Link>
@@ -312,12 +339,14 @@ function App() {
                   </Route>
 
                   <Route path="/aboutus" >
-                    <h1 style={{ "backgroundColor": "blue" }}>About us Page</h1>
+                    <h1 style={{ "backgroundColor": "gold", "textAlign": "center" }}>About us Page</h1>
+                    <h2 style={{ "color": "green" }}>This page is still under maintenance please wait for the website to be functional soon ...</h2>
 
                   </Route>
 
                   <Route path="/Deals" >
-                    <h1 style={{ "backgroundColor": "blue" }}>Deals Page</h1>
+                    <h1 style={{ "backgroundColor": "gold", "textAlign": "center" }}>Deals Page</h1>
+                    <h2 style={{ "color": "green" }}>This page is still under maintenance please wait for the website to be functional soon ...</h2>
 
                   </Route>
 
