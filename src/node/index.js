@@ -14,7 +14,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/', router)
-app.use(router)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('./build'))
