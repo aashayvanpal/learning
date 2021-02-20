@@ -8,7 +8,6 @@ const { usersRouter } = require('../controllers/UsersController.js')
 const ContactUsController = require('../controllers/contactUsController.js')
 
 
-
 // const customerController = require('../app/controllers/customerController.js')
 // // for customers 
 // router.get('/customers', customerController.list)
